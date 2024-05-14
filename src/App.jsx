@@ -1,10 +1,13 @@
 import "./App.css";
-import HeroPage from "./Components/HeroPage/HeroPage";
+import About from "./Components/About/About";
+// import Navbar from "./Components/Navbar/Navbar";
+// import HeroPage from "./Components/HeroPage/HeroPage";
 
 function App() {
   return (
     <>
-      <HeroPage></HeroPage>
+      {/* <HeroPage></HeroPage> */}
+      <About />
     </>
   );
 }
