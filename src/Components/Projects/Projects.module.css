@@ -15,8 +15,7 @@
   width: 22%;
   height: 60vh;
   background-color: orange;
-  border-bottom-right-radius: 2rem;
-  border-bottom-left-radius: 2rem;
+  border-radius: 2rem;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;

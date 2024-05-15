@@ -1,5 +1,5 @@
-import Navbar from "../Navbar/Navbar";
 import style from "./Projects.module.css";
+import Contact from "../Contact/Contact";
 
 const Project = () => {
   const projects = [
@@ -11,7 +11,6 @@ const Project = () => {
   ];
   return (
     <>
-      <Navbar></Navbar>
       <div className={style.projectContainer}>
         {projects.map((project, index) => (
           <div key={index} className={style.projectCard}>
@@ -20,6 +19,8 @@ const Project = () => {
           </div>
         ))}
       </div>
+
+      <Contact />
     </>
   );
 };

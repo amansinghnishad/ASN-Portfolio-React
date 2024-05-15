@@ -21,3 +21,9 @@
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
