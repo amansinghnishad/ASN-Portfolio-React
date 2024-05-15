@@ -12,6 +12,14 @@ export default {
       widest: ".25em",
     },
     extend: {
+      height: {
+        "1/5": "20%",
+        "2/5": "40%",
+        "3/5": "60%",
+        "7/10": "70%",
+        "4/5": "80%",
+        "9/10": "90%",
+      },
       animation: {
         blink: "blink 1s infinite",
       },

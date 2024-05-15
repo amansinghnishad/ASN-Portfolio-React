@@ -1,13 +1,16 @@
 import "./App.css";
-import About from "./Components/About/About";
-// import Navbar from "./Components/Navbar/Navbar";
+// import About from "./Components/About/About";
 // import HeroPage from "./Components/HeroPage/HeroPage";
+// import Project from "./Components/Projects/Projects";
+import Contact from "./Components/Contact/Contact";
 
 function App() {
   return (
     <>
-      {/* <HeroPage></HeroPage> */}
+      {/* <HeroPage></HeroPage>
       <About />
+      <Project /> */}
+      <Contact />
     </>
   );
 }
