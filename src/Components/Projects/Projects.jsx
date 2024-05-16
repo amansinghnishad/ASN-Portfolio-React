@@ -11,11 +11,11 @@ const Project = () => {
   ];
   return (
     <>
-      <div className={style.projectContainer}>
+      <div className=" w-full h-auto flex justify-center flex-wrap p-5">
         {projects.map((project, index) => (
-          <div key={index} className={style.projectCard}>
-            <div className={style.projectImg}>{project.img}</div>
-            <div className={style.projectAbout}>{project.about}</div>
+          <div key={index} className="border w-2/5 h-96 m-5 rounded-3xl">
+            <div className="">{project.img}</div>
+            <div className="">{project.about}</div>
           </div>
         ))}
       </div>

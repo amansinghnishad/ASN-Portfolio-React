@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
+import Navbar from "../Navbar/Navbar";
 import About from "../About/About";
+import style from "./HeroPage.module.css";
 
 const HeroPage = () => {
   const tags = React.useMemo(
-    () => [
-      "a Developer.",
-      "a Designer.",
-      "a Programmer.",
-      "a Learner.",
-      "a Enthusiast.",
-    ],
+    () => ["a Developer.", "a Programmer.", "a Learner.", "a Enthusiast."],
     []
   );
   const [currentTag, setCurrentTag] = useState(tags[0]);
@@ -34,9 +30,9 @@ const HeroPage = () => {
 
   return (
     <>
-      {" "}
+      <Navbar />
       <div className="flex flex-col items-center justify-center h-screen w-full">
-        <div className="text-center">
+        <div className="text-center text-white">
           <h2 className="text-3xl tracking-wide font-serif p-2">
             Hi there !!!
           </h2>
@@ -47,6 +43,9 @@ const HeroPage = () => {
             I am {currentTag}
             <span className="animate-blink">|</span>
           </h3>
+        </div>
+        <div className="absolute bottom-0 h-4 w-full">
+          <div className={style.circle}></div>
         </div>
       </div>
       <About />
