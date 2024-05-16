@@ -31,6 +31,7 @@ const HeroPage = () => {
   return (
     <>
       <Navbar />
+
       <div className="flex flex-col items-center justify-center h-screen w-full">
         <div className="text-center text-white">
           <h2 className="text-3xl tracking-wide font-serif p-2">
