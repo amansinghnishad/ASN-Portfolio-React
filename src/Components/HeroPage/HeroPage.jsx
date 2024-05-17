@@ -5,7 +5,7 @@ import style from "./HeroPage.module.css";
 
 const HeroPage = () => {
   const tags = React.useMemo(
-    () => ["a Developer.", "a Programmer.", "a Learner.", "a Enthusiast."],
+    () => ["Developer.", "Programmer.", "Learner.", "Enthusiast."],
     []
   );
   const [currentTag, setCurrentTag] = useState(tags[0]);
@@ -41,7 +41,7 @@ const HeroPage = () => {
             I am Aman Singh Nishad.
           </h1>
           <h3 className="text-2xl tracking-wide font-serif">
-            I am {currentTag}
+            I am a {currentTag}
             <span className="animate-blink">|</span>
           </h3>
         </div>
@@ -49,7 +49,9 @@ const HeroPage = () => {
           <div className={style.circle}></div>
         </div>
       </div>
-      <About />
+      <div>
+        <About />
+      </div>
     </>
   );
 };

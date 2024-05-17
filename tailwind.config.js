@@ -12,6 +12,10 @@ export default {
       widest: ".25em",
     },
     extend: {
+      backgroundImage: {
+        "hero-pattern": "url('card-skills-background.png')",
+        "footer-texture": "url('card-hello-background.png')",
+      },
       height: {
         "1/5": "20%",
         "2/5": "40%",
