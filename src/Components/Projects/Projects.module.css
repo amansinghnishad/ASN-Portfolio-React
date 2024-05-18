@@ -1,12 +1,12 @@
-.backgroundImg {
-  animation: rotateCardBackgroundImg 100s linear infinite;
+.projectDiv {
+  animation: fadeIn 1s linear;
 }
 
-@keyframe rotateCardBackgroundImg {
+@keyframes fadeIn {
   0% {
-    transform: translate(-50%, -50%) rotate(0);
+    opacity: 0;
   }
   100% {
-    transform: translate(-50%, -50%) rotate(360deg);
+    opacity: 1;
   }
 }

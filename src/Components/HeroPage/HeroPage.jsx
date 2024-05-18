@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../Navbar/Navbar";
 import About from "../About/About";
 import style from "./HeroPage.module.css";
@@ -28,11 +28,41 @@ const HeroPage = () => {
     }
   }, [tags, tagIndex, charIndex]);
 
+  const imgRef2 = useRef(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const { clientY } = e;
+      const centerY = window.innerWidth / 2;
+
+      const posX = (clientY - centerY) / centerY;
+
+      imgRef2.current.style.transform = `translate(-50%, -50%) rotate(${
+        posX * 5
+      }deg)`;
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
   return (
     <>
       <Navbar />
 
-      <div className="flex flex-col items-center justify-center h-screen w-full">
+      <div className="flex flex-col items-center justify-center h-screen w-full ">
+        <img
+          src="card-skills-background.png"
+          className="absolute left-1/2 top-1/2 pointer-events-none -translate-x-1/2 -translate-y-1/2 h-full w-full z-10"
+        />
+        <img
+          ref={imgRef2}
+          src="file.png"
+          className="absolute left-1/2 top-1/2 pointer-events-none -translate-x-1/2 -translate-y-1/2 h-full w-full z-10 blur-sm"
+        />
         <div className="text-center text-white">
           <h2 className="text-3xl tracking-wide font-serif p-2">
             Hi there !!!
