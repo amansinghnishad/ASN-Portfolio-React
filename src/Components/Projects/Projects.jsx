@@ -29,7 +29,6 @@ const Project = () => {
           </div>
         ))}
       </div>
-
       <Contact />
     </>
   );
