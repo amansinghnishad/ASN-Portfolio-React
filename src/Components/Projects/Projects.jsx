@@ -1,5 +1,5 @@
 import Contact from "../Contact/Contact";
-import { Card } from "./Card";
+import Card from "./Card";
 import { BrowserRouter as Router } from "react-router-dom";
 import CorsaleImageGallery from "../../assets/CorsaleImageGallery.png";
 
@@ -7,37 +7,31 @@ const Project = () => {
   const projects = [
     {
       img: CorsaleImageGallery,
-      heading: "Corsale Image Gallery",
-      about:
-        "Corsale Image Gallery is a simple and lightweight JavaScript-based project that allows users to create an interactive image gallery",
+      title: "Corsale Image Gallery",
       TryNowlink: "https://amansinghnishad.github.io/Corsale-Image-Gallery/",
       codeLink: "https://github.com/amansinghnishad/Corsale-Image-Gallery",
     },
     {
       img: "img2",
-      heading: "heading 1",
-      about: "about2",
+      title: "heading 1",
       TryNowlink: "",
       codeLink: "",
     },
     {
       img: "img3",
-      heading: "heading 1",
-      about: "about3",
+      title: "heading 1",
       TryNowlink: "",
       codeLink: "",
     },
     {
       img: "img4",
-      heading: "heading 1",
-      about: "about4",
+      title: "heading 1",
       TryNowlink: "",
       codeLink: "",
     },
     {
       img: "img5",
-      heading: "heading 1",
-      about: "about5",
+      title: "heading 1",
       TryNowlink: "",
       codeLink: "",
     },
