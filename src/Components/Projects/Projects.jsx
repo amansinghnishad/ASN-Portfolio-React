@@ -2,6 +2,8 @@ import Contact from "../Contact/Contact";
 import Card from "./Card";
 import { BrowserRouter as Router } from "react-router-dom";
 import CorsaleImageGallery from "../../assets/CorsaleImageGallery.png";
+import ODOP from "../../assets/ODOP.png";
+import PortfolioHTML from "../../assets/PortfolioHTML.png";
 
 const Project = () => {
   const projects = [
@@ -12,16 +14,16 @@ const Project = () => {
       codeLink: "https://github.com/amansinghnishad/Corsale-Image-Gallery",
     },
     {
-      img: "img2",
-      title: "heading 1",
-      TryNowlink: "",
-      codeLink: "",
+      img: ODOP,
+      title: "ODOP",
+      TryNowlink: "https://amansinghnishad.github.io/SIH-project/",
+      codeLink: "https://github.com/amansinghnishad/SIH-project",
     },
     {
-      img: "img3",
-      title: "heading 1",
-      TryNowlink: "",
-      codeLink: "",
+      img: PortfolioHTML,
+      title: "Portfolio HTML",
+      TryNowlink: "https://github.com/amansinghnishad/ASN-Portfolio",
+      codeLink: "https://amansinghnishad.github.io/ASN-Portfolio/",
     },
     {
       img: "img4",
