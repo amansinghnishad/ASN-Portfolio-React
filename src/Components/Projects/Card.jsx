@@ -1,4 +1,5 @@
 import { DirectionAwareHover } from "../ui/direction-aware-hover";
+import { GrGithub } from "react-icons/gr";
 
 function Card({ project }) {
   return (
@@ -10,9 +11,9 @@ function Card({ project }) {
         <a
           href={project.codeLink}
           target="_blank"
-          className="font-500 text-right text-sm"
+          className="font-700 text-right text-xl"
         >
-          Code
+          <GrGithub />
         </a>
       </DirectionAwareHover>
     </div>

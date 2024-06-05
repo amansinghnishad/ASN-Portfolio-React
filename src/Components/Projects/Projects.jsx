@@ -25,18 +25,6 @@ const Project = () => {
       TryNowlink: "https://github.com/amansinghnishad/ASN-Portfolio",
       codeLink: "https://amansinghnishad.github.io/ASN-Portfolio/",
     },
-    {
-      img: "img4",
-      title: "heading 1",
-      TryNowlink: "",
-      codeLink: "",
-    },
-    {
-      img: "img5",
-      title: "heading 1",
-      TryNowlink: "",
-      codeLink: "",
-    },
   ];
   return (
     <>
