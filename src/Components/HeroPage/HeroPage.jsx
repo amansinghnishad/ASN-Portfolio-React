@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import Navbar from "../Navbar/Navbar";
-import About from "../About/About";
+
 import style from "./HeroPage.module.css";
 import BackgroundBeams from "../ui/background-beams";
 
@@ -31,8 +30,6 @@ const HeroPage = () => {
 
   return (
     <>
-      <Navbar />
-
       <div className="flex flex-col items-center justify-center h-screen w-full ">
         <img
           src="card-skills-background.png"
@@ -57,7 +54,6 @@ const HeroPage = () => {
       </div>
       <div>
         <BackgroundBeams />
-        <About />
       </div>
     </>
   );

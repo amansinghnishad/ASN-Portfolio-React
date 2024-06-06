@@ -1,5 +1,3 @@
-import Project from "../Projects/Projects";
-
 const About = () => {
   return (
     <>
@@ -21,7 +19,6 @@ const About = () => {
           </div>
         </div>
       </div>
-      <Project />
     </>
   );
 };

@@ -1,4 +1,3 @@
-import Footer from "../Footer/Footer";
 import { FaGithub, FaLinkedin, FaPhone } from "react-icons/fa6";
 import { TbBrandLeetcode } from "react-icons/tb";
 import { MdEmail } from "react-icons/md";
@@ -53,7 +52,6 @@ const Contact = () => {
           </ul>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

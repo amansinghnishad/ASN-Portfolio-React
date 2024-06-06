@@ -1,4 +1,3 @@
-import Contact from "../Contact/Contact";
 import Card from "./Card";
 import { BrowserRouter as Router } from "react-router-dom";
 import CorsaleImageGallery from "../../assets/CorsaleImageGallery.png";
@@ -35,7 +34,6 @@ const Project = () => {
           ))}
         </Router>
       </div>
-      <Contact />
     </>
   );
 };

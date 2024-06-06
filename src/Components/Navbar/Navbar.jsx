@@ -1,7 +1,13 @@
+import { Link as ScrollLink } from "react-scroll";
 import style from "./Navbar.module.css";
 
 const Navbar = () => {
-  const links = ["Home", "About", "Projects", "Contact"];
+  const links = [
+    { name: "Home", to: "hero" },
+    { name: "About", to: "about" },
+    { name: "Projects", to: "projects" },
+    { name: "Contact", to: "contact" },
+  ];
 
   return (
     <nav
@@ -10,15 +16,25 @@ const Navbar = () => {
       <div
         className={`flex justify-between items-center navbar bg-slate-200 -mt-12 h-12 w-full rounded-lg shadow-white `}
       >
-        <a to="/" className="px-12 text-left">
+        <ScrollLink
+          to="hero"
+          smooth={true}
+          duration={500}
+          className="px-12 text-left cursor-pointer"
+        >
           ASN
-        </a>
+        </ScrollLink>
         <ul className="flex justify-center items-center h-12 text-xl font-semibold">
           {links.map((link) => (
-            <li key={link} className="px-12 items-center">
-              <a to={`/${link.toLowerCase()}`} className={style.navLink}>
-                {link}
-              </a>
+            <li key={link.name} className="px-12 items-center cursor-pointer">
+              <ScrollLink
+                to={link.to}
+                smooth={true}
+                duration={500}
+                className={style.navLink}
+              >
+                {link.name}
+              </ScrollLink>
             </li>
           ))}
         </ul>
