@@ -23,6 +23,10 @@ export default {
         "hero-pattern": "url('card-skills-background.png')",
         "footer-texture": "url('card-hello-background.png')",
       },
+      boxShadow: {
+        "custom-light":
+          "0 20px 20px rgba(0,0,0,0.2), 0px 0px 50px rgba(0,0,0,0.2)",
+      },
       height: {
         "1/5": "20%",
         "2/5": "40%",

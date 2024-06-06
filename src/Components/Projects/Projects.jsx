@@ -22,8 +22,8 @@ const Project = () => {
     {
       img: PortfolioHTML,
       title: "Portfolio HTML",
-      TryNowlink: "https://github.com/amansinghnishad/ASN-Portfolio",
-      codeLink: "https://amansinghnishad.github.io/ASN-Portfolio/",
+      TryNowlink: "https://amansinghnishad.github.io/ASN-Portfolio/",
+      codeLink: "https://github.com/amansinghnishad/ASN-Portfolio",
     },
   ];
   return (
