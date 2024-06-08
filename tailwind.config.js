@@ -25,7 +25,7 @@ export default {
       },
       boxShadow: {
         "custom-light":
-          "0 20px 20px rgba(0,0,0,0.2), 0px 0px 50px rgba(0,0,0,0.2)",
+          "0 5px 10px rgba(0,0,0,0.2), 0px 0px 20px rgba(0,0,0,0.2)",
       },
       height: {
         "1/5": "20%",

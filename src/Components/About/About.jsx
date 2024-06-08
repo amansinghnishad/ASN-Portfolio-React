@@ -16,6 +16,9 @@ const About = () => {
             <div className="flex justify-center items-center w-1/2 h-3/5 rounded-2xl shadow-lg bg-white shadow-gray-400">
               <img src="" alt="img" />
             </div>
+            <div className="flex justify-center z-2  items-center w-1/2 h-3/5 rounded-2xl shadow-lg bg-white shadow-gray-400">
+              <img src="" alt="img" />
+            </div>
           </div>
         </div>
       </div>

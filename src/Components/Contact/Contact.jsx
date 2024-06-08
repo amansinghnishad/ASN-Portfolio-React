@@ -5,15 +5,17 @@ import { MdEmail } from "react-icons/md";
 const Contact = () => {
   return (
     <>
-      <div className="p-5 grid grid-cols-2 w-full h-40 border-white border-2 justify-center items-center ">
-        <div className="m-2 border-yellow-500 border-2 h-full"> 0 </div>
+      <div className="p-5 grid grid-cols-2 w-full h-96 justify-center items-center ">
+        <div className="m-2 border-yellow-500 rounded-xl border-2 h-full">
+          0
+        </div>
         <div className="m-2 flex items-center justify-center h-full w-full">
-          <ul className="text-white flex gap-10 text-3xl ">
+          <div className="text-white flex flex-col text-3xl ">
             <a
               href="https://github.com/amansinghnishad"
               aria-label="Github"
               target="_blank"
-              className="hover:text-4xl"
+              className="hover:text-4xl "
             >
               <FaGithub />
             </a>
@@ -49,7 +51,7 @@ const Contact = () => {
             >
               <MdEmail />
             </a>
-          </ul>
+          </div>
         </div>
       </div>
     </>

@@ -2,13 +2,13 @@ import { GrGithub } from "react-icons/gr";
 
 function Card({ project }) {
   return (
-    <div className=" h-auto w-auto relative grid grid-col-2 items-center justify-center m-5 rounded-2xl	 bg-zinc-900 shadow-custom-light">
-      <div className="p-5 ">
+    <div className=" h-auto w-auto relative grid grid-col-2 items-center justify-center m-5 rounded-2xl	 bg-zinc-900 shadow-custom-light shadow-white ">
+      <div className="pb-5 ">
         <a href={project.TryNowlink} target="_blank">
           <img
             src={project.img}
             alt={project.title}
-            className="w-[35rem] h-[20rem] rounded-2xl	 object-cover"
+            className="w-[35rem] h-[20rem] rounded-t-2xl object-cover"
           ></img>
         </a>
         <div className="flex justify-between items-center p-2">
