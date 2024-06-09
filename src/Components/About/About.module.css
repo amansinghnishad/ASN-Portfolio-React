@@ -1,12 +1,5 @@
-.backgroundImg {
-  animation: rotateCardBackgroundImg 100s linear infinite;
-}
-
-@keyframes rotateCardBackgroundImg {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
+@media only screen and (max-width: 768px) {
+  .size {
+    width: 100%;
   }
 }

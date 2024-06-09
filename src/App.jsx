@@ -8,7 +8,7 @@ import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
-    <div className="bg-black">
+    <div className="bg-[#080c11]">
       <Navbar />
       <div id="hero">
         <HeroPage />
@@ -24,19 +24,6 @@ function App() {
       </div>
 
       <Footer />
-
-      {/* <Router>
-      <div className="bg-black">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HeroPage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router> */}
     </div>
   );
 }

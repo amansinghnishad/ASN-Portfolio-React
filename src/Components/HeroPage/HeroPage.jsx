@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import style from "./HeroPage.module.css";
 import BackgroundBeams from "../ui/background-beams";
