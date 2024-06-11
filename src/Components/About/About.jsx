@@ -53,27 +53,50 @@ const About = () => {
     </>
   );
 
-  const Skills = () => (
-    <div className="border-2 w-16 h-16 border-white">
-      <img src="html5.png" />
-    </div>
-  );
+  const icons = [
+    { src: "html5.png" },
+    { src: "canva.png" },
+    { src: "css.png" },
+    { src: "figma.png" },
+    { src: "git.png" },
+    { src: "github.png" },
+    { src: "intellij-idea.png" },
+    { src: "java.png" },
+    { src: "javascript.png" },
+    { src: "react.png" },
+    { src: "vscode.png" },
+  ];
+  const Skills = () =>
+    icons.map((icons, index) => (
+      <div
+        key={index}
+        className="w-16 h-16 flex flex-row rounded-md bg-[#6a6868b3] justify-evenly border-2 border-white"
+      >
+        <img src={icons.src} />
+      </div>
+    ));
 
-  const AboutContant = [
+  const AboutContent = [
     {
       section: "Education",
-      contant: <Education />,
+      content: <Education />,
     },
     {
       section: "Experience",
-      contant: <Experience />,
+      content: <Experience />,
     },
     {
       section: "Skills",
-      contant: <Skills />,
+      content: (
+        <div className="h-9/10 w-full flex justify-center item-center">
+          <div className="grid grid-cols-3 gap-x-14 gap-y-6  justify-center items-center">
+            <Skills />
+          </div>
+        </div>
+      ),
     },
   ];
-  const [selectedSection, setSelectedSection] = useState(AboutContant[0]);
+  const [selectedSection, setSelectedSection] = useState(AboutContent[0]);
 
   const handleSectionClick = (section) => {
     setSelectedSection(section);
@@ -81,45 +104,55 @@ const About = () => {
 
   return (
     <>
-      <div className="relative w-full h-screen grid grid-cols-3 justify-center ">
+      <div
+        className={`lg:grid lg:grid-cols-3 flex sm:flex-col-reverse md:flex-col-reverse relative w-full h-max justify-center`}
+      >
         <div
-          className={`${style.size} h-full col-span-2 flex justify-center items-center p-16`}
+          className={`lg:col-span-2 flex h-full justify-center items-center p-16 sm:flex-col-reverse md:flex-col-reverse w-full`}
         >
           <div
-            className={`${style.size} h-full w-9/10 text-white bg-white/10  rounded-3xl shadow-lg shadow-gray-400 backdrop-filter backdrop-blur-lg bg-opacity-40`}
+            className={` h-full w-9/10 text-white bg-white/10  rounded-3xl shadow-lg shadow-gray-400 backdrop-filter backdrop-blur-lg bg-opacity-40`}
           >
             <img
               src="card-hello-background.png"
               className={`absolute left-1/2 top-1/2 pointer-events-none  -translate-x-1/2 -translate-y-1/2 h-full w-full z-10  `}
             />
             <div className="h-16 w-full flex justify-evenly items-center text-white bg-white/10  rounded-t-3xl shadow-lg shadow-gray-400 backdrop-filter backdrop-blur-lg bg-opacity-40">
-              {AboutContant.map((AboutContant, index) => (
+              {AboutContent.map((AboutContent, index) => (
                 <div
                   key={index}
-                  onClick={() => handleSectionClick(AboutContant)}
+                  onClick={() => handleSectionClick(AboutContent)}
                   className="cursor-pointer"
                 >
-                  {AboutContant.section}
+                  {AboutContent.section}
                 </div>
               ))}
             </div>
-            <div className="h-full w-full p-5">{selectedSection.contant}</div>
+            <div className="h-full w-full p-5">{selectedSection.content}</div>
           </div>
         </div>
-        <div className=" h-full relative">
-          <div className="flex justify-center items-center h-full ">
-            <div className="flex justify-center items-center w-1/2 h-3/5 z-30 rounded-2xl shadow-lg absolute transition-all duration-500 ease-in-out hover:z-50 hover:transform hover:rotate-0 bg-white shadow-gray-400 transition-delay-500">
+        <div className="h-full relative w-full overflow-hidden">
+          <div className="flex justify-center items-center h-full overflow-hidden">
+            <div className="overflow-hidden flex justify-center items-center w-1/2 sm:9/10 md:9/10 lg:h-3/5 z-30 rounded-2xl shadow-lg absolute transition-all duration-500 ease-in-out hover:z-50 hover:transform hover:rotate-0 bg-white shadow-gray-400 transition-delay-500">
               <img
                 src="profile1.jpg"
                 className="object-contain h-full"
-                alt="img1"
+                alt="ProfileImg1"
               />
             </div>
-            <div className="flex justify-center z-20 transform rotate-12 origin-bottom-left items-center w-1/2 h-3/5 rounded-2xl shadow-lg transition-all duration-500 ease-in-out hover:z-50 hover:transform hover:rotate-0 bg-white shadow-gray-400 delay-500">
-              <img src="profile2.jpg" alt="img2" />
+            <div className="overflow-hidden flex justify-center z-20 transform rotate-12 origin-bottom-left items-center w-1/2 sm:9/10 md:9/10 lg:h-3/5 rounded-2xl shadow-lg transition-all duration-500 ease-in-out hover:z-50 hover:transform hover:rotate-0 bg-white shadow-gray-400 delay-500">
+              <img
+                src="profile2.jpg"
+                className="object-contain h-full"
+                alt="Profileimg2"
+              />
             </div>
-            <div className="flex justify-center absolute transform -rotate-12 origin-bottom-right items-center w-1/2 h-3/5 rounded-2xl shadow-lg transition-all  duration-500 ease-in-out hover:z-50 hover:transform hover:-rotate-0 bg-white shadow-gray-400 delay-500 	">
-              <img src="profile3.jpg" alt="img2" />
+            <div className="overflow-hidden flex justify-center absolute transform -rotate-12 origin-bottom-right items-center w-1/2 sm:9/10 md:9/10 lg:h-3/5 rounded-2xl shadow-lg transition-all  duration-500 ease-in-out hover:z-50 hover:transform hover:-rotate-0 bg-white shadow-gray-400 delay-500 	">
+              <img
+                src="profile3.jpg"
+                className="object-contain h-full"
+                alt="Profileimg3"
+              />
             </div>
           </div>
         </div>
