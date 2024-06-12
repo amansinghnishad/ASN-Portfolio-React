@@ -4,7 +4,7 @@ import TabletOrMobileNav from "./TabletOrMobileNav";
 
 const Navbar = () => {
   const isDesktopOrLaptop = useMediaQuery({
-    query: "(min-device-width: 1224px)",
+    query: "(min-width: 850px)",
   });
   return <>{isDesktopOrLaptop ? <DesktopNav /> : <TabletOrMobileNav />}</>;
 };

@@ -20,7 +20,7 @@ const DesktopNav = () => {
           to="hero"
           smooth={true}
           duration={500}
-          className="px-12 text-white text-left cursor-pointer"
+          className="px-12 text-white text-left cursor-pointer "
         >
           ASN
         </ScrollLink>
