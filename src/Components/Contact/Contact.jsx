@@ -28,9 +28,9 @@ const Contact = () => {
   ];
   return (
     <>
-      <div className="  w-full h-96 flex justify-center item-center mb-5  ">
-        <div className=" grid grid-cols-3 m-2 w-9/20  justify-center items-center border-[#1f0741] hover:drop-shadow-[25px_25px_25px_rgba(31,7,65,0.77)] shadow-[rgba(31,7,65,0.77)] bg-gradient-to-br from-[#a073d1cb] to-[#0b0217d5] rounded-xl border-2 h-full overflow-hidden transition-all duration-700 ease-in-out">
-          <div className="col-span-2 p-10">
+      <div className=" w-full h-auto flex justify-center item-center mb-5  ">
+        <div className=" lg:grid lg:grid-cols-3 m-2 lg:w-9/20 flex flex-col-reverse justify-center items-center border-[#1f0741] hover:drop-shadow-[25px_25px_25px_rgba(31,7,65,0.77)] shadow-[rgba(31,7,65,0.77)] bg-gradient-to-br from-[#a073d1cb] to-[#0b0217d5] rounded-xl border-2 h-full overflow-hidden transition-all duration-700 ease-in-out">
+          <div className="lg:col-span-2 p-10">
             <p className="p-1 text-lg text-gray-300">
               I constantly try to improve myself
             </p>
@@ -57,7 +57,7 @@ const Contact = () => {
                 </a>
               ))}
             </div>
-            <div className="w-full h-full flex justify-end items-end overflow-hidden ">
+            <div className="w-full h-full flex justify-end items-end overflow-hidden drop-shadow-[0_35px_30px_#000000] ">
               <img className={style.scaleAnimate} src="avtar.png" />
             </div>
           </div>

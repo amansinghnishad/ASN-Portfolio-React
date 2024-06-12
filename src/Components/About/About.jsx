@@ -1,5 +1,4 @@
 import { useState } from "react";
-import style from "./About.module.css";
 
 const About = () => {
   const Education = () => (
@@ -105,13 +104,13 @@ const About = () => {
   return (
     <>
       <div
-        className={`lg:grid lg:grid-cols-3 flex sm:flex-col-reverse md:flex-col-reverse relative w-full h-max justify-center`}
+        className={`lg:grid lg:grid-cols-3 flex sm:flex-col-reverse md:flex-col-reverse relative w-full h-max justify-center `}
       >
         <div
-          className={`lg:col-span-2 flex h-full justify-center items-center p-16 sm:flex-col-reverse md:flex-col-reverse w-full`}
+          className={`lg:col-span-2 flex h-full justify-center items-center p-16 sm:flex-col-reverse md:flex-col-reverse w-full `}
         >
           <div
-            className={` h-full w-9/10 text-white bg-white/10  rounded-3xl shadow-lg shadow-gray-400 backdrop-filter backdrop-blur-lg bg-opacity-40`}
+            className={` h-full w-9/10 text-white bg-white/10  rounded-3xl shadow-lg shadow-gray-400 backdrop-filter backdrop-blur-lg bg-opacity-40 overflow-hidden`}
           >
             <img
               src="card-hello-background.png"
