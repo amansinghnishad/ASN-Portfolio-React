@@ -1,6 +1,6 @@
 const EducationTable = () => {
   return (
-    <>
+    <div className="overflow-x-auto">
       <h1 className=" text-4xl p-2">Education : </h1>
       <table className="m-2.5 p-5 border-2 h-64 ">
         <thead>
@@ -40,7 +40,7 @@ const EducationTable = () => {
           </tr>
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 

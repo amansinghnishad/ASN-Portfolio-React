@@ -1,16 +1,13 @@
-import AboutContent from "./AboutContent";
-import ProfileImage from "./ProfileImage";
+import DesktopAboutContent from "./DesktopAboutContent";
+import { useMediaQuery } from "react-responsive";
+import MobileAboutContent from "./MobileAboutContent";
 
 const About = () => {
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 850px)",
+  });
   return (
-    <>
-      <div
-        className={`lg:grid lg:grid-cols-3 flex sm:flex-col-reverse md:flex-col-reverse relative w-full h-max justify-center `}
-      >
-        <AboutContent />
-        <ProfileImage />
-      </div>
-    </>
+    <>{isDesktopOrLaptop ? <DesktopAboutContent /> : <MobileAboutContent />}</>
   );
 };
 
