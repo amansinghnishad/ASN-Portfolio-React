@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import BackgroundBeams from "../../../utils/BackgroundBeams";
+import BackgroundGlow from "../../../utils/BackgroundGlow";
 
 import style from "./HeroPage.module.css";
+import BackgroundAnimation from "../../../utils/BackgroudAnimation";
 
 const HeroPage = () => {
   const tags = React.useMemo(
@@ -30,12 +31,11 @@ const HeroPage = () => {
 
   return (
     <>
+      <div>
+        <BackgroundGlow />
+        <BackgroundAnimation />
+      </div>
       <div className="flex flex-col items-center justify-center h-screen w-full ">
-        <img
-          src="card-skills-background.png"
-          className="absolute left-1/2 top-1/2 pointer-events-none -translate-x-1/2 -translate-y-1/2 h-full w-full z-10"
-        />
-
         <div className="text-center text-white">
           <h2 className="text-3xl tracking-wide font-serif p-2">
             Hi there !!!
@@ -51,9 +51,6 @@ const HeroPage = () => {
         <div className="absolute bottom-0 h-4 w-full">
           <div className={style.circle}></div>
         </div>
-      </div>
-      <div>
-        <BackgroundBeams />
       </div>
     </>
   );
