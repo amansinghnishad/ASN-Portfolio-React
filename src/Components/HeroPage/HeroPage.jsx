@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
+import BackgroundBeams from "../../../utils/BackgroundBeams";
 
 import style from "./HeroPage.module.css";
-import BackgroundBeams from "../ui/background-beams";
 
 const HeroPage = () => {
   const tags = React.useMemo(
-    () => ["Developer.", "Programmer.", "Learner.", "Enthusiast."],
+    () => ["a Developer.", "a Programmer.", "a Learner.", "an Enthusiast."],
     []
   );
   const [currentTag, setCurrentTag] = useState(tags[0]);
@@ -44,7 +44,7 @@ const HeroPage = () => {
             I am Aman Singh Nishad.
           </h1>
           <h3 className="text-2xl tracking-wide font-serif">
-            I am a {currentTag}
+            I am {currentTag}
             <span className="animate-blink">|</span>
           </h3>
         </div>

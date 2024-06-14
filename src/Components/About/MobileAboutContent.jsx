@@ -3,6 +3,8 @@ import EducationTable from "./subContant/EducationTable";
 import Experience from "./subContant/Experience";
 import Skills from "./subContant/Skills";
 import ProfileImage from "./ProfileImage";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const MobileAboutContent = () => {
   const AboutContent = [
@@ -24,11 +26,21 @@ const MobileAboutContent = () => {
   const handleSectionClick = (section) => {
     setSelectedSection(section);
   };
+
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+  });
+
   return (
     <div
       className={`flex flex-col-reverse  relative w-full h-auto justify-center `}
     >
-      <div
+      <motion.div
+        ref={ref}
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: inView ? 1 : 0.8, opacity: inView ? 1 : 0 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        transition={{ duration: 0.5, ease: "linear" }}
         className={`col-span-2 flex h-full justify-center items-center p-5 pt-10 w-full `}
       >
         <div
@@ -51,7 +63,7 @@ const MobileAboutContent = () => {
           </div>
           <div className="h-full w-full p-5">{selectedSection.content}</div>
         </div>
-      </div>
+      </motion.div>
       <div className="h-full w-full p-16">
         <ProfileImage />
       </div>

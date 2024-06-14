@@ -1,6 +1,20 @@
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 const ProfileImage = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+  });
+
   return (
-    <div className="h-auto relative w-full  ">
+    <motion.div
+      ref={ref}
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: inView ? 1 : 0.8, opacity: inView ? 1 : 0 }}
+      exit={{ scale: 0.8, opacity: 0 }}
+      transition={{ duration: 0.5, ease: "linear" }}
+      className="h-auto relative w-full  "
+    >
       <div className="flex justify-center items-center h-full">
         <div className="overflow-hidden flex justify-center items-center w-3/5 sm:h-9/10 md:h-9/10 lg:h-3/5 z-30 rounded-2xl shadow-lg absolute transition-all duration-500 ease-in-out hover:z-50 hover:transform hover:rotate-0 bg-white shadow-gray-400 transition-delay-500">
           <img
@@ -27,7 +41,7 @@ const ProfileImage = () => {
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
