@@ -1,10 +1,45 @@
+import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+
+const ProfileCard = ({ src, alt, className }) => (
+  <div
+    className={`overflow-hidden flex justify-center items-center ${className}`}
+  >
+    <img src={src} className="object-cover h-full w-full" alt={alt} />
+  </div>
+);
+ProfileCard.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+};
 
 const ProfileImage = () => {
   const { ref, inView } = useInView({
     triggerOnce: false,
   });
+
+  const profileImages = [
+    {
+      src: "profile1.jpg",
+      alt: "Profile Image 1",
+      className:
+        "w-3/5 sm:h-9/10 md:h-9/10 lg:h-3/5 z-30 rounded-2xl shadow-lg absolute transition-all duration-500 ease-in-out hover:z-50 hover:transform hover:rotate-0 bg-white shadow-gray-400 transition-delay-500",
+    },
+    {
+      src: "profile2.jpg",
+      alt: "Profile Image 2",
+      className:
+        "w-3/5 sm:h-9/10 md:h-9/10 lg:h-3/5 z-20 transform rotate-12 origin-bottom-left rounded-2xl shadow-lg transition-all duration-500 ease-in-out hover:z-50 hover:transform hover:rotate-0 bg-white shadow-gray-400 delay-500",
+    },
+    {
+      src: "profile3.jpg",
+      alt: "Profile Image 3",
+      className:
+        "w-3/5 sm:h-9/10 md:h-9/10 lg:h-3/5 z-20 -rotate-12 origin-bottom-right rounded-2xl shadow-lg absolute transition-all duration-500 ease-in-out hover:z-50 hover:transform hover:rotate-0 bg-white shadow-gray-400 transition-delay-500",
+    },
+  ];
 
   return (
     <motion.div
@@ -13,33 +48,12 @@ const ProfileImage = () => {
       animate={{ scale: inView ? 1 : 0.8, opacity: inView ? 1 : 0 }}
       exit={{ scale: 0.8, opacity: 0 }}
       transition={{ duration: 0.5, ease: "linear" }}
-      className="h-auto relative w-full  "
+      className="h-auto relative w-full"
     >
       <div className="flex justify-center items-center h-full">
-        <div className="overflow-hidden flex justify-center items-center w-3/5 sm:h-9/10 md:h-9/10 lg:h-3/5 z-30 rounded-2xl shadow-lg absolute transition-all duration-500 ease-in-out hover:z-50 hover:transform hover:rotate-0 bg-white shadow-gray-400 transition-delay-500">
-          <img
-            src="profile1.jpg"
-            className="object-cover h-full w-full"
-            alt="ProfileImg1"
-          />
-        </div>
-        <div className="overflow-hidden flex justify-center z-20 transform rotate-12 origin-bottom-left items-center w-3/5  sm:h-9/10 md:h-9/10 lg:h-3/5 rounded-2xl shadow-lg transition-all duration-500 ease-in-out hover:z-50 hover:transform hover:rotate-0 bg-white shadow-gray-400 delay-500">
-          <img
-            src="profile2.jpg"
-            className="object-cover h-full w-full"
-            alt="Profileimg2"
-          />
-        </div>
-        <div
-          className="overflow-hidden flex justify-center items-center w-3/5 sm:h-9/10 md:h-9/10 lg:h-3/5 z-20
-        -rotate-12 origin-bottom-right  rounded-2xl shadow-lg absolute transition-all duration-500 ease-in-out hover:z-50 hover:transform hover:rotate-0 bg-white shadow-gray-400 transition-delay-500 "
-        >
-          <img
-            src="profile3.jpg"
-            className="object-cover h-full w-full"
-            alt="Profileimg3"
-          />
-        </div>
+        {profileImages.map((image, index) => (
+          <ProfileCard key={index} {...image} />
+        ))}
       </div>
     </motion.div>
   );

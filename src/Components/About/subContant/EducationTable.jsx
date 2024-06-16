@@ -1,3 +1,25 @@
+const data = [
+  {
+    year: "2022-26",
+    institution:
+      "University of Lucknow (Faculty of Engineering and Technology)",
+    degree: "Bachelor degree (B-Tech), Computer Science and Engineering",
+    percentage: "N/A",
+  },
+  {
+    year: "2020-21",
+    institution: "Army Public School, Chandimandir Cantt. Panchkula",
+    degree: "Class -12 (Intermediate)",
+    percentage: "83.5",
+  },
+  {
+    year: "2018-19",
+    institution: "Army Public School, Chandimandir Cantt. Panchkula",
+    degree: "Class -10 (High School)",
+    percentage: "89.5",
+  },
+];
+
 const EducationTable = () => {
   return (
     <div className="overflow-x-auto">
@@ -12,32 +34,14 @@ const EducationTable = () => {
           </tr>
         </thead>
         <tbody className="p-5 border-2">
-          <tr className="p-5 border-2">
-            <td className="p-5 border-2">2022-26</td>
-            <td className="p-5 border-2">
-              University of Lucknow (Faculty of Engineering and Technology)
-            </td>
-            <td className="p-5 border-2">
-              Bachelor degree (B-Tech), Computer Science and Engineering
-            </td>
-            <td className="p-5 border-2">N/A</td>
-          </tr>
-          <tr className="p-5 border-2">
-            <td className="p-5 border-2">2020-21</td>
-            <td className="p-5 border-2">
-              Army Public School, Chandimandir Cantt. Panchkula
-            </td>
-            <td className="p-5 border-2">Class -12 (Intermediate)</td>
-            <td className="p-5 border-2">83.5%</td>
-          </tr>
-          <tr className="p-5 border-2">
-            <td className="p-5 border-2">2018-19</td>
-            <td className="p-5 border-2">
-              Army Public School, Chandimandir Cantt. Panchkula
-            </td>
-            <td className="p-5 border-2">Class -10 (High School)</td>
-            <td className="p-5 border-2">89.5%</td>
-          </tr>
+          {data.map((row, index) => (
+            <tr key={index} className="p-5 border-2">
+              <td className="p-5 border-2">{row.year}</td>
+              <td className="p-5 border-2">{row.institution}</td>
+              <td className="p-5 border-2">{row.degree}</td>
+              <td className="p-5 border-2">{row.percentage}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

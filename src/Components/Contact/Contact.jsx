@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const Contact = () => {
-  const links = [
+  const socialLinks = [
     {
       href: "https://github.com/amansinghnishad",
       ariaLabel: "Github",
@@ -59,23 +59,27 @@ const Contact = () => {
           </div>
           <div className="h-full w-full flex flex-col">
             <div className="text-white col-span-1 flex flex-row gap-5 text-2xl items-start justify-end h-1/5 w-full p-10">
-              {links.map((link, index) => (
+              {socialLinks.map((socialLink, index) => (
                 <motion.a
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                   key={index}
-                  href={link.href}
-                  aria-label={link.ariaLabel}
+                  href={socialLink.href}
+                  aria-label={socialLink.ariaLabel}
                   target="_blank"
                   className=" hover:bg-[#7c52aacb]  p-2 rounded-md border-2 drop-shadow-[0px_5px_2px_rgba(0,0,0,1)]"
                 >
-                  {link.icon}
+                  {socialLink.icon}
                 </motion.a>
               ))}
             </div>
             <div className="w-full h-full flex justify-end items-end overflow-hidden drop-shadow-[0_35px_30px_#000000] ">
-              <img className={style.scaleAnimate} src="avtar.png" />
+              <img
+                className={style.scaleAnimate}
+                src="avtar.png"
+                alt="avatar"
+              />
             </div>
           </div>
         </div>

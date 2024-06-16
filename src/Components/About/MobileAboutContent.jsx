@@ -48,16 +48,17 @@ const MobileAboutContent = () => {
         >
           <img
             src="card-hello-background.png"
+            alt="Background"
             className={`absolute left-1/2 top-1/2 pointer-events-none  -translate-x-1/2 -translate-y-1/2 h-full w-full z-10  `}
           />
           <div className="h-16 w-full flex justify-evenly items-center text-white bg-white/10  rounded-t-3xl shadow-lg shadow-gray-400 backdrop-filter backdrop-blur-lg bg-opacity-40">
-            {AboutContent.map((AboutContent, index) => (
+            {AboutContent.map((content, index) => (
               <div
                 key={index}
-                onClick={() => handleSectionClick(AboutContent)}
+                onClick={() => handleSectionClick(content)}
                 className="cursor-pointer"
               >
-                {AboutContent.section}
+                {content.section}
               </div>
             ))}
           </div>

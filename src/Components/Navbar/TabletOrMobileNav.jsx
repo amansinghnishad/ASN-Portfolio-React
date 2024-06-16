@@ -4,6 +4,18 @@ import { PiProjectorScreenChart } from "react-icons/pi";
 import { IoIosContact } from "react-icons/io";
 import { ImProfile } from "react-icons/im";
 
+const NavLink = ({ to, children }) => (
+  <ScrollLink
+    to={to}
+    smooth={true}
+    duration={500}
+    spy={true}
+    activeClass="text-gray-500"
+  >
+    <div className="flex flex-col justify-center items-center">{children}</div>
+  </ScrollLink>
+);
+
 const TabletOrMobileNav = () => {
   const links = [
     { icon: <FaHome />, name: "Home", to: "hero" },
@@ -20,18 +32,10 @@ const TabletOrMobileNav = () => {
             key={index}
             className="flex justify-center items-center list-none"
           >
-            <ScrollLink
-              to={link.to}
-              smooth={true}
-              duration={500}
-              spy={true}
-              activeClass="text-gray-500"
-            >
-              <div className="flex flex-col justify-center items-center">
-                {link.icon}
-                <p className="text-sm">{link.name}</p>
-              </div>
-            </ScrollLink>
+            <NavLink to={link.to}>
+              {link.icon}
+              <p className="text-sm">{link.name}</p>
+            </NavLink>
           </div>
         ))}
       </div>

@@ -3,11 +3,14 @@ import { useMediaQuery } from "react-responsive";
 import MobileAboutContent from "./MobileAboutContent";
 
 const About = () => {
-  const isDesktopOrLaptop = useMediaQuery({
-    query: "(min-width: 850px)",
-  });
   return (
-    <>{isDesktopOrLaptop ? <DesktopAboutContent /> : <MobileAboutContent />}</>
+    <>
+      {useMediaQuery({ query: "(min-width: 850px)" }) ? (
+        <DesktopAboutContent />
+      ) : (
+        <MobileAboutContent />
+      )}
+    </>
   );
 };
 

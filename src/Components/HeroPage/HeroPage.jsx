@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import BackgroundGlow from "../../../utils/BackgroundGlow";
-
-import style from "./HeroPage.module.css";
 import BackgroundAnimation from "../../../utils/BackgroudAnimation";
+import style from "./HeroPage.module.css";
+
+const TextElement = ({ tag, children, className }) => (
+  <tag className={`text-center text-white ${className}`}>{children}</tag>
+);
+TextElement.propTypes = {
+  tag: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};
 
 const HeroPage = () => {
   const tags = React.useMemo(
@@ -36,18 +45,16 @@ const HeroPage = () => {
         <BackgroundAnimation />
       </div>
       <div className="flex flex-col items-center justify-center h-screen w-full ">
-        <div className="text-center text-white">
-          <h2 className="text-3xl tracking-wide font-serif p-2">
-            Hi there !!!
-          </h2>
-          <h1 className="text-4xl tracking-wide font-serif p-2">
-            I am Aman Singh Nishad.
-          </h1>
-          <h3 className="text-2xl tracking-wide font-serif">
-            I am {currentTag}
-            <span className="animate-blink">|</span>
-          </h3>
-        </div>
+        <TextElement tag="h2" className="text-3xl tracking-wide font-serif p-2">
+          Hi there !!!
+        </TextElement>
+        <TextElement tag="h1" className="text-4xl tracking-wide font-serif p-2">
+          I am Aman Singh Nishad.
+        </TextElement>
+        <TextElement tag="h3" className="text-2xl tracking-wide font-serif">
+          I am {currentTag}
+          <span className="animate-blink">|</span>
+        </TextElement>
         <div className="absolute bottom-0 h-4 w-full">
           <div className={style.circle}></div>
         </div>
