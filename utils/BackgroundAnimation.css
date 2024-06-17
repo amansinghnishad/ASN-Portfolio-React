@@ -2,12 +2,20 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  overflow: hidden;
+}
+.gradient {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(49, 4, 71, 0.714) 0%,
+    rgba(49, 4, 71, 0.948) 50%
+  );
 }
 
 .line {
   position: absolute;
+  background-color: rgba(49, 4, 71, 0.533);
   z-index: 0;
+  backdrop-filter: blur(1px);
 }
 
 .vertical-line {
@@ -20,14 +28,4 @@
   left: 0;
   right: 0;
   height: 1px;
-}
-
-.dot {
-  position: absolute;
-  height: 5px;
-  width: 5px;
-  background-color: rgb(189, 178, 178);
-  backdrop-filter: blur(10px);
-  border-radius: 50%;
-  z-index: 1;
 }
