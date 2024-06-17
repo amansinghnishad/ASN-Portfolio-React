@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import BackgroundGlow from "../../../utils/BackgroundGlow";
-import BackgroundAnimation from "../../../utils/BackgroudAnimation";
 import style from "./HeroPage.module.css";
 
 const TextElement = ({ tag, children, className }) => (
@@ -39,11 +38,8 @@ const HeroPage = () => {
   }, [tags, tagIndex, charIndex]);
 
   return (
-    <>
-      <div>
-        <BackgroundGlow />
-        <BackgroundAnimation />
-      </div>
+    <div style={{ position: "relative" }}>
+      <BackgroundGlow />
       <div className="flex flex-col items-center justify-center h-screen w-full ">
         <TextElement tag="h2" className="text-3xl tracking-wide font-serif p-2">
           Hi there !!!
@@ -59,7 +55,7 @@ const HeroPage = () => {
           <div className={style.circle}></div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

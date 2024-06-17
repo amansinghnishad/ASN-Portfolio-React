@@ -1,0 +1,33 @@
+.line-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.line {
+  position: absolute;
+  z-index: 0;
+}
+
+.vertical-line {
+  top: 0;
+  bottom: 0;
+  width: 1px;
+}
+
+.horizontal-line {
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+.dot {
+  position: absolute;
+  height: 5px;
+  width: 5px;
+  background-color: rgb(189, 178, 178);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  z-index: 1;
+}

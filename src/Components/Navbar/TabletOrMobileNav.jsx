@@ -25,7 +25,7 @@ const TabletOrMobileNav = () => {
   ];
 
   return (
-    <nav className="h-[3.5rem] bottom-0 fixed w-full px-3 pb-2 backdrop-blur z-50">
+    <nav className="h-[5rem] bottom-0 fixed w-full px-3 pb-2 backdrop-blur z-50">
       <div className="border-2 p-6 rounded-3xl border-[#464545c9] bg-[#0b0b0bc5] text-white h-full w-full flex justify-between items-center text-2xl backdrop-blur">
         {links.map((link, index) => (
           <div
