@@ -43,7 +43,7 @@ const Contact = () => {
         transition={{ duration: 0.5, ease: "linear" }}
         className=" w-full h-auto flex justify-center item-center mb-5  "
       >
-        <div className=" lg:grid lg:grid-cols-3 m-2 lg:w-9/20 flex flex-col-reverse justify-center items-center border-[#1f0741] hover:drop-shadow-[25px_25px_25px_rgba(31,7,65,0.77)] shadow-[rgba(31,7,65,0.77)] bg-gradient-to-br from-[#a073d1cb] to-[#0b0217d5] rounded-xl border-2 h-full overflow-hidden transition-all duration-700 ease-in-out z-50">
+        <div className=" lg:grid lg:grid-cols-3 m-2 lg:w-9/20 flex flex-col-reverse justify-center items-center border-[#1f0741] hover:drop-shadow-[25px_25px_25px_rgba(31,7,65,0.77)] shadow-[rgba(31,7,65,0.77)] bg-gradient-to-br from-[#a073d1cb] to-[#0b0217d5] rounded-xl border-2 h-full overflow-hidden transition-all duration-700 ease-in-out z-40">
           <div className="lg:col-span-2 p-10">
             <p className="p-1 text-lg text-gray-300">
               I constantly try to improve myself
