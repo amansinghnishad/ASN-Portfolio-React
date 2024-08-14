@@ -4,33 +4,6 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import React from "react";
 
-const validateUrl = (url) => {
-  const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
-  return urlRegex.test(url);
-};
-
-const MotionLink = ({ href, children, className }) => {
-  const isValidUrl = validateUrl(href);
-
-  if (!isValidUrl) {
-    console.error(`Invalid URL: ${href}`);
-    return null;
-  }
-
-  return (
-    <motion.a
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      transition={{ type: "spring", stiffness: 400, damping: 17 }}
-      href={href}
-      target="_blank"
-      className={className}
-    >
-      {children}
-    </motion.a>
-  );
-};
-
 function Card({ project: { TryNowlink, img, title, codeLink } }) {
   const { ref, inView } = useInView({
     triggerOnce: false,
@@ -54,21 +27,25 @@ function Card({ project: { TryNowlink, img, title, codeLink } }) {
           ></img>
         </a>
         <div className="flex justify-between items-center p-4 ">
-          <MotionLink
+          <motion.a
             href={TryNowlink}
+            scale={0.8}
+            target="_blank"
             className="p-2 flex justify-center items-center"
           >
             <p className="font-bold text-white text-xl hover:drop-shadow-[0px_8px_2px_rgba(190,174,220,0.6)]">
               {title}
             </p>
-          </MotionLink>
+          </motion.a>
 
-          <MotionLink
+          <motion.a
             href={codeLink}
+            scale={0.8}
+            target="_blank"
             className="font-700 border-2 rounded-md flex p-1 items-end text-white text-right text-3xl drop-shadow-[0px_5px_2px_rgba(255,255,255,0.4)] hover:bg-[#2f2d2d]"
           >
             <GrGithub />
-          </MotionLink>
+          </motion.a>
         </div>
       </div>
     </motion.div>
