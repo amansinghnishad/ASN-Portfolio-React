@@ -1,3 +1,5 @@
+import React from "react";
+
 const data = [
   {
     year: "2022-26",
@@ -21,25 +23,55 @@ const data = [
 ];
 
 const EducationTable = () => {
+  const borderClass = "border-2 border-[#9D4EDD] text-[#ffcbf2] p-5";
+  const wobbleClass = "wobble-effect";
+
   return (
     <div className="overflow-x-auto">
-      <h1 className=" text-4xl p-2">Education : </h1>
-      <table className="m-2.5 p-5 border-2 h-64 ">
+      <style>{`
+        @keyframes wobble {
+          0%,
+          100% {
+            transform: rotate(0deg);
+          }
+          25% {
+            transform: rotate(3deg);
+          }
+          50% {
+            transform: rotate(-3deg);
+          }
+          75% {
+            transform: rotate(1deg);
+          }
+        }
+
+        .wobble-effect:hover {
+          animation: wobble 0.5s ease-in-out;
+        }
+      `}</style>
+      <h1 className="text-4xl p-2 pb-5 underline underline-offset-4 text-[#ffcbf2] ">
+        Education :
+      </h1>
+      <table className={`m-2.5 p-5 h-64 ${borderClass}`}>
         <thead>
           <tr>
-            <th className="p-5 border-2">Year</th>
-            <th className="p-5 border-2">Institution</th>
-            <th className="p-5 border-2">Degree</th>
-            <th className="p-5 border-2">Percentage</th>
+            <th className={`${borderClass} ${wobbleClass}`}>Year</th>
+            <th className={`${borderClass} ${wobbleClass}`}>Institution</th>
+            <th className={`${borderClass} ${wobbleClass}`}>Degree</th>
+            <th className={`${borderClass} ${wobbleClass}`}>Percentage</th>
           </tr>
         </thead>
-        <tbody className="p-5 border-2">
+        <tbody>
           {data.map((row, index) => (
-            <tr key={index} className="p-5 border-2">
-              <td className="p-5 border-2">{row.year}</td>
-              <td className="p-5 border-2">{row.institution}</td>
-              <td className="p-5 border-2">{row.degree}</td>
-              <td className="p-5 border-2">{row.percentage}</td>
+            <tr key={index} className={`${borderClass} `}>
+              <td className={`${borderClass} ${wobbleClass}`}>{row.year}</td>
+              <td className={`${borderClass} ${wobbleClass}`}>
+                {row.institution}
+              </td>
+              <td className={`${borderClass} ${wobbleClass}`}>{row.degree}</td>
+              <td className={`${borderClass} ${wobbleClass}`}>
+                {row.percentage}
+              </td>
             </tr>
           ))}
         </tbody>

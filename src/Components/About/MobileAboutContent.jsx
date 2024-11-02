@@ -44,14 +44,14 @@ const MobileAboutContent = () => {
         className={`col-span-2 flex h-full justify-center items-center p-5 pt-10 w-full `}
       >
         <div
-          className={` h-full w-9/10 text-white bg-white/10  rounded-3xl shadow-lg shadow-gray-400 backdrop-filter backdrop-blur-lg bg-opacity-40 overflow-hidden`}
+          className={` h-full w-9/10 text-[#14213D] bg-[#E5E5E5]  rounded-3xl shadow-lg shadow-gray-400 backdrop-filter backdrop-blur-lg bg-opacity-40 overflow-hidden`}
         >
           <img
             src="card-hello-background.png"
             alt="Background"
             className={`absolute left-1/2 top-1/2 pointer-events-none  -translate-x-1/2 -translate-y-1/2 h-full w-full z-10  `}
           />
-          <div className="h-16 w-full flex justify-evenly items-center text-white bg-white/10  rounded-t-3xl shadow-lg shadow-gray-400 backdrop-filter backdrop-blur-lg bg-opacity-40">
+          <div className="h-16 w-full flex justify-evenly items-center text-[#14213D] bg-[#E5E5E5]  rounded-t-3xl shadow-lg shadow-gray-400 backdrop-filter backdrop-blur-lg bg-opacity-40">
             {AboutContent.map((content, index) => (
               <div
                 key={index}

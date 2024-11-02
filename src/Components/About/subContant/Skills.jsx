@@ -14,7 +14,7 @@ const icons = [
 
 const Skills = () => {
   return (
-    <div className="h-9/10 w-full flex justify-center item-center p-5">
+    <div className="h-1/2 w-full flex justify-center item-center p-5">
       <div className="grid grid-cols-3 gap-x-14 gap-y-6  justify-center items-center">
         {icons.map((icon, index) => (
           <div

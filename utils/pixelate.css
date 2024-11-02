@@ -1,0 +1,29 @@
+@keyframes pixelateIn {
+  0% {
+    filter: url(#pixelate);
+    opacity: 0;
+  }
+  100% {
+    filter: none;
+    opacity: 1;
+  }
+}
+
+@keyframes pixelateOut {
+  0% {
+    filter: none;
+    opacity: 1;
+  }
+  100% {
+    filter: url(#pixelate);
+    opacity: 0;
+  }
+}
+
+.pixelate-in {
+  animation: pixelateIn 1s forwards;
+}
+
+.pixelate-out {
+  animation: pixelateOut 1s forwards;
+}

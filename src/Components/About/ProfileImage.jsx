@@ -24,20 +24,14 @@ const ProfileImage = () => {
     {
       src: "profile1.jpg",
       alt: "Profile Image 1",
-      className:
-        "w-3/5 sm:h-9/10 md:h-9/10 lg:h-3/5 z-30 rounded-2xl shadow-lg absolute transition-all duration-500 ease-in-out hover:z-50 hover:transform hover:rotate-0 bg-white shadow-gray-400 transition-delay-500",
     },
     {
       src: "profile2.jpg",
       alt: "Profile Image 2",
-      className:
-        "w-3/5 sm:h-9/10 md:h-9/10 lg:h-3/5 z-20 transform rotate-12 origin-bottom-left rounded-2xl shadow-lg transition-all duration-500 ease-in-out hover:z-50 hover:transform hover:rotate-0 bg-white shadow-gray-400 delay-500",
     },
     {
       src: "profile3.jpg",
       alt: "Profile Image 3",
-      className:
-        "w-3/5 sm:h-9/10 md:h-9/10 lg:h-3/5 z-20 -rotate-12 origin-bottom-right rounded-2xl shadow-lg absolute transition-all duration-500 ease-in-out hover:z-50 hover:transform hover:rotate-0 bg-white shadow-gray-400 transition-delay-500",
     },
   ];
 
@@ -52,7 +46,11 @@ const ProfileImage = () => {
     >
       <div className="flex justify-center items-center h-full">
         {profileImages.map((image, index) => (
-          <ProfileCard key={index} {...image} />
+          <ProfileCard
+            key={index}
+            {...image}
+            className="w-3/5 sm:h-9/10 md:h-9/10 lg:h-3/5 z-30 rounded-2xl shadow-lg absolute transition-all duration-500 ease-in-out hover:z-50 hover:transform bg-white shadow-gray-400 transition-delay-500"
+          />
         ))}
       </div>
     </motion.div>

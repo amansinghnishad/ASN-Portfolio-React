@@ -1,7 +1,7 @@
 .navLink {
   position: relative;
   text-decoration: none;
-  color: #ffffff;
+  color: #e0aaff;
 }
 
 .navLink::after {
