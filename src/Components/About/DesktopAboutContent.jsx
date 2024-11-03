@@ -31,7 +31,7 @@ const DesktopAboutContent = () => {
     setTimeout(() => {
       setSelectedSection(section);
       setAnimationClass("pixelate-in");
-    }, 500); // Duration of the pixelate-out animation
+    }, 500);
   };
 
   const { ref, inView } = useInView({
@@ -86,15 +86,9 @@ const DesktopAboutContent = () => {
                 </div>
               ))}
             </div>
-            <motion.div
-              className={`h-full w-full p-5 ${animationClass}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+            <div className={`h-full w-full p-5 `}>
               {selectedSection.content}
-            </motion.div>
+            </div>
           </div>
         </motion.div>
         <ProfileImage selectedSection={selectedSection} />

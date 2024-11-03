@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EducationTable from "./subContant/EducationTable";
 import Experience from "./subContant/Experience";
 import Skills from "./subContant/Skills";
 import ProfileImage from "./ProfileImage";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import "../../../utils/pixelate.css";
 
 const MobileAboutContent = () => {
   const AboutContent = [
@@ -22,14 +23,27 @@ const MobileAboutContent = () => {
     },
   ];
   const [selectedSection, setSelectedSection] = useState(AboutContent[0]);
+  const [animationClass, setAnimationClass] = useState("pixelate-in");
 
   const handleSectionClick = (section) => {
-    setSelectedSection(section);
+    setAnimationClass("pixelate-out");
+    setTimeout(() => {
+      setSelectedSection(section);
+      setAnimationClass("pixelate-in");
+    }, 500);
   };
 
   const { ref, inView } = useInView({
     triggerOnce: false,
   });
+
+  useEffect(() => {
+    if (inView) {
+      setAnimationClass("pixelate-in");
+    } else {
+      setAnimationClass("pixelate-out");
+    }
+  }, [inView]);
 
   return (
     <div
@@ -44,29 +58,30 @@ const MobileAboutContent = () => {
         className={`col-span-2 flex h-full justify-center items-center p-5 pt-10 w-full `}
       >
         <div
-          className={` h-full w-9/10 text-[#14213D] bg-[#E5E5E5]  rounded-3xl shadow-lg shadow-gray-400 backdrop-filter backdrop-blur-lg bg-opacity-40 overflow-hidden`}
+          className={` h-full w-9/10 text-[#E5E5E5] rounded-3xl shadow-lg shadow-gray-400  overflow-hidden`}
+          style={{
+            background: "rgba(60, 9, 108, 0.4)",
+            backdropFilter: "blur(10px)",
+            borderRadius: "24px",
+            boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+          }}
         >
-          <img
-            src="card-hello-background.png"
-            alt="Background"
-            className={`absolute left-1/2 top-1/2 pointer-events-none  -translate-x-1/2 -translate-y-1/2 h-full w-full z-10  `}
-          />
-          <div className="h-16 w-full flex justify-evenly items-center text-[#14213D] bg-[#E5E5E5]  rounded-t-3xl shadow-lg shadow-gray-400 backdrop-filter backdrop-blur-lg bg-opacity-40">
+          <div className="h-16 w-full flex justify-evenly items-center text-[#14213D] z-50 ">
             {AboutContent.map((content, index) => (
               <div
                 key={index}
                 onClick={() => handleSectionClick(content)}
-                className="cursor-pointer"
+                className="cursor-pointer border-2 w-32 bg-[#FCA311] border-[#fca211aa] hover:border-[#fca2118e] p-2 m-2 rounded-2xl flex flex-col justify-evenly text-center"
               >
                 {content.section}
               </div>
             ))}
           </div>
-          <div className="h-full w-full p-5">{selectedSection.content}</div>
+          <div className="h-full w-full p-5 ">{selectedSection.content}</div>
         </div>
       </motion.div>
       <div className="h-full w-full p-16">
-        <ProfileImage />
+        <ProfileImage selectedSection={selectedSection} />
       </div>
     </div>
   );
