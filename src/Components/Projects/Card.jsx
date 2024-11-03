@@ -16,7 +16,7 @@ function Card({ project: { TryNowlink, img, title, codeLink } }) {
       animate={{ scale: inView ? 1 : 0.8, opacity: inView ? 1 : 0 }}
       exit={{ scale: 0.8, opacity: 0 }}
       transition={{ duration: 0.5, ease: "linear" }}
-      className=" h-auto w-auto relative grid grid-col-2 items-center justify-center m-5 rounded-2xl	 bg-gradient-to-br from-[#403f40cb] to-[#0e0e0fe3] backdrop-blur-mx shadow-custom-light border-2 border-[#1c1c1c90] hover:drop-shadow-[10px_10px_10px_rgba(190,174,220,0.50)] "
+      className=" h-auto w-auto relative grid grid-col-2 items-center justify-center m-5 rounded-2xl	 bg-gradient-to-br from-[#3C096C] to-[#240046] backdrop-blur-mx shadow-custom-light border-2 border-[#1c1c1c90] hover:drop-shadow-[10px_10px_10px_rgba(190,174,220,0.50)] "
     >
       <div className="pb-2 ">
         <a href={TryNowlink} target="_blank">
