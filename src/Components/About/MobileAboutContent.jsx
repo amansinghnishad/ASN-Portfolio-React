@@ -12,66 +12,50 @@ const MobileAboutContent = () => {
     {
       section: "Education",
       content: <EducationTable />,
+      image: "profile1.jpg",
     },
     {
       section: "Experience",
       content: <Experience />,
+      image: "profile2.jpg",
     },
     {
       section: "Skills",
       content: <Skills />,
+      image: "profile3.jpg",
     },
   ];
   const [selectedSection, setSelectedSection] = useState(AboutContent[0]);
-  const [animationClass, setAnimationClass] = useState("pixelate-in");
 
   const handleSectionClick = (section) => {
-    setAnimationClass("pixelate-out");
-    setTimeout(() => {
-      setSelectedSection(section);
-      setAnimationClass("pixelate-in");
-    }, 500);
+    setSelectedSection(section);
   };
 
   const { ref, inView } = useInView({
     triggerOnce: false,
   });
 
-  useEffect(() => {
-    if (inView) {
-      setAnimationClass("pixelate-in");
-    } else {
-      setAnimationClass("pixelate-out");
-    }
-  }, [inView]);
-
   return (
     <div
-      className={`flex flex-col-reverse  relative w-full h-auto justify-center `}
+      className="border-2 border-[#2f4c88] rounded-2xl p-5 m-5"
+      style={{
+        background:
+          "radial-gradient(ellipse, #7B2CBF 10%, #5A189A 20%, #240046 40%, #240046 50%)",
+        borderRadius: "24px",
+        boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+      }}
     >
-      <motion.div
-        ref={ref}
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: inView ? 1 : 0.8, opacity: inView ? 1 : 0 }}
-        exit={{ scale: 0.8, opacity: 0 }}
-        transition={{ duration: 0.5, ease: "linear" }}
-        className={`col-span-2 flex h-full justify-center items-center p-5 pt-10 w-full `}
-      >
-        <div
-          className={` h-full w-9/10 text-[#E5E5E5] rounded-3xl shadow-lg shadow-gray-400  overflow-hidden`}
-          style={{
-            background: "rgba(60, 9, 108, 0.4)",
-            backdropFilter: "blur(10px)",
-            borderRadius: "24px",
-            boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-          }}
-        >
-          <div className="h-16 w-full flex justify-evenly items-center text-[#14213D] z-50 ">
+      <div className="pb-10">
+        <ProfileImage selectedSection={selectedSection} />
+      </div>
+      <div ref={ref} className="">
+        <div className="flex flex-col">
+          <div className="flex justify-evenly">
             {AboutContent.map((content, index) => (
               <div
                 key={index}
                 onClick={() => handleSectionClick(content)}
-                className="cursor-pointer border-2 w-32 bg-[#FCA311] border-[#fca211aa] hover:border-[#fca2118e] p-2 m-2 rounded-2xl flex flex-col justify-evenly text-center"
+                className="cursor-pointer border-2 w-32 bg-[#FCA311] border-[#fca211aa] hover:border-[#fca2118e] p-2 m-2 rounded-2xl "
               >
                 {content.section}
               </div>
@@ -79,9 +63,6 @@ const MobileAboutContent = () => {
           </div>
           <div className="h-full w-full p-5 ">{selectedSection.content}</div>
         </div>
-      </motion.div>
-      <div className="h-full w-full p-16">
-        <ProfileImage selectedSection={selectedSection} />
       </div>
     </div>
   );

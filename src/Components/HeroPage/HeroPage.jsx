@@ -40,14 +40,14 @@ const HeroPage = () => {
   return (
     <div style={{ position: "relative" }}>
       <BackgroundGlow />
-      <div className="flex flex-col items-center justify-center h-screen w-full ">
-        <TextElement tag="h2" className="text-3xl tracking-wide font-serif p-2">
+      <div className="flex flex-col items-center justify-center h-screen -mb-20 w-full ">
+        <TextElement tag="h2" className="text-2xl tracking-wide font-serif p-1">
           Hi there !!!
         </TextElement>
-        <TextElement tag="h1" className="text-4xl tracking-wide font-serif p-2">
+        <TextElement tag="h1" className="text-3xl tracking-wide font-serif p-1">
           I am Aman Singh Nishad.
         </TextElement>
-        <TextElement tag="h3" className="text-2xl tracking-wide font-serif">
+        <TextElement tag="h3" className="text-xl tracking-wide font-serif">
           I am {currentTag}
           <span className="animate-blink">|</span>
         </TextElement>
