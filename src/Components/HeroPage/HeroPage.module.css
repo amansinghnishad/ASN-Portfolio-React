@@ -1,6 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Doto:wght,ROND@900,100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap");
 
+.heroContainer {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.firstTextElement {
+  font-family: "Doto";
+}
+
+.secondTextElement {
+  font-family: "Doto";
+}
+
+.secondTextElementSpan {
+  color: #ff9500;
+  font-family: "Dancing Script";
+}
+
+.thirdTextElement {
+  font-family: "Doto";
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
 @media (min-width: 768px) {
   .heroBackground {
     background-image: url("../../../public/heroImage.png");
@@ -18,5 +44,34 @@
     filter: contrast(1.2) brightness(1.2) grayscale(100%)
       drop-shadow(20px 10px 0px rgb(16, 0, 43))
       drop-shadow(20px 10px 0px rgb(60, 9, 108));
+  }
+
+  .firstTextElement {
+    z-index: 1;
+    position: absolute;
+    top: 35%;
+    left: 5%;
+  }
+
+  .secondTextElement {
+    z-index: 1;
+    position: absolute;
+    top: 40%;
+    left: 5%;
+  }
+
+  .secondTextElementSpan {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .thirdTextElement {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: "translateY(-50%)";
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }

@@ -80,7 +80,7 @@ const DesktopAboutContent = () => {
                 <div
                   key={index}
                   onClick={() => handleSectionClick(content)}
-                  className="cursor-pointer border-2 w-32 bg-[#FCA311] border-[#fca211aa] hover:border-[#fca2118e] p-2 m-2 rounded-2xl flex flex-col justify-evenly text-center"
+                  className="cursor-pointer border-2 w-32 bg-[#ff9500ee] border-[#fca211aa] hover:border-[#fca2118e] p-2 m-2 rounded-2xl flex flex-col justify-evenly text-center"
                 >
                   {content.section}
                 </div>

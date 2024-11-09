@@ -44,29 +44,28 @@ const HeroPage = () => {
   return (
     <div style={{ position: "relative" }}>
       <BackgroundGlow />
-      <div className="flex flex-col items-center justify-center h-screen -mb-20 w-full  drop-shadow-[20px_10px_0_#3C096C]">
+      <div
+        className={`${styles.heroContainer} h-screen -mb-20 w-full  drop-shadow-[20px_10px_0_#3C096C]`}
+      >
         <div className={styles.heroBackground}></div>
         <TextElement
           tag="h2"
-          className="text-2xl tracking-wide font-serif p-1"
-          style={{ fontFamily: "Doto", zIndex: 1 }}
+          className={`${styles.firstTextElement} text-2xl tracking-wide  p-1 `}
         >
           Hi there !!!
         </TextElement>
         <TextElement
           tag="h1"
-          className="text-3xl tracking-wide font-serif p-1"
-          style={{ fontFamily: "Doto", zIndex: 1 }}
+          className={`${styles.secondTextElement} text-3xl tracking-wide  p-1`}
         >
-          I am&nbsp;
-          <span style={{ fontFamily: "Dancing Script", color: "#FF9500" }}>
+          I'm&nbsp;
+          <span className={styles.secondTextElementSpan}>
             Aman Singh Nishad.
           </span>
         </TextElement>
         <TextElement
           tag="h3"
-          className="text-xl tracking-wide font-serif"
-          style={{ fontFamily: "Doto", zIndex: 1 }}
+          className={`${styles.thirdTextElement}  tracking-wide`}
         >
           I am {currentTag}
           <span className="animate-blink">|</span>
