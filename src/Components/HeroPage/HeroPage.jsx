@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import BackgroundGlow from "../../../utils/BackgroundGlow";
-import style from "./HeroPage.module.css";
+import styles from "./HeroPage.module.css";
 
-const TextElement = ({ tag, children, className }) => (
-  <tag className={`text-center text-white ${className}`}>{children}</tag>
+const TextElement = ({ tag: Tag, children, className, style }) => (
+  <Tag className={`text-center text-white ${className}`} style={style}>
+    {children}
+  </Tag>
 );
+
 TextElement.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  style: PropTypes.object,
 };
 
 const HeroPage = () => {
@@ -40,20 +44,33 @@ const HeroPage = () => {
   return (
     <div style={{ position: "relative" }}>
       <BackgroundGlow />
-      <div className="flex flex-col items-center justify-center h-screen -mb-20 w-full ">
-        <TextElement tag="h2" className="text-2xl tracking-wide font-serif p-1">
+      <div className="flex flex-col items-center justify-center h-screen -mb-20 w-full  drop-shadow-[20px_10px_0_#3C096C]">
+        <div className={styles.heroBackground}></div>
+        <TextElement
+          tag="h2"
+          className="text-2xl tracking-wide font-serif p-1"
+          style={{ fontFamily: "Doto", zIndex: 1 }}
+        >
           Hi there !!!
         </TextElement>
-        <TextElement tag="h1" className="text-3xl tracking-wide font-serif p-1">
-          I am Aman Singh Nishad.
+        <TextElement
+          tag="h1"
+          className="text-3xl tracking-wide font-serif p-1"
+          style={{ fontFamily: "Doto", zIndex: 1 }}
+        >
+          I am&nbsp;
+          <span style={{ fontFamily: "Dancing Script", color: "#FF9500" }}>
+            Aman Singh Nishad.
+          </span>
         </TextElement>
-        <TextElement tag="h3" className="text-xl tracking-wide font-serif">
+        <TextElement
+          tag="h3"
+          className="text-xl tracking-wide font-serif"
+          style={{ fontFamily: "Doto", zIndex: 1 }}
+        >
           I am {currentTag}
           <span className="animate-blink">|</span>
         </TextElement>
-        <div className="absolute bottom-0 h-4 w-full">
-          <div className={style.circle}></div>
-        </div>
       </div>
     </div>
   );
