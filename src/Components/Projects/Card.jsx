@@ -6,7 +6,7 @@ import React from "react";
 
 function Card({ project: { TryNowlink, img, title, codeLink } }) {
   const { ref, inView } = useInView({
-    triggerOnce: false,
+    triggerOnce: true,
     threshold: 0.5,
   });
   return (

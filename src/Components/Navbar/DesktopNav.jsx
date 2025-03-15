@@ -17,14 +17,14 @@ const DesktopNav = () => {
 
   return (
     <nav
-      className={`flex justify-between items-center backdrop-blur px-12 pt-20 navbar h-12 w-full ${style.sticky}`}
+      className={`flex justify-between items-center backdrop-blur px-12 pt-20 navbar h-16 w-full ${style.sticky}`}
     >
       <div
-        className={`flex justify-between items-center backdrop-blur-sm navbar bg-[#240046] -mt-12 h-12 w-full rounded-lg shadow-white `}
+        className={`flex justify-between items-center backdrop-blur-sm navbar bg-[#1a0b2ecf] -mt-10 h-20 w-full rounded-3xl shadow-white border-2 border-[#7027ba80]`}
       >
         <NavItem
           to="hero"
-          className="px-12 text-[#E0AAFF] text-left cursor-pointer"
+          className="px-12 text-[#FFF] text-left cursor-pointer"
         >
           ASN
         </NavItem>

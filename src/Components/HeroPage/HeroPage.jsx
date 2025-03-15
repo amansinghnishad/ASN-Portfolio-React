@@ -21,7 +21,7 @@ const HeroPage = () => {
     () => ["a Developer.", "a Programmer.", "a Learner.", "an Enthusiast."],
     []
   );
-  const [currentTag, setCurrentTag] = useState(tags[0]);
+  const [currentTag, setCurrentTag] = useState("");
   const [tagIndex, setTagIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
 
@@ -31,7 +31,7 @@ const HeroPage = () => {
       setTimeout(() => {
         setCurrentTag((prev) => prev + tag[charIndex]);
         setCharIndex((prev) => prev + 1);
-      }, 150);
+      }, 100); // Adjusted typing speed
     } else {
       setTimeout(() => {
         setTagIndex((prev) => (prev + 1) % tags.length);
@@ -44,31 +44,33 @@ const HeroPage = () => {
   return (
     <div style={{ position: "relative" }}>
       <BackgroundGlow />
-      <div
-        className={`${styles.heroContainer} h-screen -mb-20 w-full  drop-shadow-[20px_10px_0_#3C096C]`}
-      >
-        <div className={styles.heroBackground}></div>
-        <TextElement
-          tag="h2"
-          className={`${styles.firstTextElement} text-2xl tracking-wide  p-1 `}
-        >
-          Hi there !!!
-        </TextElement>
-        <TextElement
-          tag="h1"
-          className={`${styles.secondTextElement} text-3xl tracking-wide  p-1`}
-        >
-          I'm&nbsp;
+
+      <div className={`${styles.heroContainer} -mb-20 w-full h-[90vh]`}>
+        <div className={styles.heroBackgroundContainer}>
+          <div className={styles.heroBackgroundContainer2}>
+            <div className={styles.heroBackground}></div>
+          </div>
+        </div>
+        <img src="public\Arrow.png" alt="Arrow" className={styles.arrow} />
+        <TextElement tag="h1" className={`${styles.secondTextElement}`}>
+          Hello! I am &nbsp;
           <span className={styles.secondTextElementSpan}>
             Aman Singh Nishad.
           </span>
         </TextElement>
         <TextElement
           tag="h3"
-          className={`${styles.thirdTextElement}  tracking-wide`}
+          className={`${styles.thirdTextElement} tracking-wide fade-in`}
         >
           I am {currentTag}
           <span className="animate-blink">|</span>
+          <TextElement tag="h3" className={`${styles.paraElement}`}>
+            I’m a programmer who adapts to shifting challenges. I focus on
+            solutions, refine relentlessly, and deliver results that hit the
+            mark — cleanly and efficiently. I thrive in uncertainty, turning
+            obstacles into opportunities with logic and a knack for simplicity.
+            No overcomplicating, just outcomes that work.
+          </TextElement>
         </TextElement>
       </div>
     </div>

@@ -27,51 +27,126 @@
   line-height: 1.75rem;
 }
 
+.fade-in {
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @media (min-width: 768px) {
+  .heroBackgroundContainer {
+    width: 385px;
+    height: 431px;
+    border-radius: 431px;
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      #763cac 0%,
+      rgba(50, 15, 133, 0) 100%
+    );
+    position: absolute;
+    top: 150px;
+    left: 250px;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .heroBackgroundContainer2 {
+    width: 258px;
+    height: 259px;
+    flex-shrink: 0;
+    border-radius: 260px;
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      #ffffff84 17.71%,
+      rgba(67, 67, 67, 0) 100%
+    );
+
+    display: flex;
+    justify-content: center;
+
+    z-index: 0;
+  }
   .heroBackground {
     background-image: url("../../../public/heroImage.png");
-    background-size: auto 120%;
-    background-repeat: no-repeat;
-    background-blend-mode: overlay;
     background-position: center;
+    background-size: cover;
     overflow: hidden;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    filter: contrast(1.2) brightness(1.2) grayscale(100%)
-      drop-shadow(20px 10px 0px rgb(16, 0, 43))
-      drop-shadow(20px 10px 0px rgb(60, 9, 108));
+    width: 300px;
+    height: 300px;
+    border-radius: 223px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: -50px;
+    filter: contrast(1.2) brightness(1.2) grayscale(100%);
   }
-
-  .firstTextElement {
+  .arrow {
+    width: 150px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 10px;
+    right: 240px;
+    transform: translateY(-50%);
     z-index: 1;
-    position: absolute;
-    top: 35%;
-    left: 5%;
   }
 
   .secondTextElement {
-    z-index: 1;
-    position: absolute;
-    top: 40%;
-    left: 5%;
+    display: flex;
+    width: 400px;
+    height: 20px;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 97px;
+    position: relative;
+    top: -185px;
   }
 
   .secondTextElementSpan {
-    font-size: 3.75rem;
-    line-height: 1;
+    color: #7127ba;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 97px;
   }
 
   .thirdTextElement {
-    z-index: 1;
-    position: absolute;
-    top: 50%;
-    right: 5%;
-    transform: "translateY(-50%)";
-    font-size: 1.875rem;
-    line-height: 2.25rem;
+    color: #fff;
+    position: relative;
+    top: -20px;
+    left: 250px;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+  }
+
+  .paraElement {
+    width: 600px;
+    padding: 20px;
+    color: #fff;
+    font-family: Preahvihear;
+    font-size: 16px;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.44px;
   }
 }
