@@ -75,7 +75,7 @@
     z-index: 0;
   }
   .heroBackground {
-    background-image: url("../../../public/heroImage.png");
+    background-image: url("../../../heroImage.png");
     background-position: center;
     background-size: cover;
     overflow: hidden;

@@ -51,7 +51,7 @@ const HeroPage = () => {
             <div className={styles.heroBackground}></div>
           </div>
         </div>
-        <img src="public\Arrow.png" alt="Arrow" className={styles.arrow} />
+        <img src="\Arrow.png" alt="Arrow" className={styles.arrow} />
         <TextElement tag="h1" className={`${styles.secondTextElement}`}>
           Hello! I am &nbsp;
           <span className={styles.secondTextElementSpan}>
