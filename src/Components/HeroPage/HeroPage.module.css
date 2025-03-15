@@ -2,29 +2,108 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap");
 
 .heroContainer {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  display: flex;
+  height: 100vh;
+  background: linear-gradient(180deg, #1f1f1f 0%, #000000 100%);
+  position: relative;
 }
 
-.firstTextElement {
-  font-family: "Doto";
+.heroBackgroundContainer {
+  width: 385px;
+  height: 431px;
+  border-radius: 431px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #763cac 0%,
+    rgba(50, 15, 133, 0) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.heroBackgroundContainer2 {
+  width: 258px;
+  height: 259px;
+  flex-shrink: 0;
+  border-radius: 260px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #ffffff84 17.71%,
+    rgba(67, 67, 67, 0) 100%
+  );
+
+  display: flex;
+  justify-content: center;
+
+  z-index: 0;
+}
+.heroBackground {
+  background-image: url("../../../heroImage.png");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  width: 300px;
+  height: 300px;
+  border-radius: 223px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: -50px;
+  filter: contrast(1.2) brightness(1.2) grayscale(100%);
+}
+.arrow {
+  display: none;
 }
 
 .secondTextElement {
   font-family: "Doto";
+  display: flex;
+  width: 350px;
+  height: 20px;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 97px;
+  position: relative;
+  bottom: 370px;
 }
 
 .secondTextElementSpan {
-  color: #ff9500;
+  color: #7127ba;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 97px;
   font-family: "Dancing Script";
 }
 
 .thirdTextElement {
   font-family: "Doto";
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  color: #fff;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1px;
+  padding-bottom: 10px;
+}
+.paraElement {
+  width: 300px;
+  padding: 10px;
+  color: #fff;
+  font-family: Preahvihear;
+  font-size: 16px;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.44px;
 }
 
 .fade-in {
@@ -42,51 +121,10 @@
 
 @media (min-width: 768px) {
   .heroBackgroundContainer {
-    width: 385px;
-    height: 431px;
-    border-radius: 431px;
-    background: radial-gradient(
-      50% 50% at 50% 50%,
-      #763cac 0%,
-      rgba(50, 15, 133, 0) 100%
-    );
     position: absolute;
     top: 150px;
     left: 250px;
     z-index: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .heroBackgroundContainer2 {
-    width: 258px;
-    height: 259px;
-    flex-shrink: 0;
-    border-radius: 260px;
-    background: radial-gradient(
-      50% 50% at 50% 50%,
-      #ffffff84 17.71%,
-      rgba(67, 67, 67, 0) 100%
-    );
-
-    display: flex;
-    justify-content: center;
-
-    z-index: 0;
-  }
-  .heroBackground {
-    background-image: url("../../../heroImage.png");
-    background-position: center;
-    background-size: cover;
-    overflow: hidden;
-    width: 300px;
-    height: 300px;
-    border-radius: 223px;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top: -50px;
-    filter: contrast(1.2) brightness(1.2) grayscale(100%);
   }
   .arrow {
     width: 150px;
@@ -103,6 +141,9 @@
   }
 
   .secondTextElement {
+    position: relative;
+    top: -185px;
+    font-family: "Doto";
     display: flex;
     width: 400px;
     height: 20px;
@@ -114,8 +155,6 @@
     font-style: normal;
     font-weight: 400;
     line-height: 97px;
-    position: relative;
-    top: -185px;
   }
 
   .secondTextElementSpan {
@@ -124,13 +163,15 @@
     font-style: normal;
     font-weight: 400;
     line-height: 97px;
+    font-family: "Dancing Script";
   }
 
   .thirdTextElement {
-    color: #fff;
     position: relative;
     top: -20px;
     left: 250px;
+    font-family: "Doto";
+    color: #fff;
     font-size: 32px;
     font-style: normal;
     font-weight: 400;

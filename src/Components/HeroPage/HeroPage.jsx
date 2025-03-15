@@ -45,7 +45,7 @@ const HeroPage = () => {
     <div style={{ position: "relative" }}>
       <BackgroundGlow />
 
-      <div className={`${styles.heroContainer} -mb-20 w-full h-[90vh]`}>
+      <div className={`${styles.heroContainer} -mb-50 w-full h-[90vh]`}>
         <div className={styles.heroBackgroundContainer}>
           <div className={styles.heroBackgroundContainer2}>
             <div className={styles.heroBackground}></div>
@@ -64,7 +64,7 @@ const HeroPage = () => {
         >
           I am {currentTag}
           <span className="animate-blink">|</span>
-          <TextElement tag="h3" className={`${styles.paraElement}`}>
+          <TextElement tag="h4" className={`${styles.paraElement}`}>
             I’m a programmer who adapts to shifting challenges. I focus on
             solutions, refine relentlessly, and deliver results that hit the
             mark — cleanly and efficiently. I thrive in uncertainty, turning
