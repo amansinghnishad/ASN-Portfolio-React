@@ -1,4 +1,5 @@
 import React from "react";
+import "./EducationTable.css";
 
 const data = [
   {
@@ -23,36 +24,13 @@ const data = [
 ];
 
 const EducationTable = () => {
-  const borderClass = "border-2 border-[#9D4EDD] text-[#ffcbf2] p-5";
+  const borderClass = "border-2 border-custom-color text-custom-text p-5";
   const wobbleClass = "wobble-effect";
 
   return (
     <div className="overflow-x-auto">
-      <style>{`
-        @keyframes wobble {
-          0%,
-          100% {
-            transform: rotate(0deg);
-          }
-          25% {
-            transform: rotate(3deg);
-          }
-          50% {
-            transform: rotate(-3deg);
-          }
-          75% {
-            transform: rotate(1deg);
-          }
-        }
-
-        .wobble-effect:hover {
-          animation: wobble 0.5s ease-in-out;
-        }
-      `}</style>
-      <h1 className="text-4xl p-2 pb-5 underline underline-offset-4 text-[#ffcbf2] ">
-        Education :
-      </h1>
-      <table className={`m-2.5 p-5 h-64 ${borderClass}`}>
+      <h1 className="heading">Education</h1>
+      <table className={`table ${borderClass}`}>
         <thead>
           <tr>
             <th className={`${borderClass} ${wobbleClass}`}>Year</th>
@@ -63,7 +41,7 @@ const EducationTable = () => {
         </thead>
         <tbody>
           {data.map((row, index) => (
-            <tr key={index} className={`${borderClass} `}>
+            <tr key={index} className={`${borderClass}`}>
               <td className={`${borderClass} ${wobbleClass}`}>{row.year}</td>
               <td className={`${borderClass} ${wobbleClass}`}>
                 {row.institution}

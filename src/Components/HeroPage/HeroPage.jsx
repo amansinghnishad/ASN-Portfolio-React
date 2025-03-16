@@ -45,7 +45,7 @@ const HeroPage = () => {
     <div style={{ position: "relative" }}>
       <BackgroundGlow />
 
-      <div className={`${styles.heroContainer} -mb-50 w-full h-[90vh]`}>
+      <div className={styles.heroContainer}>
         <div className={styles.heroBackgroundContainer}>
           <div className={styles.heroBackgroundContainer2}>
             <div className={styles.heroBackground}></div>
@@ -60,7 +60,7 @@ const HeroPage = () => {
         </TextElement>
         <TextElement
           tag="h3"
-          className={`${styles.thirdTextElement} tracking-wide fade-in`}
+          className={`${styles.thirdTextElement} tracking-wide fade-in `}
         >
           I am {currentTag}
           <span className="animate-blink">|</span>

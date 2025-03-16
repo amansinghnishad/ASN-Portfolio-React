@@ -28,7 +28,7 @@ const Project = () => {
   return (
     <div className="w-full h-auto flex justify-center flex-wrap p-5">
       {projects.map((project, index) => (
-        <Card key={index} project={project} />
+        <Card key={index} project={project} reverse={true} />
       ))}
     </div>
   );

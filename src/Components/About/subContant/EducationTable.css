@@ -1,0 +1,52 @@
+@keyframes wobble {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(1deg);
+  }
+}
+
+.wobble-effect:hover {
+  animation: wobble 0.5s ease-in-out;
+}
+
+.border-2 {
+  border-width: 2px;
+}
+
+.border-custom-color {
+  border-color: #9d4edd;
+}
+
+.text-custom-text {
+  color: #fff;
+}
+
+.p-5 {
+  padding: 1.25rem;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.heading {
+  font-size: 2.25rem;
+  padding: 0.5rem;
+  padding-bottom: 1.25rem;
+  color: #fff;
+}
+
+.table {
+  margin: 0.625rem;
+  padding: 1.25rem;
+  height: 16rem;
+}
