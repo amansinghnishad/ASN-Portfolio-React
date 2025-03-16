@@ -1,4 +1,5 @@
 import "./Skills.css";
+import SkillsSVG from "./SkillsSVG";
 
 const icons = [
   { src: "html5.png", alt: "HTML5" },
@@ -24,7 +25,6 @@ const Skills = () => {
           <div key={index} className="skill-item">
             <img className="skill-icon" src={icon.src} alt={icon.alt} />
             <span className="tooltip">{icon.alt}</span>
-
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="skills-svg"
@@ -43,7 +43,6 @@ const Skills = () => {
           <div key={index} className="skill-item">
             <img className="skill-icon" src={icon.src} alt={icon.alt} />
             <span className="tooltip">{icon.alt}</span>
-
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="skills-svg"
@@ -57,6 +56,7 @@ const Skills = () => {
           </div>
         ))}
       </div>
+      <SkillsSVG />
     </div>
   );
 };
