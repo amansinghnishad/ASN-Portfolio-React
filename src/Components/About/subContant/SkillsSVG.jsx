@@ -1,4 +1,5 @@
 import "./SkillsSVG.css";
+import "./SkillsSVGMedia.css";
 import React from "react";
 
 const ellipses = [

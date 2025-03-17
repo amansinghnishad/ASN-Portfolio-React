@@ -10,7 +10,7 @@ import BackgroundAnimation from "../utils/BackgroundAnimation";
 function App() {
   return (
     <>
-      <div className="bg-[#11071F] sm:pb-20 md:pb-20 lg:pb-2 relative">
+      <div className="bg-[#1A0B2E] sm:pb-20 md:pb-20 lg:pb-2 relative">
         <BackgroundAnimation />
         <Navbar />
         <div id="hero">

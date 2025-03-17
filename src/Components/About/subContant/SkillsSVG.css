@@ -130,7 +130,7 @@
 .vector-1 {
   width: 117.949px;
   height: 300px;
-  left: 35%;
+  left: 34%;
 }
 
 .vector-2 {
@@ -154,146 +154,11 @@
 .vector-5 {
   width: 70.489px;
   height: 270px;
-  left: 50%;
+  left: 52%;
 }
 
 .vector-6 {
   width: 122.427px;
   height: 277.5px;
-  left: 50%;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .logo {
-    width: 60px;
-    height: 60px;
-  }
-
-  .circle-svg {
-    width: 90px;
-    height: 90px;
-  }
-
-  .ellipse-1 {
-    width: 220px;
-    height: 122px;
-  }
-
-  .ellipse-2 {
-    width: 230px;
-    height: 225px;
-  }
-
-  .ellipse-3 {
-    width: 400px;
-    height: 250px;
-  }
-
-  .ellipse-4 {
-    width: 510px;
-    height: 200px;
-  }
-
-  .ellipse-5 {
-    width: 560px;
-    height: 200px;
-  }
-
-  .ellipse-6 {
-    width: 650px;
-    height: 200px;
-  }
-
-  .vector-1 {
-    width: 88px;
-    height: 225px;
-  }
-  .vector-2 {
-    width: 49px;
-    height: 232px;
-  }
-  .vector-3 {
-    width: 15.75px;
-    height: 234.75px;
-  }
-  .vector-4 {
-    width: 25.875px;
-    height: 218.625px;
-  }
-  .vector-5 {
-    width: 52.867px;
-    height: 202.5px;
-  }
-  .vector-6 {
-    width: 91.82px;
-    height: 208.125px;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo {
-    width: 40px;
-    height: 40px;
-  }
-
-  .circle-svg {
-    width: 60px;
-    height: 60px;
-  }
-
-  .ellipse-1 {
-    width: 150px;
-    height: 83px;
-  }
-
-  .ellipse-2 {
-    width: 160px;
-    height: 157px;
-  }
-
-  .ellipse-3 {
-    width: 280px;
-    height: 175px;
-  }
-
-  .ellipse-4 {
-    width: 350px;
-    height: 137px;
-  }
-
-  .ellipse-5 {
-    width: 380px;
-    height: 137px;
-  }
-
-  .ellipse-6 {
-    width: 440px;
-    height: 137px;
-  }
-
-  .vector-1 {
-    width: 59px;
-    height: 150px;
-  }
-  .vector-2 {
-    width: 33px;
-    height: 155px;
-  }
-  .vector-3 {
-    width: 10.5px;
-    height: 157px;
-  }
-  .vector-4 {
-    width: 17.25px;
-    height: 146px;
-  }
-  .vector-5 {
-    width: 35.245px;
-    height: 135px;
-  }
-  .vector-6 {
-    width: 61.213px;
-    height: 138.75px;
-  }
+  left: 52%;
 }
