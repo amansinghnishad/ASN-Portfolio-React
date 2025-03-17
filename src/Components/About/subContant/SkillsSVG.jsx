@@ -29,20 +29,20 @@ const SkillsSVG = () => {
         </defs>
       </svg>
       <span className="ellipse-1">
-        <img src="src\assets\ellipse-png\Ellipse-1.png"></img>
+        <img src="./src/assets/ellipse-png/Ellipse-1.png"></img>
       </span>
       <span className="ellipse-2">
-        <img src="src\assets\ellipse-png\Ellipse-2.png"></img>
+        <img src="./src/assets/ellipse-png/Ellipse-2.png"></img>
       </span>
       <span className="ellipse-3"></span>
       <span className="ellipse-4">
-        <img src="src\assets\ellipse-png\Ellipse-4.png"></img>
+        <img src="./src/assets/ellipse-png/Ellipse-4.png"></img>
       </span>
       <span className="ellipse-5">
-        <img src="src\assets\ellipse-png\Ellipse-5.png"></img>
+        <img src="./src/assets/ellipse-png/Ellipse-5.png"></img>
       </span>
       <span className="ellipse-6">
-        <img src="src\assets\ellipse-png\Ellipse-6.png"></img>
+        <img src="./src/assets/ellipse-png/Ellipse-6.png"></img>
       </span>
     </div>
   );
