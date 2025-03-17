@@ -8,7 +8,7 @@
 .skills-row {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .skill-item {
@@ -34,7 +34,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  padding: 5px;
+  /* padding: 5px; */
   position: absolute;
   z-index: 1;
   bottom: 125%;
