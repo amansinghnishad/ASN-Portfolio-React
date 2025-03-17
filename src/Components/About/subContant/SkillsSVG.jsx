@@ -29,7 +29,7 @@ const SkillsSVG = () => {
         </defs>
       </svg>
       <span className="ellipse-1">
-        <img src="./src/assets/ellipse-png/Ellipse-1.png"></img>
+        <img src="./Ellipse-1.png"></img>
       </span>
       <span className="ellipse-2">
         <img src="./src/assets/ellipse-png/Ellipse-2.png"></img>
