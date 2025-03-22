@@ -4,6 +4,7 @@ import { MdEmail } from "react-icons/md";
 import { motion } from "framer-motion";
 import "./Contact.css";
 import { useInView } from "react-intersection-observer";
+import ContactForm from "./ContactForm";
 
 const Contact = () => {
   const socialLinks = [
@@ -69,6 +70,7 @@ const Contact = () => {
             ))}
           </div>
         </div>
+        <ContactForm />
       </motion.div>
     </>
   );

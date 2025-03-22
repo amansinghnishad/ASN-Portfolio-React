@@ -1,7 +1,7 @@
 .card-content-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
+  left: 10%;
+  top: -10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,6 +12,15 @@
   font-weight: 600;
   letter-spacing: 0.68px;
   padding: 30px;
+}
+.card-content-overlay.reverse {
+  position: relative;
+  top: -10%;
+  left: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
 }
 
 .type-heading {
@@ -41,8 +50,8 @@
   border-radius: 14px;
   background-image: radial-gradient(
     151.92% 127.02% at 15.32% 21.04%,
-    rgba(105, 59, 147, 0.2) 0%,
-    rgba(110, 191, 244, 0.04) 77.08%,
+    rgba(85, 47, 121, 0.158) 0%,
+    rgba(123, 110, 244, 0.007) 77.08%,
     rgba(70, 144, 212, 0) 100%
   );
   background-blend-mode: overlay, normal;

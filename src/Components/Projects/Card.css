@@ -2,12 +2,15 @@
   height: 380px;
   width: 1168px;
   position: relative;
-  display: grid;
-  grid-template-columns: max-content;
+  display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
   border-radius: 1rem;
   margin-top: 70px;
+}
+
+.card-container.reverse {
+  flex-direction: row-reverse;
 }
 
 @media (max-width: 768px) {

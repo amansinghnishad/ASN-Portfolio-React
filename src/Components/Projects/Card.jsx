@@ -18,10 +18,20 @@ function Card({ project: { TryNowlink, img, title, codeLink }, reverse }) {
       animate={{ scale: inView ? 1 : 0.8, opacity: inView ? 1 : 0 }}
       exit={{ scale: 0.8, opacity: 0 }}
       transition={{ duration: 0.5, ease: "linear" }}
-      className="card-container"
+      className={`card-container ${reverse ? "reverse" : ""}`}
     >
-      <CardOverlay TryNowlink={TryNowlink} img={img} title={title} />
-      <CardContent TryNowlink={TryNowlink} title={title} codeLink={codeLink} />
+      <CardContent
+        TryNowlink={TryNowlink}
+        title={title}
+        codeLink={codeLink}
+        reverse={reverse}
+      />
+      <CardOverlay
+        TryNowlink={TryNowlink}
+        img={img}
+        title={title}
+        reverse={reverse}
+      />
     </motion.div>
   );
 }

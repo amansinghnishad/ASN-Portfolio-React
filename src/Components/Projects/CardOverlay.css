@@ -22,11 +22,13 @@
 .card-img-bg {
   border-radius: 10px;
   background: #2b215a;
-  width: 500px;
+  width: 480px;
   height: 284px;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 5%;
+}
+.reverse {
 }
 
 .card-image {
@@ -36,7 +38,7 @@
   transition: transform 0.5s ease-in-out;
   position: absolute;
   top: 8%;
-  left: 5.5%;
+  left: 13.5%;
 }
 
 @media (max-width: 768px) {
