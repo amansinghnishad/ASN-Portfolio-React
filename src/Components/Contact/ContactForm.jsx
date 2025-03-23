@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import "./ContactForm.css";
+import FormInput from "./FormInput";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -59,42 +60,38 @@ const ContactForm = () => {
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit} className="contact-form">
-        <h2>Contact Me</h2>
+        <FormInput
+          label="Name"
+          placeholder="Your Name"
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
 
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <FormInput
+          label="Email"
+          placeholder="Your Email"
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
 
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <FormInput
+          label="Message"
+          placeholder="Your Message"
+          type="textarea"
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          required
+        />
 
         <button type="submit" disabled={loading}>
           {loading ? "Sending..." : "Send Message"}

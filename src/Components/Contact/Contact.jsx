@@ -53,24 +53,26 @@ const Contact = () => {
               through Leetcode. Additionally, I consistently practice web
               development to strengthen my expertise.
             </p>
+            <div className="social-links">
+              {socialLinks.map((socialLink, index) => (
+                <motion.a
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  key={index}
+                  href={socialLink.href}
+                  aria-label={socialLink.ariaLabel}
+                  target="_blank"
+                >
+                  {socialLink.icon}
+                </motion.a>
+              ))}
+            </div>
+            <span className="contact-vertical-line"></span>
           </div>
-          <div className="social-links">
-            {socialLinks.map((socialLink, index) => (
-              <motion.a
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                key={index}
-                href={socialLink.href}
-                aria-label={socialLink.ariaLabel}
-                target="_blank"
-              >
-                {socialLink.icon}
-              </motion.a>
-            ))}
-          </div>
+
+          <ContactForm />
         </div>
-        <ContactForm />
       </motion.div>
     </>
   );
