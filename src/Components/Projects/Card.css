@@ -24,6 +24,9 @@
     gap: 1rem;
     margin: 5%;
   }
+  .card-container.reverse {
+    flex-direction: column;
+  }
 
   .card-container:hover .card-content-overlay,
   .card-container:active .card-content-overlay {

@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: auto;
-  margin-bottom: 5%;
+  margin: 5% 0%;
 }
 .contact-container {
   display: grid;
@@ -39,21 +39,21 @@
 }
 
 .heading-1 {
-  font-size: 1.5rem;
+  font-size: 36px;
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
   color: #ffffff;
   margin-bottom: 1.5rem;
 }
 .heading-2 {
-  font-size: 1.25rem;
+  font-size: 20px;
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
   color: #ffffff;
   margin-bottom: 1.5rem;
 }
 .heading-3 {
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
   color: #ffffff;
@@ -85,12 +85,6 @@
     flex-direction: column;
     width: 90%;
     padding: 20px;
-  }
-
-  .heading-1,
-  .heading-2,
-  .heading-3 {
-    font-size: 1.25rem;
   }
 
   .social-links {

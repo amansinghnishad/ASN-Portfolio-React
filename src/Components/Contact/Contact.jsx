@@ -46,7 +46,7 @@ const Contact = () => {
       >
         <div className="contact-container">
           <div className="contact-text">
-            <p className="heading-1">I constantly strive to improve myself.</p>
+            <p className="heading-1">Contact Me</p>
             <p className="heading-2">I am currently learning ML.</p>
             <p className="heading-3">
               I am also enhancing my Data Structures and Algorithms (DSA) skills
