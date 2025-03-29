@@ -18,7 +18,7 @@ TextElement.propTypes = {
 
 const HeroPage = () => {
   const tags = React.useMemo(
-    () => ["a Developer.", "a Programmer.", "a Learner.", "an Enthusiast."],
+    () => ["Developer", "Programmer", "Learner", "Enthusiast"],
     []
   );
   const [currentTag, setCurrentTag] = useState("");
@@ -62,8 +62,8 @@ const HeroPage = () => {
           tag="h3"
           className={`${styles.thirdTextElement} tracking-wide fade-in `}
         >
-          I am {currentTag}
-          <span className="animate-blink">|</span>
+          I am a {currentTag}
+          <span className="animate-blink">|</span>.
           <TextElement tag="h4" className={`${styles.paraElement}`}>
             I’m a programmer who adapts to shifting challenges. I focus on
             solutions, refine relentlessly, and deliver results that hit the
