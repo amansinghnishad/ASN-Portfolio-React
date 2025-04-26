@@ -26,7 +26,7 @@ const DesktopNav = () => {
           to="hero"
           className="px-12 text-[#FFF] text-left cursor-pointer"
         >
-          ASN
+          <img src="/logo.png" alt="Logo" className="h-16 w-16" />
         </NavItem>
         <ul className="flex justify-center items-center h-12 text-xl font-semibold">
           {links.map((link) => (

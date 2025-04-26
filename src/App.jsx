@@ -10,13 +10,13 @@ import BackgroundAnimation from "../utils/BackgroundAnimation";
 function App() {
   return (
     <>
-      <div className="bg-[#1A0B2E] sm:pb-20 md:pb-20 lg:pb-2 relative">
+      <div className="app-container">
         <BackgroundAnimation />
         <Navbar />
         <div id="hero">
           <HeroPage />
         </div>
-        <div id="about" className="relative z-10">
+        <div id="about" className="about-section">
           <About />
         </div>
         <div id="projects">

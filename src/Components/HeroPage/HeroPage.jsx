@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import BackgroundGlow from "../../../utils/BackgroundGlow";
-import styles from "./HeroPage.module.css";
+import "./HeroPage.css";
 
 const TextElement = ({ tag: Tag, children, className, style }) => (
   <Tag className={`text-center text-white ${className}`} style={style}>
@@ -31,7 +31,7 @@ const HeroPage = () => {
       setTimeout(() => {
         setCurrentTag((prev) => prev + tag[charIndex]);
         setCharIndex((prev) => prev + 1);
-      }, 100); // Adjusted typing speed
+      }, 100);
     } else {
       setTimeout(() => {
         setTagIndex((prev) => (prev + 1) % tags.length);
@@ -45,33 +45,31 @@ const HeroPage = () => {
     <div style={{ position: "relative" }}>
       <BackgroundGlow />
 
-      <div className={styles.heroContainer}>
-        <div className={styles.heroBackgroundContainer}>
-          <div className={styles.heroBackgroundContainer2}>
-            <div className={styles.heroBackground}></div>
-          </div>
+      <div className="heroContainer">
+        <div className="heroBackgroundContainer">
+          <img src="../../../heroImage.jpg" className="heroBackground"></img>
         </div>
-        <img src="\Arrow.png" alt="Arrow" className={styles.arrow} />
-        <TextElement tag="h1" className={`${styles.secondTextElement}`}>
-          Hello! I am &nbsp;
-          <span className={styles.secondTextElementSpan}>
-            Aman Singh Nishad.
-          </span>
-        </TextElement>
-        <TextElement
-          tag="h3"
-          className={`${styles.thirdTextElement} tracking-wide fade-in `}
-        >
-          I am a {currentTag}
-          <span className="animate-blink">|</span>.
-          <TextElement tag="h4" className={`${styles.paraElement}`}>
-            I’m a programmer who adapts to shifting challenges. I focus on
-            solutions, refine relentlessly, and deliver results that hit the
-            mark — cleanly and efficiently. I thrive in uncertainty, turning
-            obstacles into opportunities with logic and a knack for simplicity.
-            No overcomplicating, just outcomes that work.
+        <div className="heroBackgroundContainer2">
+          <TextElement tag="h1" className="secondTextElement">
+            Hello! I am &nbsp;
+            <span className="secondTextElementSpan">Aman Singh Nishad.</span>
           </TextElement>
-        </TextElement>
+          <TextElement
+            tag="h3"
+            className="thirdTextElement tracking-wide fade-in"
+          >
+            I am a {currentTag}
+            <span className="animate-blink">|</span>.
+            <TextElement tag="h4" className="paraElement">
+              I’m a programmer who adapts to shifting challenges. I focus on
+              solutions, refine relentlessly, and deliver results that hit the
+              mark — cleanly and efficiently. I thrive in uncertainty, turning
+              obstacles into opportunities with logic and a knack for
+              simplicity. No overcomplicating, just outcomes that work.
+            </TextElement>
+          </TextElement>
+          <button className="resumeButton">Download Resume</button>
+        </div>
       </div>
     </div>
   );

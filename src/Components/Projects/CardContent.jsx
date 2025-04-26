@@ -3,9 +3,9 @@ import { GrGithub } from "react-icons/gr";
 import React from "react";
 import "./CardContent.css";
 
-function CardContent({ TryNowlink, title, codeLink, reverse }) {
+function CardContent({ TryNowlink, title, codeLink, description }) {
   return (
-    <div className={`card-content-overlay ${reverse ? "reverse" : ""}`}>
+    <div className="card-content-overlay">
       <h6 className="type-heading">Featured Project</h6>
       <motion.a
         href={TryNowlink}
@@ -15,9 +15,9 @@ function CardContent({ TryNowlink, title, codeLink, reverse }) {
       >
         <p>{title}</p>
       </motion.a>
-      <div className="card-description">
-        <p>Click on the image to try now</p>
-      </div>
+      <motion.div className="card-description">
+        <p>{description}</p>
+      </motion.div>
       <motion.a
         href={codeLink}
         scale={0.8}
