@@ -19,12 +19,12 @@ const Contact = () => {
       icon: <FaLinkedin />,
     },
     {
-      href: "https://leetcode.com/amansinghnishad",
+      href: "https://leetcode.com/ASN_aka_aman",
       ariaLabel: "LeetCode",
       icon: <TbBrandLeetcode />,
     },
     {
-      href: "mailto:amansinghnishad0808@gmail.com",
+      href: "mailto:amansinghnishad88@gmail.com",
       ariaLabel: "Email",
       icon: <MdEmail />,
     },

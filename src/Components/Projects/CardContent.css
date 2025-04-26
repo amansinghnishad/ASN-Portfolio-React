@@ -13,22 +13,8 @@
   text-align: left;
   line-height: 1.6;
   z-index: 2;
-  background: linear-gradient(
-    45deg,
-    rgba(42, 2, 82, 0.829) 0%,
-    rgba(23, 4, 43, 0.8) 25%,
-    rgba(23, 4, 43, 0.8) 75%,
-    rgba(42, 2, 82, 0.829) 100%
-  );
-  backdrop-filter: blur(15px);
   border-radius: 10px;
   transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.card-content-overlay:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: scale(1.02);
-  backdrop-filter: blur(20px);
 }
 
 .type-heading {

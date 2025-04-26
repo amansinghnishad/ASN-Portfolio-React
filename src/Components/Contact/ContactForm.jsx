@@ -39,10 +39,10 @@ const ContactForm = () => {
 
     emailjs
       .send(
-        "service_80q7xcv", // EmailJS service ID
-        "template_cev1yqe", // EmailJS template ID
+        "service_80q7xcv",
+        "template_cev1yqe",
         formData,
-        "WKmdmOFg-zNgRPR4G" // EmailJS public key
+        "WKmdmOFg-zNgRPR4G"
       )
       .then((response) => {
         setSuccessMessage("Message sent successfully!");

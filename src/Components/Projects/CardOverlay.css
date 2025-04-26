@@ -14,28 +14,6 @@
   transform: scale(1.02);
 }
 
-.card-bg-linearGradient {
-  width: 100%;
-  height: 100%;
-  border-radius: 600px;
-  position: absolute;
-  top: -15%;
-  left: 0;
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    #763cac 0%,
-    rgba(50, 15, 133, 0) 100%
-  );
-}
-
-.card-img-bg {
-  border-radius: 10px;
-  background: #2b215a;
-  width: 100%;
-  height: auto;
-  position: relative;
-}
-
 .card-image {
   width: 100%;
   height: auto;
@@ -48,19 +26,6 @@
 @media (max-width: 768px) {
   .card-overlay {
     gap: 5px;
-  }
-
-  .card-bg-linearGradient {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    top: -10%;
-    left: 0;
-  }
-
-  .card-img-bg {
-    width: 100%;
-    height: 100%;
   }
 
   .card-image {
@@ -82,13 +47,6 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 10px;
-  }
-
-  .card-bg-linearGradient {
-    top: 0;
-    position: relative;
-    width: 100%;
-    height: auto;
   }
 
   .card-image {

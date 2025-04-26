@@ -9,13 +9,6 @@ const TextElement = ({ tag: Tag, children, className, style }) => (
   </Tag>
 );
 
-TextElement.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).isRequired,
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  style: PropTypes.object,
-};
-
 const HeroPage = () => {
   const tags = React.useMemo(
     () => ["Developer", "Programmer", "Learner", "Enthusiast"],
@@ -58,8 +51,11 @@ const HeroPage = () => {
             tag="h3"
             className="thirdTextElement tracking-wide fade-in"
           >
-            I am a {currentTag}
-            <span className="animate-blink">|</span>.
+            <div className="writtenText">
+              <span className="fixedText">I am a</span>&nbsp;
+              <span className="dynamicText">{currentTag}</span>
+              <span className="animate-blink">|</span>.
+            </div>
             <TextElement tag="h4" className="paraElement">
               I’m a programmer who adapts to shifting challenges. I focus on
               solutions, refine relentlessly, and deliver results that hit the
@@ -68,7 +64,14 @@ const HeroPage = () => {
               simplicity. No overcomplicating, just outcomes that work.
             </TextElement>
           </TextElement>
-          <button className="resumeButton">Download Resume</button>
+          <button
+            className="resumeButton"
+            onClick={() => {
+              window.open("/assets/resume.pdf", "_blank");
+            }}
+          >
+            View Resume
+          </button>
         </div>
       </div>
     </div>

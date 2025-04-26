@@ -13,10 +13,17 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease;
-  background: rgba(35, 9, 61, 0.5);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    45deg,
+    rgba(42, 2, 82, 0.5) 0%,
+    rgba(23, 4, 43, 0.5) 35%,
+    rgba(23, 4, 43, 0.5) 65%,
+    rgba(42, 2, 82, 0.5) 100%
+  );
+  backdrop-filter: blur(15px);
   border: 1px solid rgba(113, 39, 186, 0.5);
   padding: 20px;
+  z-index: 1;
 }
 
 .card-overlay {
@@ -36,9 +43,19 @@
 }
 
 .card-container:hover {
-  transform: translateY(-10px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  background: linear-gradient(
+    45deg,
+    rgba(42, 2, 82, 0.7) 0%,
+    rgba(23, 4, 43, 0.7) 35%,
+    rgba(23, 4, 43, 0.7) 65%,
+    rgba(42, 2, 82, 0.7) 100%
+  );
+  border: 1px solid rgba(255, 127, 80, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease, border 0.3s ease;
+  filter: brightness(1.05);
 }
 
 .card-title {
