@@ -165,6 +165,7 @@
   .heroContainer {
     grid-template-columns: 1fr;
     height: auto;
+    margin-top: 5%;
   }
 
   .secondTextElement {

@@ -1,5 +1,12 @@
 .app-container {
-  background-color: #0b0513;
+  background: linear-gradient(
+    135deg,
+    #000000 0%,
+    #200f36 25%,
+    #000000 50%,
+    #200f36 75%,
+    #000000 100%
+  );
   padding-bottom: 20px;
   position: relative;
   font-family: "Doto", sans-serif;

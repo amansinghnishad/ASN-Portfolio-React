@@ -13,7 +13,7 @@
 
 .line {
   position: absolute;
-  background-color: rgba(30, 8, 43, 0.637);
+  background-color: rgba(43, 12, 61, 0.404);
   z-index: 0;
   backdrop-filter: blur(1px);
 }
