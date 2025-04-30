@@ -37,10 +37,10 @@ const DesktopAboutContent = () => {
       </div>
       <div className="about-text-container">
         <h1 className="about-heading">
-          I’m a fresher on paper, but my experience speaks for itself.
+          Forever a student, hungry to master what’s next.
         </h1>
         <h3 className="about-subheading">
-          Forever a student, hungry to master what’s next.
+          Fresh on paper, ready to prove my potential.
         </h3>
         <Skills />
       </div>
