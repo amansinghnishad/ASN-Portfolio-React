@@ -5,7 +5,10 @@ import "./Card.css";
 import CardContent from "./CardContent";
 import CardOverlay from "./CardOverlay";
 
-function Card({ project: { TryNowlink, img, title, codeLink, description } }) {
+function Card({
+  project: { TryNowlink, img, title, codeLink, description },
+  status,
+}) {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.5,
@@ -32,6 +35,7 @@ function Card({ project: { TryNowlink, img, title, codeLink, description } }) {
         title={title}
         codeLink={codeLink}
         description={description}
+        status={status}
       />
     </motion.div>
   );

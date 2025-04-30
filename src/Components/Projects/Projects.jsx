@@ -1,28 +1,31 @@
 import Card from "./Card";
 import CorsaleImageGallery from "/assets/CorsaleImageGallery.png";
-import ODOP from "/assets/ODOP.png";
+import HobiMenia from "/assets/HobiMenia.png";
 import HMS from "/assets/HMS.png";
 import "./Projects.css";
 
 const projects = [
   {
     img: HMS,
+    type: "On Progress",
     title: "Hostel Management System",
-    TryNowlink: "https://amansinghnishad.github.io/Project-HMS/",
+    TryNowlink: "https://github.com/amansinghnishad/Project-HMS",
     codeLink: "https://github.com/amansinghnishad/Project-HMS",
     description:
       "A Hostel Management System (HMS) is a web application designed to streamline the management of hostel facilities. It provides features for room allocation, student registration, and payment tracking, ensuring efficient communication between students and hostel management. The system enhances the overall experience for both students and administrators.",
   },
   {
-    img: ODOP,
-    title: "ODOP",
-    TryNowlink: "https://amansinghnishad.github.io/SIH-project/",
-    codeLink: "https://github.com/amansinghnishad/SIH-project",
+    img: HobiMenia,
+    type: "On Progress",
+    title: "HobiMenia",
+    TryNowlink: "https://github.com/amansinghnishad/Hobimenia",
+    codeLink: "https://github.com/amansinghnishad/Hobimenia",
     description:
-      "One District One Product (ODOP) is a web application that promotes local products from various districts. It connects artisans and manufacturers with potential buyers, showcasing unique products from different regions. The platform aims to boost local economies and preserve traditional crafts by providing a marketplace for these products.",
+      "HobiMenia is a dynamic social media app that connects people through shared interests, enabling users to build communities, post pictures, and write blogs. Its standout AI-powered feature helps craft engaging blogs and suggests trending hashtags for maximum reach. With a seamless interface, users can connect, share, and inspire effortlessly.",
   },
   {
     img: CorsaleImageGallery,
+    type: "Featured Project",
     title: "Corsale Image Gallery",
     TryNowlink: "https://amansinghnishad.github.io/Corsale-Image-Gallery/",
     codeLink: "https://github.com/amansinghnishad/Corsale-Image-Gallery",
@@ -35,7 +38,11 @@ const Project = () => {
   return (
     <div className="projectDiv">
       {projects.map((project, index) => (
-        <Card key={index} project={project} />
+        <Card
+          key={index}
+          project={project}
+          status={project.type === "On Progress" ? "On Progress" : "featured"}
+        />
       ))}
       <div className="liner-gradient-div"></div>
     </div>

@@ -3,10 +3,12 @@ import { GrGithub } from "react-icons/gr";
 import React from "react";
 import "./CardContent.css";
 
-function CardContent({ TryNowlink, title, codeLink, description }) {
+function CardContent({ TryNowlink, title, codeLink, description, status }) {
   return (
     <div className="card-content-overlay">
-      <h6 className="type-heading">Featured Project</h6>
+      <h6 className="type-heading">
+        {status === "On Progress" ? "On Progress" : "Featured Project"}
+      </h6>
       <motion.a
         href={TryNowlink}
         scale={0.8}
