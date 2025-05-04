@@ -18,7 +18,7 @@ const projects = [
     img: HobiMenia,
     type: "On Progress",
     title: "HobiMenia",
-    TryNowlink: "https://github.com/amansinghnishad/Hobimenia",
+    TryNowlink: "https://hobimenia.vercel.app",
     codeLink: "https://github.com/amansinghnishad/Hobimenia",
     description:
       "HobiMenia is a dynamic social media app that connects people through shared interests, enabling users to build communities, post pictures, and write blogs. Its standout AI-powered feature helps craft engaging blogs and suggests trending hashtags for maximum reach. With a seamless interface, users can connect, share, and inspire effortlessly.",
