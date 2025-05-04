@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import BackgroundGlow from "../../../utils/BackgroundGlow";
 import "./HeroPage.css";
-import resumePdf from "/resume.pdf"; // Import the PDF file
-
+import resumePdf from "/resume.pdf";
 const TextElement = ({ tag: Tag, children, className, style }) => (
   <Tag className={`text-center text-white ${className}`} style={style}>
     {children}
@@ -68,7 +67,7 @@ const HeroPage = () => {
           <button
             className="resumeButton"
             onClick={() => {
-              window.open(resumePdf, "_blank"); // Use the imported path
+              window.open(resumePdf, "_blank");
             }}
           >
             View Resume
