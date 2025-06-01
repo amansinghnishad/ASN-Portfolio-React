@@ -12,9 +12,9 @@ const icons = [
   { src: "javascript.png", alt: "Javascript" },
   { src: "react.png", alt: "React" },
   { src: "vscode.png", alt: "VS-code" },
-  { src: "python.png", alt: "Python" },
-  { src: "ml.png", alt: "ML" },
-  { src: "pandas.png", alt: "Pandas" },
+  { src: "nodejs.png", alt: "NodeJs" },
+  { src: "express.png", alt: "ExpressJs" },
+  { src: "mongodb.png", alt: "MongoDB" },
 ];
 
 const Skills = () => {

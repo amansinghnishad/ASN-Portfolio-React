@@ -1,4 +1,6 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { FiCodesandbox } from "react-icons/fi";
+
 import { TbBrandLeetcode } from "react-icons/tb";
 import { MdEmail } from "react-icons/md";
 import { motion } from "framer-motion";
@@ -27,6 +29,11 @@ const Contact = () => {
       href: "mailto:amansinghnishad88@gmail.com",
       ariaLabel: "Email",
       icon: <MdEmail />,
+    },
+    {
+      href: "https://codesandbox.io/u/amansinghnishad",
+      ariaLabel: "Code Sandbox",
+      icon: <FiCodesandbox />,
     },
   ];
 

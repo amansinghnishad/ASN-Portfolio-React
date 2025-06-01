@@ -31,6 +31,7 @@
     rgba(120, 64, 173, 0.36) 100%
   );
   position: absolute;
+  animation: pulseCircle 4s infinite ease-in-out; /* Added animation */
 }
 
 .ellipse-div {
@@ -64,12 +65,14 @@
   width: 295px;
   height: 164px;
   border-radius: 50%;
+  animation: rotateEllipse1 5s infinite linear;
 }
 
 .ellipse-2 {
   width: 306px;
   height: 300px;
   border-radius: 306px;
+  animation: rotateEllipse2 6s infinite linear;
 }
 
 .ellipse-3 {
@@ -81,24 +84,160 @@
     #6e2ea9d5 0%,
     rgba(50, 15, 133, 0) 100%
   );
+  animation: rotateEllipse3 7s infinite linear;
 }
 
 .ellipse-4 {
   width: 695px;
   height: 269px;
   border-radius: 695px;
+  animation: rotateEllipse4 5.5s infinite linear;
 }
 
 .ellipse-5 {
   width: 764px;
   height: 269px;
   border-radius: 764px;
+  animation: rotateEllipse5 6.5s infinite linear;
 }
 
 .ellipse-6 {
   width: 881px;
   height: 269px;
   border-radius: 881px;
+  animation: rotateEllipse6 7.5s infinite linear;
+}
+
+@keyframes rotateEllipse1 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(5deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(-5deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@keyframes rotateEllipse2 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(-3deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(3deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@keyframes rotateEllipse3 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(2deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(-2deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@keyframes rotateEllipse4 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(4deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(-4deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@keyframes rotateEllipse5 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(-2.5deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(2.5deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@keyframes rotateEllipse6 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(3.5deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(-3.5deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@keyframes pulseCircle {
+  0% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes pulseVector {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }
 
 .vector-div {
@@ -131,34 +270,40 @@
   width: 117.949px;
   height: 300px;
   left: 34%;
+  animation: pulseVector 3.5s infinite ease-in-out;
 }
 
 .vector-2 {
   width: 66.11px;
   height: 310px;
   left: 40%;
+  animation: pulseVector 4s infinite ease-in-out 0.2s;
 }
 
 .vector-3 {
   width: 21px;
   height: 313px;
   left: 46%;
+  animation: pulseVector 3s infinite ease-in-out 0.4s;
 }
 
 .vector-4 {
   width: 34.5px;
   height: 291.5px;
   left: 50%;
+  animation: pulseVector 4.5s infinite ease-in-out 0.1s;
 }
 
 .vector-5 {
   width: 70.489px;
   height: 270px;
   left: 52%;
+  animation: pulseVector 3.8s infinite ease-in-out 0.3s;
 }
 
 .vector-6 {
   width: 122.427px;
   height: 277.5px;
   left: 52%;
+  animation: pulseVector 4.2s infinite ease-in-out 0.5s;
 }

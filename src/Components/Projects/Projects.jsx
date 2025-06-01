@@ -1,5 +1,5 @@
 import Card from "./Card";
-import CorsaleImageGallery from "/assets/CorsaleImageGallery.png";
+// import CorsaleImageGallery from "/assets/CorsaleImageGallery.png";
 import HobiMenia from "/assets/HobiMenia.png";
 import HMS from "/assets/HMS.png";
 import "./Projects.css";
