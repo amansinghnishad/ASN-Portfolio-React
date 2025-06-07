@@ -309,31 +309,17 @@
 @media (max-width: 768px) {
   .skills-container {
     margin-top: 50px;
+    padding: 0 10px;
   }
 
   .skills-row {
     align-items: center;
+    gap: 8px;
+    margin-top: 16px;
   }
 
   .skill-item {
-    margin: 5px;
-  }
-
-  .skill-icon {
-    width: 25px;
-    height: 25px;
-  }
-
-  .tooltip {
-    font-size: x-small;
-    width: 70px;
-    height: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .skills-container {
-    margin-top: 30px;
+    margin: 3px;
   }
 
   .skill-icon {
@@ -341,9 +327,97 @@
     height: 20px;
   }
 
+  .skills-svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .tooltip {
+    font-size: x-small;
+    width: 60px;
+    height: 18px;
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-container {
+    margin-top: 20px;
+    padding: 0 8px;
+  }
+
+  .skills-row {
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .skill-item {
+    margin: 2px;
+  }
+
+  .skill-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .skills-svg {
+    width: 24px;
+    height: 24px;
+  }
+
   .tooltip {
     font-size: xx-small;
-    width: 60px;
-    height: 15px;
+    width: 50px;
+    height: 14px;
+    padding: 4px 6px;
+    margin-left: -25px;
+  }
+
+  .tooltip::after {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid rgba(255, 255, 255, 0.1);
+    margin-left: -4px;
+  }
+}
+
+@media (max-width: 320px) {
+  .skills-container {
+    margin-top: 15px;
+    padding: 0 5px;
+  }
+
+  .skills-row {
+    gap: 4px;
+    margin-top: 10px;
+  }
+
+  .skill-item {
+    margin: 1px;
+  }
+
+  .skill-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .skills-svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .tooltip {
+    font-size: xx-small;
+    width: 45px;
+    height: 12px;
+    padding: 3px 5px;
+    margin-left: -22px;
+  }
+
+  .tooltip::after {
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 3px solid rgba(255, 255, 255, 0.1);
+    margin-left: -3px;
   }
 }

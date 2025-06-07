@@ -466,6 +466,7 @@
     grid-template-columns: 1fr;
     height: auto;
     margin-top: 5%;
+    padding: 10px;
   }
 
   .secondTextElement {

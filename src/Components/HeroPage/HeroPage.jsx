@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import PropTypes from "prop-types";
 import BackgroundGlow from "../../../utils/BackgroundGlow";
 import "./HeroPage.css";
 

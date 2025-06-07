@@ -7,9 +7,53 @@
   overflow-x: hidden;
   line-height: 1.6;
   min-height: 100vh;
+  scroll-behavior: smooth;
 }
 
 .about-section {
   position: relative;
   z-index: 10;
+}
+
+/* Global Responsive Improvements */
+@media (max-width: 1200px) {
+  .app-container {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+/* Prevent horizontal scroll on small screens */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
 }

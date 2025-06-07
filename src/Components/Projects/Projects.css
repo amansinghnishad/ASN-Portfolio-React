@@ -169,11 +169,46 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+@media (max-width: 768px) {
+  .projectDiv {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 30px 15px;
+    width: 95%;
+  }
+
+  .liner-gradient-div {
+    height: 300px;
+    width: 300px;
+    left: 10%;
+    top: 10%;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px) scale(1.01);
+  }
+}
+
 @media (max-width: 480px) {
   .projectDiv {
     grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 10px;
-    height: auto;
+    gap: 15px;
+    padding: 20px 10px;
+    width: 95%;
+  }
+
+  .liner-gradient-div {
+    height: 200px;
+    width: 200px;
+    left: 5%;
+    top: 5%;
+  }
+
+  .project-card {
+    min-height: 300px;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px) scale(1.005);
   }
 }
