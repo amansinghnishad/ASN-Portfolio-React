@@ -35,6 +35,7 @@ const SkillsSVG = () => {
         >
           <circle cx="90" cy="90" r="90" fill="url(#paint0_linear_16_265)" />
           <defs>
+            {" "}
             <linearGradient
               id="paint0_linear_16_265"
               x1="90"
@@ -43,8 +44,12 @@ const SkillsSVG = () => {
               y2="180"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="#301080" stopOpacity="0.6" />
-              <stop offset="1" stopColor="#7840AD" stopOpacity="0.36" />
+              <stop stopColor="rgba(255, 255, 255, 0.08)" stopOpacity="0.8" />
+              <stop
+                offset="1"
+                stopColor="rgba(255, 255, 255, 0.04)"
+                stopOpacity="0.4"
+              />
             </linearGradient>
           </defs>
         </svg>

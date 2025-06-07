@@ -2,77 +2,307 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 70px;
+  margin-top: 80px;
+  padding: 0 20px;
 }
 
 .skills-row {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 24px;
+  gap: 16px;
 }
 
 .skill-item {
-  margin: 10px;
+  margin: 12px;
   position: relative;
   animation: floatIcon 6s infinite ease-in-out;
+  opacity: 0;
+  transform: translateY(30px) scale(0.8);
+  animation: skillReveal 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.skill-item::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.08) 25%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.04) 75%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  background-size: 300% 300%;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: -1;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+.skill-item::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border-radius: 50%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0.02) 75%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  filter: blur(4px);
+}
+
+.skill-item:hover::before {
+  opacity: 1;
+  animation: skillGlow 2s linear infinite, gradientShift 3s ease-in-out infinite;
+}
+
+.skill-item:hover::after {
+  opacity: 1;
+}
+
+@keyframes skillGlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .skill-item:nth-child(even) {
-  animation-delay: -1s;
+  animation-delay: -3s;
+}
+
+.skill-item:hover {
+  transform: translateY(-8px) scale(1.1);
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.1),
+    0 5px 15px rgba(255, 255, 255, 0.05);
 }
 
 .skill-icon {
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+  filter: brightness(1.2) contrast(1.1);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.skill-item:hover .skill-icon {
+  transform: translate(-50%, -50%) rotate(360deg) scale(1.15);
+  filter: brightness(1.3) contrast(1.2)
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
 }
 
 .tooltip {
   visibility: hidden;
-  background-color: #30125bbc;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  backdrop-filter: blur(20px);
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  /* padding: 5px; */
+  border-radius: 12px;
   position: absolute;
-  z-index: 1;
-  bottom: 125%;
+  z-index: 10;
+  bottom: 120%;
   left: 50%;
-  margin-left: -60px;
+  margin-left: -45px;
   height: auto;
-  width: auto;
-  padding: 5px;
-  font-size: small;
+  width: 90px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
   opacity: 0;
-  transition: opacity 0.3s;
-  border: 1px solid #693b93;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  transform: translateY(10px) scale(0.8);
+}
+
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 25%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.4) 75%,
+    transparent 100%
+  );
+  border-radius: 12px 12px 0 0;
+  animation: tooltipGlow 2s ease-in-out infinite;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(255, 255, 255, 0.1);
+  filter: blur(0.5px);
 }
 
 .skill-item:hover .tooltip {
   visibility: visible;
   opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .skills-svg {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.1));
+  transition: all 0.3s ease;
+}
+
+.skill-item:hover .skills-svg {
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+}
+
+/* Enhanced Skills Animations */
+
+/* Progressive skill reveal animation */
+.skill-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: skillReveal 0.6s ease-out forwards;
+}
+
+.skill-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.skill-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.skill-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.skill-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.skill-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.skill-item:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+@keyframes skillReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8) rotateY(180deg);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(10px) scale(0.95) rotateY(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateY(0deg);
+  }
+}
+
+@keyframes skillGlow {
+  0% {
+    transform: rotate(0deg);
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    transform: rotate(360deg);
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes skillsHeaderGlow {
+  0%,
+  100% {
+    opacity: 0.7;
+    background-position: 0% 50%;
+  }
+  50% {
+    opacity: 1;
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes tooltipGlow {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes floatIcon {
   0% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(2deg);
   }
   50% {
-    transform: translateY(-15px);
+    transform: translateY(-15px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-8px) rotate(-2deg);
   }
   100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
   }
 }
 

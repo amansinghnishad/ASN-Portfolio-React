@@ -1,10 +1,11 @@
 :root {
-  --vector-stroke: #3d1768;
+  --vector-stroke: rgba(255, 255, 255, 0.1);
   --vector-stroke-width: 1px;
+  --accent-glow: rgba(255, 255, 255, 0.3);
 }
 
 .skills-svg-dig {
-  width: 100%;
+  width: 120%;
   height: 60vh;
   display: flex;
   justify-content: center;
@@ -19,19 +20,28 @@
   flex-shrink: 0;
   position: absolute;
   z-index: 1;
+  filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.4))
+    drop-shadow(0 0 25px rgba(255, 107, 107, 0.2));
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: logoFloat 6s ease-in-out infinite;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 25px rgba(0, 212, 255, 0.6))
+    drop-shadow(0 0 35px rgba(255, 107, 107, 0.4)) brightness(1.2);
+  transform: scale(1.1) rotate(5deg);
 }
 
 .circle-svg {
   width: 120px;
   height: 120px;
   flex-shrink: 0;
-  fill: linear-gradient(
-    180deg,
-    rgba(48, 16, 128, 0.6) 0%,
-    rgba(120, 64, 173, 0.36) 100%
-  );
+  fill: url(#circleGradient);
   position: absolute;
-  animation: pulseCircle 4s infinite ease-in-out; /* Added animation */
+  animation: pulseCircle 4s infinite ease-in-out,
+    colorShift 8s infinite ease-in-out;
+  filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.3))
+    drop-shadow(0 0 25px rgba(255, 107, 107, 0.2));
 }
 
 .ellipse-div {
@@ -81,10 +91,12 @@
   border-radius: 542px;
   background: radial-gradient(
     50% 50% at 50% 50%,
-    #6e2ea9d5 0%,
-    rgba(50, 15, 133, 0) 100%
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(255, 255, 255, 0) 100%
   );
   animation: rotateEllipse3 7s infinite linear;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05);
 }
 
 .ellipse-4 {
@@ -218,25 +230,25 @@
 
 @keyframes pulseCircle {
   0% {
-    transform: scale(1.1);
+    transform: scale(1);
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.05);
   }
   100% {
-    transform: scale(1.1);
+    transform: scale(1);
   }
 }
 
 @keyframes pulseVector {
   0% {
-    opacity: 0.5;
+    opacity: 0.4;
   }
   50% {
-    opacity: 1;
+    opacity: 0.8;
   }
   100% {
-    opacity: 0.5;
+    opacity: 0.4;
   }
 }
 

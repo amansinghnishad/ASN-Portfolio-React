@@ -24,32 +24,25 @@ const data = [
 ];
 
 const EducationTable = () => {
-  const borderClass = "border-2 border-custom-color text-custom-text p-5";
-  const wobbleClass = "wobble-effect";
-
   return (
     <div className="overflow-x-auto">
       <h1 className="heading">Education</h1>
-      <table className={`table ${borderClass}`}>
+      <table className="table">
         <thead>
           <tr>
-            <th className={`${borderClass} ${wobbleClass}`}>Year</th>
-            <th className={`${borderClass} ${wobbleClass}`}>Institution</th>
-            <th className={`${borderClass} ${wobbleClass}`}>Degree</th>
-            <th className={`${borderClass} ${wobbleClass}`}>Percentage</th>
+            <th>Year</th>
+            <th>Institution</th>
+            <th>Degree</th>
+            <th>Percentage</th>
           </tr>
         </thead>
         <tbody>
           {data.map((row, index) => (
-            <tr key={index} className={`${borderClass}`}>
-              <td className={`${borderClass} ${wobbleClass}`}>{row.year}</td>
-              <td className={`${borderClass} ${wobbleClass}`}>
-                {row.institution}
-              </td>
-              <td className={`${borderClass} ${wobbleClass}`}>{row.degree}</td>
-              <td className={`${borderClass} ${wobbleClass}`}>
-                {row.percentage}
-              </td>
+            <tr key={index}>
+              <td>{row.year}</td>
+              <td>{row.institution}</td>
+              <td>{row.degree}</td>
+              <td>{row.percentage}</td>
             </tr>
           ))}
         </tbody>

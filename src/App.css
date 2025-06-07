@@ -1,23 +1,15 @@
 .app-container {
-  background: linear-gradient(
-    135deg,
-    #000000 0%,
-    #200f36 25%,
-    #000000 50%,
-    #200f36 75%,
-    #000000 100%
-  );
-  padding-bottom: 20px;
+  background: #000000;
   position: relative;
-  font-family: "Doto", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
   color: #ffffff;
   overflow-x: hidden;
+  line-height: 1.6;
+  min-height: 100vh;
 }
 
 .about-section {
   position: relative;
   z-index: 10;
-  padding: 20px;
-  border-radius: 10px;
-  color: #dcdcdc;
 }

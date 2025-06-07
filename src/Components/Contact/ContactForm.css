@@ -3,7 +3,7 @@
   justify-content: center;
   padding: 2rem;
   z-index: 4;
-  border-left: 1px solid #ffffff;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .contact-form {
@@ -14,7 +14,7 @@
 
 @keyframes slideUp {
   from {
-    transform: translateY(50px);
+    transform: translateY(30px);
     opacity: 0;
   }
   to {
@@ -24,32 +24,56 @@
 }
 
 button {
-  border: 1px solid #693b93;
-  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
   cursor: pointer;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 400;
   width: 150px;
   height: 50px;
-  background-color: #693b93;
+  background: rgba(255, 255, 255, 0.05);
   color: #ffffff;
-  padding: 0.5rem 1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  letter-spacing: 0.5px;
+  margin-top: 1rem;
 }
 
 button:hover {
-  background-color: #5a2e7a;
-  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .success-message {
-  color: #28a745;
+  color: #4ade80;
   margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  border-radius: 0.5rem;
 }
 
 .error-message {
-  color: #dc3545;
+  color: #f87171;
   margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 0.5rem;
 }
 
 @media (max-width: 600px) {
@@ -57,7 +81,7 @@ button:hover {
     width: 100%;
     flex-direction: column;
     padding: 1rem;
-    border-top: 1px solid #ffffff;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-left: none;
   }
 
@@ -66,7 +90,8 @@ button:hover {
   }
 
   button {
-    padding: 0.6rem 1rem;
+    width: 100%;
+    padding: 0.75rem;
     font-size: 0.9rem;
   }
 }

@@ -10,9 +10,12 @@ const NavLink = ({ to, children }) => (
     smooth={true}
     duration={500}
     spy={true}
-    activeClass="text-[#7B2CBF]"
+    activeClass="text-white opacity-100"
+    className="transition-all duration-300 hover:text-white hover:opacity-100"
   >
-    <div className="flex flex-col justify-center items-center">{children}</div>
+    <div className="flex flex-col justify-center items-center opacity-70">
+      {children}
+    </div>
   </ScrollLink>
 );
 
@@ -25,8 +28,8 @@ const TabletOrMobileNav = () => {
   ];
 
   return (
-    <nav className="h-[5rem] bottom-0 fixed w-full px-3 pb-2 backdrop-blur z-50">
-      <div className="border-2 p-6 rounded-3xl border-[#3C096C] bg-[#240046] text-[#E0AAFF] h-full w-full flex justify-between items-center text-2xl backdrop-blur">
+    <nav className="h-[5rem] bottom-0 fixed w-full px-3 pb-2 backdrop-blur-md z-50">
+      <div className="border border-white/10 p-4 rounded-2xl bg-white/5 text-white h-full w-full flex justify-between items-center text-xl backdrop-blur-md">
         {links.map((link, index) => (
           <div
             key={index}
@@ -34,7 +37,7 @@ const TabletOrMobileNav = () => {
           >
             <NavLink to={link.to}>
               {link.icon}
-              <p className="text-sm">{link.name}</p>
+              <p className="text-xs mt-1 font-light">{link.name}</p>
             </NavLink>
           </div>
         ))}

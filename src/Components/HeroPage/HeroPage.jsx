@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import BackgroundGlow from "../../../utils/BackgroundGlow";
 import "./HeroPage.css";
@@ -7,6 +7,19 @@ const TextElement = ({ tag: Tag, children, className, style }) => (
   <Tag className={`text-center text-white ${className}`} style={style}>
     {children}
   </Tag>
+);
+
+const FloatingParticle = ({ delay = 0, size = 4, duration = 3 }) => (
+  <div
+    className="floating-particle"
+    style={{
+      "--delay": `${delay}s`,
+      "--size": `${size}px`,
+      "--duration": `${duration}s`,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+    }}
+  />
 );
 
 const HeroPage = () => {
@@ -43,18 +56,23 @@ const HeroPage = () => {
           <img src="../../../heroImage.jpg" className="heroBackground"></img>
         </div>
         <div className="heroBackgroundContainer2">
+          {" "}
           <TextElement tag="h1" className="secondTextElement">
-            Hello! I am &nbsp;
+            <span className="greeting-text">Hello! I am</span>&nbsp;
             <span className="secondTextElementSpan">Aman Singh Nishad.</span>
           </TextElement>
           <TextElement
             tag="h3"
             className="thirdTextElement tracking-wide fade-in"
           >
+            {" "}
             <div className="writtenText">
               <span className="fixedText">I am a</span>&nbsp;
-              <span className="dynamicText">{currentTag}</span>
-              <span className="animate-blink">|</span>.
+              <span className="dynamic-text-container">
+                <span className="dynamicText">{currentTag}</span>
+                <span className="animate-blink">|</span>
+              </span>
+              .
             </div>
             <TextElement tag="h4" className="paraElement">
               I’m a programmer who adapts to shifting challenges. I focus on
@@ -67,7 +85,7 @@ const HeroPage = () => {
           <button
             className="resumeButton"
             onClick={() => {
-              window.open("/RESUME.pdf", "_blank");
+              window.open("/resume.pdf", "_blank");
             }}
           >
             View Resume

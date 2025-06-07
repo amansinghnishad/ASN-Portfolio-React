@@ -1,29 +1,152 @@
 .navLink {
   position: relative;
   text-decoration: none;
-  color: #efe6fb;
+  color: #e5e5e5;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.navLink::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  transition: all 0.4s ease;
+  transform: translateX(-50%);
 }
 
 .navLink::after {
   content: "";
   position: absolute;
+  top: 0;
+  left: -100%;
   width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #ff9500;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.navLink:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+  text-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+}
+
+.navLink:hover::before {
+  width: 80%;
 }
 
 .navLink:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+  left: 100%;
+}
+
+.navLink.active {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  animation: activePulse 2s ease-in-out infinite;
+}
+
+@keyframes activePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  }
 }
 
 .sticky {
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+/* Enhanced Navigation Animations */
+
+/* Smooth navbar reveal */
+.desktopNav {
+  animation: navSlideDown 0.8s ease-out;
+}
+
+@keyframes navSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Logo animation */
+.navLogo {
+  transition: all 0.3s ease;
+}
+
+.navLogo:hover {
+  transform: scale(1.1) rotate(5deg);
+  filter: brightness(1.2);
+}
+
+/* Mobile nav enhanced animations */
+.mobileNavToggle {
+  transition: all 0.3s ease;
+}
+
+.mobileNavToggle:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+/* Staggered nav item animations */
+.navItems {
+  display: flex;
+  gap: 1rem;
+}
+
+.navItems .navLink:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.navItems .navLink:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.navItems .navLink:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.navItems .navLink:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.navItems .navLink {
+  animation: navItemSlide 0.6s ease-out both;
+}
+
+@keyframes navItemSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

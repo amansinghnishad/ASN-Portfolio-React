@@ -4,56 +4,50 @@
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  color: #ccd6f6;
-  font-family: Poppins;
+  color: #fff;
   font-size: 1.5rem;
-  font-weight: 600;
-  padding: 20px;
-  gap: 10px;
+  font-weight: 300;
+  padding: 2rem;
+  gap: 1rem;
   text-align: left;
   line-height: 1.6;
   z-index: 2;
-  border-radius: 10px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
 }
 
 .type-heading {
-  color: #9857d3;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: 0.52px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
 }
 
 .card-title {
-  font-weight: bold;
+  font-weight: 300;
   color: white;
-  font-size: 28px;
+  font-size: 1.875rem;
   margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  transition: text-shadow 0.3s ease-in-out;
+  letter-spacing: -0.02em;
+  transition: color 0.3s ease;
 }
 
 .card-description {
   width: 100%;
   height: auto;
-  padding: 1.2rem;
-  border-radius: 14px;
-  background-image: radial-gradient(
-    151.92% 127.02% at 15.32% 21.04%,
-    rgba(15, 3, 26, 0.911) 0%,
-    rgba(25, 5, 34, 0.795) 77.08%,
-    rgba(62, 9, 112, 0.774) 100%
-  );
-  backdrop-filter: blur(40px);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   font-size: 1rem;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
   position: relative;
   z-index: 3;
-  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .card-description.expanded {
@@ -61,20 +55,25 @@
 }
 
 .card-github {
-  font-weight: 700;
-  border: 2px solid transparent;
-  border-radius: 0.375rem;
+  font-weight: 400;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
   display: flex;
-  padding: 0.25rem;
-  align-items: flex-end;
+  padding: 0.75rem 1rem;
+  align-items: center;
   color: white;
-  font-size: 1.875rem;
-  text-shadow: 0 5px 2px rgba(255, 255, 255, 0.4);
-  transition: background-color 0.3s ease-in-out;
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin-top: 1rem;
 }
 
 .card-github:hover {
-  background-color: #2f2d2d;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 .read-more-toggle {
@@ -83,43 +82,27 @@
 
 @media (max-width: 768px) {
   .card-content-overlay {
-    padding: 15px;
+    padding: 1.5rem;
     font-size: 1rem;
-    gap: 5px;
+    gap: 0.75rem;
   }
 
   .type-heading {
-    display: flex;
-    height: auto;
-    width: 100%;
-    font-size: 10px;
+    font-size: 0.75rem;
   }
 
   .card-title {
-    height: auto;
-    display: flex;
-    width: 100%;
-    font-size: 20px;
+    font-size: 1.5rem;
   }
 
   .card-description {
-    width: 100%;
-    height: auto;
-    padding: 8px;
-    border-radius: 14px;
-    background-image: radial-gradient(
-      151.92% 127.02% at 15.32% 21.04%,
-      rgba(105, 59, 147, 0.2) 0%,
-      rgba(110, 191, 244, 0.04) 77.08%,
-      rgba(70, 144, 212, 0) 100%
-    );
-    background-blend-mode: overlay, normal;
-    backdrop-filter: blur(40px);
+    padding: 1rem;
+    font-size: 0.9rem;
   }
 
   .card-github {
-    width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    padding: 0.5rem 0.75rem;
   }
 }
 
@@ -129,27 +112,29 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 1rem;
     text-align: center;
     gap: 0.5rem;
   }
 
   .type-heading {
-    font-size: 12px;
+    font-size: 0.7rem;
   }
 
   .card-title {
-    font-size: 18px;
-    margin: 5px 0;
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
   }
 
   .card-description {
-    font-size: 14px;
-    padding: 8px;
+    font-size: 0.85rem;
+    padding: 0.75rem;
   }
 
   .card-github {
     font-size: 1rem;
-    padding: 0.2rem;
+    padding: 0.5rem;
+    width: 100%;
+    justify-content: center;
   }
 }

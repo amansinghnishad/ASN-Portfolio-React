@@ -14,41 +14,73 @@
   height: auto;
   width: 70%;
   color: #ffffff;
-  padding: 30px;
-  border-radius: 15px;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.contact-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
   background: linear-gradient(
-    96deg,
-    #130428 0.58%,
-    #251043 16.32%,
-    #38126d 29.33%,
-    #261045 45.66%,
-    #190634 54.44%
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
   );
-  box-shadow: 4px 7px 26px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 1px;
 }
 
 .contact-text {
-  color: #fff;
-  font-family: Preahvihear;
-  font-size: 15px;
+  color: #d1d1d1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 1.6;
   letter-spacing: 0.3px;
   padding: 32px;
 }
 
 .heading-1 {
-  font-size: 36px;
-  font-weight: 700;
-  font-family: "Montserrat", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
   color: #ffffff;
   margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+  position: relative;
+}
+
+.heading-1::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    transparent 100%
+  );
+  border-radius: 1px;
 }
 .heading-2 {
-  font-size: 20px;
-  font-weight: 700;
-  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
   color: #ffffff;
   margin-bottom: 1.5rem;
 }
@@ -71,6 +103,160 @@
   height: 20%;
   width: 100%;
   padding: 2.5rem;
+}
+
+.social-links a {
+  transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.social-links a:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+  filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 0.2));
+}
+
+.social-links a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social-links a:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced Form Animations */
+
+/* Form slide-in animation */
+.contact-form {
+  animation: formSlideUp 0.8s ease-out;
+}
+
+@keyframes formSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced input focus effects */
+.form-input {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.form-input:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Floating label animation */
+.form-input label {
+  transition: all 0.3s ease;
+  transform-origin: left center;
+}
+
+.form-input input:focus + label,
+.form-input input:not(:placeholder-shown) + label,
+.form-input textarea:focus + label,
+.form-input textarea:not(:placeholder-shown) + label {
+  transform: translateY(-25px) scale(0.8);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Input ripple effect */
+.form-input::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transition: all 0.4s ease;
+  transform: translateX(-50%);
+}
+
+.form-input:focus-within::before {
+  width: 100%;
+}
+
+/* Submit button enhanced animation */
+.submit-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.submit-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.4s ease;
+  transform: translate(-50%, -50%);
+}
+
+.submit-button:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+.submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Staggered form field animations */
+.form-field:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.form-field:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.form-field:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.form-field:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.form-field {
+  animation: fieldSlideIn 0.6s ease-out both;
+}
+
+@keyframes fieldSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @media (max-width: 600px) {
