@@ -104,15 +104,6 @@
   animation-delay: 0.3s;
 }
 
-/* Remove old classes */
-.border-2,
-.border-custom-color,
-.text-custom-text,
-.p-5,
-.wobble-effect {
-  /* These classes are no longer needed */
-}
-
 @media (max-width: 768px) {
   .table {
     font-size: 0.8rem;
