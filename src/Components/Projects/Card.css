@@ -223,3 +223,22 @@
     width: 90%;
   }
 }
+
+/* Vibe Coding Project Styles */
+.card-container[data-status="vibe-coding"] {
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  background: rgba(139, 92, 246, 0.03);
+}
+
+.card-container[data-status="vibe-coding"]:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+  background: rgba(139, 92, 246, 0.05);
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.1),
+    0 0 20px rgba(139, 92, 246, 0.05);
+}
+
+.card-container[data-status="vibe-coding"] .type-heading {
+  color: rgba(168, 85, 247, 0.8);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+  padding-bottom: 4px;
+}

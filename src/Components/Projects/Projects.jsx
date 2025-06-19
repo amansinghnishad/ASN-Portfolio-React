@@ -4,7 +4,7 @@ import HobiMenia from "/assets/HobiMenia.png";
 import HMS from "/assets/HMS.png";
 import "./Projects.css";
 
-const projects = [
+const featuredProjects = [
   {
     img: HMS,
     type: "Featured Project",
@@ -34,16 +34,70 @@ const projects = [
   // },
 ];
 
+const vibeCodingProjects = [
+  {
+    img: "/assets/DashPoint.png",
+    type: "Vibe Coding Project",
+    title: "DashPoint",
+    TryNowlink: "https://dash-point.vercel.app/",
+    codeLink: "https://github.com/amansinghnishad/DashPoint",
+    description:
+      "DashPoint is a custom personalized dashboard designed to streamline your digital workspace. It features an intuitive collection system, integrated YouTube watch functionality, advanced content extractor, sticky notes for quick reminders, and a comprehensive todo management system. Built to enhance productivity and keep all your essential tools in one seamless interface.",
+  },
+  {
+    img: "/assets/Arya.png",
+    type: "Vibe Coding Project",
+    title: "Arya",
+    TryNowlink: "https://proagent.onrender.com/",
+    codeLink: "https://github.com/amansinghnishad/PROAGENT",
+    description:
+      "Arya is an intelligent AI agent designed to revolutionize file management and processing. It offers powerful features including file compression, PDF conversion, audio-to-text transcription, text-to-audio synthesis, and various other file manipulation tools. With its smart automation capabilities, Arya simplifies complex file operations and enhances workflow efficiency.",
+  },
+];
+
 const Project = () => {
   return (
-    <div className="projectDiv">
-      {projects.map((project, index) => (
-        <Card
-          key={index}
-          project={project}
-          status={project.type === "On Progress" ? "On Progress" : "featured"}
-        />
-      ))}
+    <div className="projects-main-container">
+      {/* Featured Projects Section */}
+      <div className="projects-section">
+        <div className="section-header">
+          <h2 className="section-title">Featured Projects</h2>
+          <div className="section-divider"></div>
+        </div>
+        <div className="projectDiv">
+          {featuredProjects.map((project, index) => (
+            <Card
+              key={`featured-${index}`}
+              project={project}
+              status={
+                project.type === "On Progress" ? "On Progress" : "featured"
+              }
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Vibe Coding Projects Section */}
+      <div className="projects-section">
+        <div className="section-header">
+          <h2 className="section-title">Vibe Coding</h2>
+          <div className="section-divider"></div>
+          <p className="section-description">
+            Innovative projects that blend creativity with functionality,
+            designed to enhance digital experiences and streamline workflows.
+          </p>
+        </div>
+        <div className="projectDiv">
+          {vibeCodingProjects.map((project, index) => (
+            <Card
+              key={`vibe-${index}`}
+              project={project}
+              status="vibe-coding"
+            />
+          ))}
+        </div>
+      </div>
+
       <div className="liner-gradient-div"></div>
     </div>
   );

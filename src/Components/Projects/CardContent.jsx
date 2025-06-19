@@ -6,8 +6,13 @@ import "./CardContent.css";
 function CardContent({ TryNowlink, title, codeLink, description, status }) {
   return (
     <div className="card-content-overlay">
+      {" "}
       <h6 className="type-heading">
-        {status === "On Progress" ? "On Progress" : "Featured Project"}
+        {status === "On Progress"
+          ? "On Progress"
+          : status === "vibe-coding"
+          ? "Vibe Coding Project"
+          : "Featured Project"}
       </h6>
       <motion.a
         href={TryNowlink}

@@ -22,6 +22,7 @@ function Card({
       exit={{ scale: 0.8, opacity: 0 }}
       transition={{ duration: 0.5, ease: "linear" }}
       className="card-container"
+      data-status={status}
     >
       <CardOverlay
         TryNowlink={TryNowlink}
