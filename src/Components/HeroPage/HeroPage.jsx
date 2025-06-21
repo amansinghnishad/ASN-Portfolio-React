@@ -84,7 +84,7 @@ const HeroPage = () => {
           <button
             className="resumeButton"
             onClick={() => {
-              window.open("./resume.pdf", "_blank");
+              window.open("./RESUME.pdf", "_blank");
             }}
           >
             View Resume
