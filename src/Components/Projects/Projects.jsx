@@ -23,15 +23,6 @@ const featuredProjects = [
     description:
       "HobiMenia is a dynamic social media app that connects people through shared interests, enabling users to build communities, post pictures, and write blogs. Its standout AI-powered feature helps craft engaging blogs and suggests trending hashtags for maximum reach. With a seamless interface, users can connect, share, and inspire effortlessly.",
   },
-  // {
-  //   img: CorsaleImageGallery,
-  //   type: "Featured Project",
-  //   title: "Corsale Image Gallery",
-  //   TryNowlink: "https://amansinghnishad.github.io/Corsale-Image-Gallery/",
-  //   codeLink: "https://github.com/amansinghnishad/Corsale-Image-Gallery",
-  //   description:
-  //     "Corsale Image Gallery is a web application that allows users to upload and share images. It features a user-friendly interface, image categorization, and the ability to like and comment on images. The gallery is designed for easy navigation and provides a platform for users to showcase their photography skills.",
-  // },
 ];
 
 const vibeCodingProjects = [
@@ -58,7 +49,6 @@ const vibeCodingProjects = [
 const Project = () => {
   return (
     <div className="projects-main-container">
-      {/* Featured Projects Section */}
       <div className="projects-section">
         <div className="section-header">
           <h2 className="section-title">Featured Projects</h2>
@@ -77,15 +67,9 @@ const Project = () => {
         </div>
       </div>
 
-      {/* Vibe Coding Projects Section */}
       <div className="projects-section">
         <div className="section-header">
-          <h2 className="section-title">Vibe Coding</h2>
           <div className="section-divider"></div>
-          <p className="section-description">
-            Innovative projects that blend creativity with functionality,
-            designed to enhance digital experiences and streamline workflows.
-          </p>
         </div>
         <div className="projectDiv">
           {vibeCodingProjects.map((project, index) => (

@@ -3,6 +3,7 @@ import { FaHome } from "react-icons/fa";
 import { PiProjectorScreenChart } from "react-icons/pi";
 import { IoIosContact } from "react-icons/io";
 import { ImProfile } from "react-icons/im";
+import { MdWork } from "react-icons/md";
 
 const NavLink = ({ to, children }) => (
   <ScrollLink
@@ -23,6 +24,7 @@ const TabletOrMobileNav = () => {
   const links = [
     { icon: <FaHome />, name: "Home", to: "hero" },
     { icon: <ImProfile />, name: "About", to: "about" },
+    { icon: <MdWork />, name: "Experience", to: "experience" },
     { icon: <PiProjectorScreenChart />, name: "Projects", to: "projects" },
     { icon: <IoIosContact />, name: "Contact", to: "contact" },
   ];

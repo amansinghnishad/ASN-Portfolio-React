@@ -2,6 +2,7 @@ import "./App.css";
 import HeroPage from "./Components/HeroPage/HeroPage";
 import Navbar from "./Components/Navbar/Navbar";
 import About from "./Components/About/About";
+import Experience from "./Components/Experience/Experience";
 import Projects from "./Components/Projects/Projects";
 import Contact from "./Components/Contact/Contact";
 import Footer from "./Components/Footer/Footer";
@@ -18,6 +19,9 @@ function App() {
         </div>
         <div id="about" className="about-section">
           <About />
+        </div>
+        <div id="experience">
+          <Experience />
         </div>
         <div id="projects">
           <Projects />
