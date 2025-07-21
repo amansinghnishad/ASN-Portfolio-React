@@ -41,42 +41,45 @@ const Experience = () => {
         </div>
 
         <div className="experience-timeline">
-          {experienceData.map((exp, index) => (
-            <div key={exp.id} className="experience-card">
-              <div className="experience-timeline-marker">
-                <div className="timeline-dot"></div>
-                {index !== experienceData.length - 1 && (
-                  <div className="timeline-line"></div>
-                )}
+          {experienceData
+            .slice()
+            .reverse()
+            .map((exp, index) => (
+              <div key={exp.id} className="experience-card">
+                <div className="experience-timeline-marker">
+                  <div className="timeline-dot"></div>
+                  {index !== experienceData.length - 1 && (
+                    <div className="timeline-line"></div>
+                  )}
+                </div>
+
+                <div className="experience-content">
+                  <div className="experience-header">
+                    <h3 className="experience-position">{exp.position}</h3>
+                    <span className="experience-duration">{exp.duration}</span>
+                  </div>
+
+                  <div className="experience-company-info">
+                    <h4 className="experience-company">{exp.company}</h4>
+                    <span className="experience-location">{exp.location}</span>
+                  </div>
+
+                  <ul className="experience-description">
+                    {exp.description.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+
+                  <div className="experience-technologies">
+                    {exp.technologies.map((tech, idx) => (
+                      <span key={idx} className="tech-tag">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-
-              <div className="experience-content">
-                <div className="experience-header">
-                  <h3 className="experience-position">{exp.position}</h3>
-                  <span className="experience-duration">{exp.duration}</span>
-                </div>
-
-                <div className="experience-company-info">
-                  <h4 className="experience-company">{exp.company}</h4>
-                  <span className="experience-location">{exp.location}</span>
-                </div>
-
-                <ul className="experience-description">
-                  {exp.description.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
-
-                <div className="experience-technologies">
-                  {exp.technologies.map((tech, idx) => (
-                    <span key={idx} className="tech-tag">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
 
