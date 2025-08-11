@@ -34,6 +34,7 @@ const ContactForm = () => {
     setErrorMessage("");
 
     if (!validateForm()) return;
+    // i have to fix this part
 
     setLoading(true);
 
