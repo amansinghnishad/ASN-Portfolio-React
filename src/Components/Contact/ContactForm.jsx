@@ -13,6 +13,10 @@ const ContactForm = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -34,17 +38,18 @@ const ContactForm = () => {
     setErrorMessage("");
 
     if (!validateForm()) return;
-    // i have to fix this part
+
+    if (!serviceId || !templateId || !publicKey) {
+      setErrorMessage(
+        "Email service is not configured. Please try again later."
+      );
+      return;
+    }
 
     setLoading(true);
 
     emailjs
-      .send(
-        "service_80q7xcv",
-        "template_cev1yqe",
-        formData,
-        "WKmdmOFg-zNgRPR4G"
-      )
+      .send(serviceId, templateId, formData, publicKey)
       .then((response) => {
         setSuccessMessage("Message sent successfully!");
         setFormData({ name: "", email: "", message: "" });
