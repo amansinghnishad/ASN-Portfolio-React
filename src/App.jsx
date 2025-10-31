@@ -11,9 +11,9 @@ import BackgroundAnimation from "../utils/BackgroundAnimation";
 function App() {
   return (
     <>
+      <Navbar />
       <div className="app-container">
         <BackgroundAnimation />
-        <Navbar />
         <div id="hero">
           <HeroPage />
         </div>

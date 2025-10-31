@@ -35,8 +35,6 @@ const Project = () => {
           }}
         />
       </div>
-
-      <div className="liner-gradient-div"></div>
     </div>
   );
 };

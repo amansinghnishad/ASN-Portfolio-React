@@ -1,3 +1,4 @@
+body,
 .app-container {
   background: #000000;
   position: relative;
@@ -20,7 +21,7 @@
 }
 .projects-section {
   position: relative;
-  z-index: 10;
+  /* z-index: 10; */
 }
 .contact-section {
   position: relative;

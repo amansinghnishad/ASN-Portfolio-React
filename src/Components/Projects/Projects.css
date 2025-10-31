@@ -216,6 +216,50 @@
   font-weight: 300;
 }
 
+.circular-gallery {
+  display: flex;
+  border-radius: 50px;
+  overflow: hidden;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgb(0, 0, 0, 0.5) 100%
+  );
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  position: relative;
+  --edge-blur-size: 600px;
+  --edge-blur-strength: 5px;
+}
+
+/* Circular (radial) edge blurs */
+.circular-gallery::before,
+.circular-gallery::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: var(--edge-blur-size);
+  height: var(--edge-blur-size);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.0001);
+  -webkit-backdrop-filter: blur(var(--edge-blur-strength));
+  backdrop-filter: blur(var(--edge-blur-strength));
+}
+.circular-gallery::before {
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+.circular-gallery::after {
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
 @media (max-width: 1024px) {
   .projects-main-container {
     padding: 40px 15px;
@@ -264,5 +308,13 @@
   }
   .projects-section {
     margin-bottom: 30px;
+  }
+}
+
+/* Disable circular edge blur on mobile/smaller screens */
+@media (max-width: 768px) {
+  .circular-gallery::before,
+  .circular-gallery::after {
+    display: none;
   }
 }
