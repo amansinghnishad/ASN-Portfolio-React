@@ -20,13 +20,13 @@ function App() {
         <div id="about" className="about-section">
           <About />
         </div>
-        <div id="experience">
+        <div id="experience" className="experience-section">
           <Experience />
         </div>
-        <div id="projects">
+        <div id="projects" className="projects-section">
           <Projects />
         </div>
-        <div id="contact">
+        <div id="contact" className="contact-section">
           <Contact />
         </div>
 

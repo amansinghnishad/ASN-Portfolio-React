@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import BackgroundGlow from "../../../utils/BackgroundGlow";
 import "./HeroPage.css";
 
 const TextElement = ({ tag: Tag, children, className, style }) => (
@@ -48,8 +47,6 @@ const HeroPage = () => {
 
   return (
     <div style={{ position: "relative" }}>
-      <BackgroundGlow />
-
       <div className="heroContainer">
         <div className="heroBackgroundContainer">
           <img src="../../../heroImage.jpg" className="heroBackground"></img>

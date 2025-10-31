@@ -13,7 +13,6 @@
 }
 
 .experience-section::before {
-  content: "← Scroll to explore →";
   position: absolute;
   top: -20px;
   right: 20px;

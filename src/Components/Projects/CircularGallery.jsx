@@ -1,0 +1,789 @@
+import {
+  Camera,
+  Mesh,
+  Plane,
+  Program,
+  Renderer,
+  Texture,
+  Transform,
+} from "ogl";
+import React, { useEffect, useRef, useState } from "react";
+
+function debounce(func, wait) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, wait ? args : []), wait);
+  };
+}
+
+function lerp(p1, p2, t) {
+  return p1 + (p2 - p1) * t;
+}
+
+function autoBind(instance) {
+  const proto = Object.getPrototypeOf(instance);
+  Object.getOwnPropertyNames(proto).forEach((key) => {
+    if (key !== "constructor" && typeof instance[key] === "function") {
+      instance[key] = instance[key].bind(instance);
+    }
+  });
+}
+
+function createTextTexture(
+  gl,
+  text,
+  font = "bold 30px Figtree",
+  color = "#d6d3ce"
+) {
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  context.font = font;
+  const metrics = context.measureText(text);
+  const textWidth = Math.ceil(metrics.width);
+  const textHeight = Math.ceil(parseInt(font, 10) * 1.2);
+  canvas.width = textWidth + 20;
+  canvas.height = textHeight + 20;
+  context.font = font;
+  context.fillStyle = color;
+  context.textBaseline = "middle";
+  context.textAlign = "center";
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.fillText(text, canvas.width / 2, canvas.height / 2);
+  const texture = new Texture(gl, { generateMipmaps: false });
+  texture.image = canvas;
+  return { texture, width: canvas.width, height: canvas.height };
+}
+
+class Title {
+  constructor({
+    gl,
+    plane,
+    text,
+    textColor = "#d6d3ce",
+    font = "bold 30px Figtree",
+  }) {
+    autoBind(this);
+    this.gl = gl;
+    this.plane = plane;
+    this.text = text;
+    this.textColor = textColor;
+    this.font = font;
+    this.createMesh();
+  }
+  createMesh() {
+    const { texture, width, height } = createTextTexture(
+      this.gl,
+      this.text,
+      this.font,
+      this.textColor
+    );
+    const geometry = new Plane(this.gl);
+    const program = new Program(this.gl, {
+      vertex: `
+        attribute vec3 position;
+        attribute vec2 uv;
+        uniform mat4 modelViewMatrix;
+        uniform mat4 projectionMatrix;
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragment: `
+        precision highp float;
+        uniform sampler2D tMap;
+        uniform float uAlpha;
+        varying vec2 vUv;
+        void main() {
+          vec4 color = texture2D(tMap, vUv);
+          if (color.a < 0.1) discard;
+          gl_FragColor = vec4(color.rgb, color.a * uAlpha);
+        }
+      `,
+      uniforms: { tMap: { value: texture }, uAlpha: { value: 0.0 } },
+      transparent: true,
+    });
+    this.mesh = new Mesh(this.gl, { geometry, program });
+    const aspect = width / height;
+    const textHeight = this.plane.scale.y * 0.15;
+    const textWidth = textHeight * aspect;
+    this.mesh.scale.set(textWidth, textHeight, 1);
+    this.mesh.position.y = -this.plane.scale.y * 0.5 - textHeight * 0.5 - 0.05;
+    this.mesh.setParent(this.plane);
+  }
+  setAlpha(a) {
+    if (this.mesh?.program?.uniforms?.uAlpha)
+      this.mesh.program.uniforms.uAlpha.value = a;
+  }
+}
+
+class Media {
+  constructor({
+    geometry,
+    gl,
+    image,
+    index,
+    length,
+    renderer,
+    scene,
+    screen,
+    text,
+    viewport,
+    bend,
+    textColor,
+    borderRadius = 0.05,
+    font,
+    cardScale = 1,
+  }) {
+    this.extra = 0;
+    this.geometry = geometry;
+    this.gl = gl;
+    this.image = image;
+    this.index = index;
+    this.length = length;
+    this.renderer = renderer;
+    this.scene = scene;
+    this.screen = screen;
+    this.text = text;
+    this.viewport = viewport;
+    this.bend = bend;
+    this.textColor = textColor;
+    this.borderRadius = borderRadius;
+    this.font = font;
+    this.cardScale = cardScale;
+    this.hovered = false;
+    this.hoverScale = 1.0;
+    this.hoverTargetScale = 1.0;
+    this.hoverZ = 0.0;
+    this.hoverTargetZ = 0.0;
+    this.createShader();
+    this.createMesh();
+    this.createTitle();
+    this.onResize();
+  }
+  createShader() {
+    const texture = new Texture(this.gl, { generateMipmaps: false });
+    this.program = new Program(this.gl, {
+      depthTest: false,
+      depthWrite: false,
+      vertex: `
+        precision highp float;
+        attribute vec3 position;
+        attribute vec2 uv;
+        uniform mat4 modelViewMatrix;
+        uniform mat4 projectionMatrix;
+        uniform float uTime;
+        uniform float uSpeed;
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          vec3 p = position;
+          p.z = (sin(p.x * 4.0 + uTime) * 1.5 + cos(p.y * 2.0 + uTime) * 1.5) * (0.1 + uSpeed * 0.5);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+        }
+      `,
+      fragment: `
+        precision highp float;
+        uniform vec2 uImageSizes;
+        uniform vec2 uPlaneSizes;
+        uniform sampler2D tMap;
+        uniform float uBorderRadius;
+        varying vec2 vUv;
+        float roundedBoxSDF(vec2 p, vec2 b, float r) {
+          vec2 d = abs(p) - b;
+          return length(max(d, vec2(0.0))) + min(max(d.x, d.y), 0.0) - r;
+        }
+        void main() {
+          vec2 ratio = vec2(
+            min((uPlaneSizes.x / uPlaneSizes.y) / (uImageSizes.x / uImageSizes.y), 1.0),
+            min((uPlaneSizes.y / uPlaneSizes.x) / (uImageSizes.y / uImageSizes.x), 1.0)
+          );
+          vec2 uv = vec2(
+            vUv.x * ratio.x + (1.0 - ratio.x) * 0.5,
+            vUv.y * ratio.y + (1.0 - ratio.y) * 0.5
+          );
+          vec4 color = texture2D(tMap, uv);
+          float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
+          if(d > 0.0) discard;
+          gl_FragColor = vec4(color.rgb, 1.0);
+        }
+      `,
+      uniforms: {
+        tMap: { value: texture },
+        uPlaneSizes: { value: [0, 0] },
+        uImageSizes: { value: [0, 0] },
+        uSpeed: { value: 0 },
+        uTime: { value: 100 * Math.random() },
+        uBorderRadius: { value: this.borderRadius },
+      },
+      transparent: true,
+    });
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.src = this.image;
+    img.onload = () => {
+      texture.image = img;
+      this.program.uniforms.uImageSizes.value = [
+        img.naturalWidth,
+        img.naturalHeight,
+      ];
+    };
+  }
+  createMesh() {
+    this.plane = new Mesh(this.gl, {
+      geometry: this.geometry,
+      program: this.program,
+    });
+    this.plane.setParent(this.scene);
+  }
+  createTitle() {
+    this.title = new Title({
+      gl: this.gl,
+      plane: this.plane,
+      text: this.text,
+      textColor: this.textColor,
+      font: this.font,
+    });
+  }
+  update(scroll, direction) {
+    this.plane.position.x = this.x - scroll.current - this.extra;
+
+    const x = this.plane.position.x;
+    const H = this.viewport.width / 2.0;
+
+    if (this.bend === 0.0) {
+      this.plane.position.y = 0.0;
+      this.plane.rotation.z = 0.0;
+    } else {
+      const B_abs = Math.abs(this.bend);
+      const R = (H * H + B_abs * B_abs) / (2.0 * B_abs);
+      const effectiveX = Math.min(Math.abs(x), H);
+      const arc = R - Math.sqrt(R * R - effectiveX * effectiveX);
+      if (this.bend > 0.0) {
+        this.plane.position.y = -arc;
+        this.plane.rotation.z = -Math.sign(x) * Math.asin(effectiveX / R);
+      } else {
+        this.plane.position.y = arc;
+        this.plane.rotation.z = Math.sign(x) * Math.asin(effectiveX / R);
+      }
+    }
+
+    this.speed = scroll.current - scroll.last;
+    this.program.uniforms.uTime.value += 0.04;
+    this.program.uniforms.uSpeed.value = this.speed;
+
+    // Hover lift/scale animation
+    this.hoverScale = lerp(this.hoverScale, this.hoverTargetScale, 0.15);
+    this.hoverZ = lerp(this.hoverZ, this.hoverTargetZ, 0.15);
+    if (this.baseScaleX && this.baseScaleY) {
+      this.plane.scale.x = this.baseScaleX * this.hoverScale;
+      this.plane.scale.y = this.baseScaleY * this.hoverScale;
+      if (this.plane.program.uniforms.uPlaneSizes) {
+        this.plane.program.uniforms.uPlaneSizes.value = [
+          this.plane.scale.x,
+          this.plane.scale.y,
+        ];
+      }
+    }
+    this.plane.position.z = this.hoverZ;
+    if (this.title) this.title.setAlpha(this.hovered ? 1.0 : 0.0);
+
+    const planeOffset = this.plane.scale.x / 2.0;
+    const viewportOffset = this.viewport.width / 2.0;
+    this.isBefore = this.plane.position.x + planeOffset < -viewportOffset;
+    this.isAfter = this.plane.position.x - planeOffset > viewportOffset;
+    if (direction === "right" && this.isBefore) {
+      this.extra -= this.widthTotal;
+      this.isBefore = this.isAfter = false;
+    }
+    if (direction === "left" && this.isAfter) {
+      this.extra += this.widthTotal;
+      this.isBefore = this.isAfter = false;
+    }
+  }
+  onResize({ screen, viewport } = {}) {
+    if (screen) this.screen = screen;
+    if (viewport) {
+      this.viewport = viewport;
+      if (this.plane.program.uniforms.uViewportSizes) {
+        this.plane.program.uniforms.uViewportSizes.value = [
+          this.viewport.width,
+          this.viewport.height,
+        ];
+      }
+    }
+    const scaleFactor = this.cardScale || 1;
+    this.scale = this.screen.height / 1500;
+    this.plane.scale.y =
+      ((this.viewport.height * (900.0 * this.scale)) / this.screen.height) *
+      scaleFactor;
+    this.plane.scale.x =
+      ((this.viewport.width * (700.0 * this.scale)) / this.screen.width) *
+      scaleFactor;
+    this.plane.program.uniforms.uPlaneSizes.value = [
+      this.plane.scale.x,
+      this.plane.scale.y,
+    ];
+    this.baseScaleX = this.plane.scale.x;
+    this.baseScaleY = this.plane.scale.y;
+    this.padding = 2.0 * scaleFactor;
+    this.width = this.plane.scale.x + this.padding;
+    this.widthTotal = this.width * this.length;
+    this.x = this.width * this.index;
+  }
+  setHover(v) {
+    this.hovered = v;
+    this.hoverTargetScale = v ? 1.06 : 1.0;
+    this.hoverTargetZ = v ? 1.5 : 0.0;
+  }
+}
+
+class App {
+  constructor(
+    container,
+    {
+      items,
+      bend,
+      textColor = "#ffffff",
+      borderRadius = 0.05,
+      font = "bold 30px Figtree",
+      scrollSpeed = 2,
+      scrollEase = 0.05,
+      cardScale = 0.8,
+      onHoverChange = null,
+      onItemClick = null,
+      onCenterChange = null,
+    } = {}
+  ) {
+    document.documentElement.classList.remove("no-js");
+    this.container = container;
+    this.scrollSpeed = scrollSpeed;
+    this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
+    this.cardScale = cardScale;
+    this.onHoverChange = onHoverChange;
+    this.onItemClick = onItemClick;
+    this.onCenterChange = onCenterChange;
+    this.currentHovered = null;
+    this.currentCenterIndex = null;
+    this.onCheckDebounce = debounce(this.onCheck, 200);
+    this.createRenderer();
+    this.createCamera();
+    this.createScene();
+    this.onResize();
+    this.createGeometry();
+    this.createMedias(items, bend, textColor, borderRadius, font);
+    this.update();
+    this.addEventListeners();
+  }
+  createRenderer() {
+    this.renderer = new Renderer({ alpha: true });
+    this.gl = this.renderer.gl;
+    this.gl.clearColor(0, 0, 0, 0);
+    this.container.appendChild(this.gl.canvas);
+  }
+  createCamera() {
+    this.camera = new Camera(this.gl);
+    this.camera.fov = 45;
+    this.camera.position.z = 20;
+  }
+  createScene() {
+    this.scene = new Transform();
+  }
+  createGeometry() {
+    this.planeGeometry = new Plane(this.gl, {
+      heightSegments: 50,
+      widthSegments: 100,
+    });
+  }
+  createMedias(items, bend = 1, textColor, borderRadius, font) {
+    const defaultItems = [
+      {
+        image: "/assets/ciyatake.png",
+        text: "Ciyatake",
+        TryNowlink: "https://ciyatake.shop",
+        codeLink: "https://github.com/Hobi-verse/Ciyatake",
+        description:
+          "Ciyatake is an e-commerce platform designed for women, offering a curated marketplace for fashion, beauty, and lifestyle products. It empowers women entrepreneurs with easy storefront creation, secure payments, personalized recommendations, and a community-focused shopping experience.",
+      },
+      {
+        image: "/assets/HMS.png",
+        text: "Hostel Management System",
+        TryNowlink: "https://project-hms-frontend-l3vz.onrender.com",
+        codeLink: "https://github.com/amansinghnishad/Project-HMS",
+        description:
+          "A Hostel Management System (HMS) is a web application designed to streamline the management of hostel facilities. It provides features for room allocation, student registration, and payment tracking, ensuring efficient communication between students and hostel management. The system enhances the overall experience for both students and administrators.",
+      },
+      {
+        image: "/assets/HobiMenia.png",
+        text: "HobiMenia",
+        TryNowlink: "https://hobimenia.vercel.app",
+        codeLink: "https://github.com/amansinghnishad/Hobimenia",
+        description:
+          "HobiMenia is a dynamic social media app that connects people through shared interests, enabling users to build communities, post pictures, and write blogs. Its standout AI-powered feature helps craft engaging blogs and suggests trending hashtags for maximum reach. With a seamless interface, users can connect, share, and inspire effortlessly.",
+      },
+      {
+        image: "/assets/DashPoint.png",
+        text: "DashPoint",
+        TryNowlink: "https://dash-point.vercel.app/",
+        codeLink: "https://github.com/amansinghnishad/DashPoint",
+        description:
+          "DashPoint is a custom personalized dashboard designed to streamline your digital workspace. It features an intuitive collection system, integrated YouTube watch functionality, advanced content extractor, sticky notes for quick reminders, and a comprehensive todo management system. Built to enhance productivity and keep all your essential tools in one seamless interface.",
+      },
+      {
+        image: "/assets/Arya.png",
+        text: "Arya",
+        TryNowlink: "https://proagent.onrender.com/",
+        codeLink: "https://github.com/amansinghnishad/PROAGENT",
+        description:
+          "Arya is an intelligent AI agent designed to revolutionize file management and processing. It offers powerful features including file compression, PDF conversion, audio-to-text transcription, text-to-audio synthesis, and various other file manipulation tools. With its smart automation capabilities, Arya simplifies complex file operations and enhances workflow efficiency.",
+      },
+    ];
+    const galleryItems = items && items.length ? items : defaultItems;
+    this.originalItems = galleryItems;
+    this.mediasImages = galleryItems.concat(galleryItems);
+    this.medias = this.mediasImages.map(
+      (data, index) =>
+        new Media({
+          geometry: this.planeGeometry,
+          gl: this.gl,
+          image: data.image,
+          index,
+          length: this.mediasImages.length,
+          renderer: this.renderer,
+          scene: this.scene,
+          screen: this.screen,
+          text: data.text,
+          viewport: this.viewport,
+          bend,
+          textColor,
+          borderRadius,
+          font,
+          cardScale: this.cardScale,
+        })
+    );
+  }
+  getPointerWorld(e) {
+    const rect = this.gl.canvas.getBoundingClientRect();
+    const touchX = e.touches?.[0]?.clientX ?? e.changedTouches?.[0]?.clientX;
+    const touchY = e.touches?.[0]?.clientY ?? e.changedTouches?.[0]?.clientY;
+    const clientX = touchX !== undefined ? touchX : e.clientX;
+    const clientY = touchY !== undefined ? touchY : e.clientY;
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+    const worldX =
+      (x / this.screen.width) * this.viewport.width - this.viewport.width / 2;
+    const worldY =
+      -(y / this.screen.height) * this.viewport.height +
+      this.viewport.height / 2;
+    return { x: worldX, y: worldY };
+  }
+  hitTestMedia(worldPoint, media) {
+    const dx = worldPoint.x - media.plane.position.x;
+    const dy = worldPoint.y - media.plane.position.y;
+    const rot = media.plane.rotation.z || 0;
+    const cos = Math.cos(-rot);
+    const sin = Math.sin(-rot);
+    const rx = dx * cos - dy * sin;
+    const ry = dx * sin + dy * cos;
+    const hx = media.plane.scale.x * 0.5;
+    const hy = media.plane.scale.y * 0.5;
+    return Math.abs(rx) <= hx && Math.abs(ry) <= hy;
+  }
+  onTouchDown(e) {
+    this.isDown = true;
+    this.scroll.position = this.scroll.current;
+    this.start = e.touches ? e.touches[0].clientX : e.clientX;
+  }
+  onTouchMove(e) {
+    if (!this.isDown) return;
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
+    const distance = (this.start - x) * (this.scrollSpeed * 0.025);
+    this.scroll.target = this.scroll.position + distance;
+  }
+  onTouchUp(e) {
+    const touchX =
+      e && (e.touches?.[0]?.clientX ?? e.changedTouches?.[0]?.clientX);
+    const end = touchX !== undefined ? touchX : e?.clientX;
+    const moved =
+      typeof end === "number" && typeof this.start === "number"
+        ? Math.abs(this.start - end)
+        : 9999;
+    this.isDown = false;
+    this.onCheck();
+    // If it was a tap/click (not a drag), perform hit test and emit click
+    if (moved < 6) {
+      const p = this.getPointerWorld(e || {});
+      let hit = null;
+      for (let i = 0; i < (this.medias?.length || 0); i++) {
+        const m = this.medias[i];
+        if (this.hitTestMedia(p, m)) {
+          hit = m;
+          break;
+        }
+      }
+      if (hit && this.onItemClick && this.originalItems?.length) {
+        const idxWrapped = hit.index % this.originalItems.length;
+        const raw = this.originalItems[idxWrapped];
+        this.onItemClick({ index: idxWrapped, ...raw });
+      }
+    }
+  }
+  onMouseMove(e) {
+    if (!this.medias || this.isDown) return;
+    const p = this.getPointerWorld(e);
+    let hovered = null;
+    for (let i = 0; i < this.medias.length; i++) {
+      const m = this.medias[i];
+      if (this.hitTestMedia(p, m)) {
+        hovered = m;
+        break;
+      }
+    }
+    if (hovered !== this.currentHovered) {
+      if (this.currentHovered) this.currentHovered.setHover(false);
+      this.currentHovered = hovered;
+      if (this.currentHovered) this.currentHovered.setHover(true);
+      if (this.onHoverChange) {
+        if (this.currentHovered) {
+          const idx =
+            this.currentHovered.index % (this.mediasImages?.length || 1);
+          const raw = this.mediasImages && this.mediasImages[idx];
+          const clientX = e.touches?.[0]?.clientX ?? e.clientX;
+          const clientY = e.touches?.[0]?.clientY ?? e.clientY;
+          this.onHoverChange({
+            index: idx,
+            text: raw?.text || "",
+            image: raw?.image || "",
+            description: raw?.description || "",
+            screenX: clientX,
+            screenY: clientY,
+          });
+        } else {
+          this.onHoverChange(null);
+        }
+      }
+    }
+  }
+  onMouseLeave() {
+    if (this.currentHovered) this.currentHovered.setHover(false);
+    this.currentHovered = null;
+    if (this.onHoverChange) this.onHoverChange(null);
+  }
+  onWheel(e) {
+    const delta = e.deltaY || e.wheelDelta || e.detail;
+    this.scroll.target += delta > 0 ? this.scrollSpeed : -this.scrollSpeed;
+    this.onCheckDebounce();
+  }
+  onCheck = () => {
+    if (!this.medias || !this.medias[0]) return;
+    const width = this.medias[0].width;
+    const itemIndex = Math.round(Math.abs(this.scroll.target) / width);
+    const item = width * itemIndex;
+    this.scroll.target = this.scroll.target < 0 ? -item : item;
+  };
+  onResize = () => {
+    this.screen = {
+      width: this.container.clientWidth,
+      height: this.container.clientHeight,
+    };
+    this.renderer.setSize(this.screen.width, this.screen.height);
+    this.camera.perspective({ aspect: this.screen.width / this.screen.height });
+    const fov = (this.camera.fov * Math.PI) / 180;
+    const height = 2 * Math.tan(fov / 2) * this.camera.position.z;
+    const width = height * this.camera.aspect;
+    this.viewport = { width, height };
+    if (this.medias)
+      this.medias.forEach((m) =>
+        m.onResize({ screen: this.screen, viewport: this.viewport })
+      );
+  };
+  update = () => {
+    this.scroll.current = lerp(
+      this.scroll.current,
+      this.scroll.target,
+      this.scroll.ease
+    );
+    const direction = this.scroll.current > this.scroll.last ? "right" : "left";
+    if (this.medias)
+      this.medias.forEach((m) => m.update(this.scroll, direction));
+    this.renderer.render({ scene: this.scene, camera: this.camera });
+    // compute centered item index and notify if changed
+    if (this.medias && this.medias[0]) {
+      const width = this.medias[0].width || 1;
+      const itemIndex = Math.round(Math.abs(this.scroll.current) / width);
+      if (itemIndex !== this.currentCenterIndex) {
+        this.currentCenterIndex = itemIndex;
+        if (this.onCenterChange && this.originalItems?.length) {
+          const idxWrapped = itemIndex % this.originalItems.length;
+          const raw = this.originalItems[idxWrapped];
+          this.onCenterChange({ index: idxWrapped, ...raw });
+        }
+      }
+    }
+    this.scroll.last = this.scroll.current;
+    this.raf = window.requestAnimationFrame(this.update);
+  };
+  addEventListeners() {
+    // Cache bound handlers so we can remove them later
+    this._onWheel = this.onWheel.bind(this);
+    this._onMouseDown = this.onTouchDown.bind(this);
+    this._onMouseMove = this.onTouchMove.bind(this);
+    this._onMouseUp = this.onTouchUp.bind(this);
+    this._onTouchStart = this.onTouchDown.bind(this);
+    this._onTouchMove = this.onTouchMove.bind(this);
+    this._onTouchEnd = this.onTouchUp.bind(this);
+    this._onCanvasMouseMove = this.onMouseMove.bind(this);
+    this._onCanvasMouseLeave = this.onMouseLeave.bind(this);
+
+    window.addEventListener("resize", this.onResize);
+    window.addEventListener("mousewheel", this._onWheel);
+    window.addEventListener("wheel", this._onWheel);
+    window.addEventListener("mousedown", this._onMouseDown);
+    window.addEventListener("mousemove", this._onMouseMove);
+    window.addEventListener("mouseup", this._onMouseUp);
+    window.addEventListener("touchstart", this._onTouchStart, {
+      passive: true,
+    });
+    window.addEventListener("touchmove", this._onTouchMove, { passive: true });
+    window.addEventListener("touchend", this._onTouchEnd);
+    if (this.gl?.canvas) {
+      this.gl.canvas.addEventListener("mousemove", this._onCanvasMouseMove);
+      this.gl.canvas.addEventListener("mouseleave", this._onCanvasMouseLeave);
+    }
+  }
+  destroy() {
+    window.cancelAnimationFrame(this.raf);
+    window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("mousewheel", this._onWheel);
+    window.removeEventListener("wheel", this._onWheel);
+    window.removeEventListener("mousedown", this._onMouseDown);
+    window.removeEventListener("mousemove", this._onMouseMove);
+    window.removeEventListener("mouseup", this._onMouseUp);
+    window.removeEventListener("touchstart", this._onTouchStart);
+    window.removeEventListener("touchmove", this._onTouchMove);
+    window.removeEventListener("touchend", this._onTouchEnd);
+    if (this.gl?.canvas) {
+      this.gl.canvas.removeEventListener("mousemove", this._onCanvasMouseMove);
+      this.gl.canvas.removeEventListener(
+        "mouseleave",
+        this._onCanvasMouseLeave
+      );
+    }
+    if (this.renderer?.gl?.canvas?.parentNode)
+      this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas);
+  }
+}
+
+export default function CircularGallery({
+  items,
+  bend = 3,
+  textColor = "#d6d3ce",
+  borderRadius = 0.05,
+  font = "bold 30px Figtree",
+  scrollSpeed = 2,
+  scrollEase = 0.05,
+  cardScale = 0.8,
+  onItemClick = null,
+  height = "100%",
+}) {
+  const containerRef = useRef(null);
+  const [hovered, setHovered] = useState(null);
+  const [centered, setCentered] = useState(null);
+  useEffect(() => {
+    const app = new App(containerRef.current, {
+      items,
+      bend,
+      textColor,
+      borderRadius,
+      font,
+      scrollSpeed,
+      scrollEase,
+      cardScale,
+      onHoverChange: (data) => {
+        setHovered(data);
+        try {
+          if (containerRef.current) {
+            containerRef.current.style.cursor = data ? "pointer" : "default";
+          }
+        } catch (e) {
+          // ignore DOM access errors
+        }
+      },
+      onCenterChange: (data) => setCentered(data),
+      onItemClick,
+    });
+    return () => app.destroy();
+  }, [
+    items,
+    bend,
+    textColor,
+    borderRadius,
+    font,
+    scrollSpeed,
+    scrollEase,
+    cardScale,
+    onItemClick,
+  ]);
+  return (
+    <div
+      ref={containerRef}
+      style={{ position: "relative", width: "100%", height: height }}
+      className="ogl-wrap"
+    >
+      {/* Permanent top label showing the centered item's name (falls back to hovered) */}
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: 8,
+          transform: "translateX(-50%)",
+          background: "rgba(10,10,12,0.7)",
+          color: "#fff",
+          padding: "8px 14px",
+          borderRadius: 10,
+          pointerEvents: "none",
+          fontFamily: "Figtree, system-ui, sans-serif",
+          fontSize: 24,
+          border: "1px solid rgba(255,255,255,0.08)",
+          boxShadow: "0 6px 20px rgba(0,0,0,0.45)",
+          whiteSpace: "nowrap",
+          zIndex: 4,
+        }}
+      >
+        {(centered && centered.text) || (hovered && hovered.text) || ""}
+      </div>
+      {hovered && (
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            bottom: 24,
+            transform: "translateX(-50%)",
+            background: "rgba(20,20,20,0.7)",
+            color: "#eee",
+            padding: "10px 14px",
+            borderRadius: 8,
+            backdropFilter: "blur(6px)",
+            pointerEvents: "none",
+            fontFamily: "Figtree, system-ui, sans-serif",
+            fontSize: 14,
+            border: "1px solid rgba(255,255,255,0.12)",
+            boxShadow: "0 6px 16px rgba(0,0,0,0.35)",
+            maxWidth: 520,
+            whiteSpace: "normal",
+            textAlign: "center",
+          }}
+        >
+          <div style={{ fontWeight: 700, marginBottom: 4 }}>{hovered.text}</div>
+          {hovered.description && (
+            <div style={{ opacity: 0.9, lineHeight: 1.3 }}>
+              {hovered.description}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
