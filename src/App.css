@@ -60,6 +60,21 @@ body {
   overflow-x: hidden;
 }
 
+.no-scroll {
+  overflow: hidden !important;
+}
+
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  opacity: 1;
+  transition: opacity 0.45s ease;
+}
+
+.app-shell--masked {
+  opacity: 0;
+}
+
 /* Ensure images are responsive */
 img {
   max-width: 100%;
@@ -69,4 +84,10 @@ img {
 /* Smooth scrolling for better UX */
 html {
   scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-shell {
+    transition: none;
+  }
 }
