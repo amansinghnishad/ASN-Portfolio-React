@@ -16,7 +16,7 @@ const Navbar = () => {
           <TabletOrMobileNav />{" "}
           <div
             style={{
-              width: "90%",
+              width: "100%",
               height: "60px",
               display: "flex",
               alignItems: "center",

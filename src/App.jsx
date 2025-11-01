@@ -25,11 +25,10 @@ function App() {
         </div>
         <div id="projects" className="projects-section">
           <Projects />
-        </div>
+        </div>{" "}
         <div id="contact" className="contact-section">
           <Contact />
         </div>
-
         <Footer />
       </div>
     </>

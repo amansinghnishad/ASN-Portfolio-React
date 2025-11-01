@@ -20,6 +20,7 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 .contact-container::before {
@@ -263,6 +264,11 @@
   .contact-motion-container {
     margin: 3% 0%;
     padding: 0 15px;
+  }
+
+  /* Disable aurora on smaller screens for performance and clarity */
+  .contact-aurora {
+    display: none;
   }
 
   .contact-container {
