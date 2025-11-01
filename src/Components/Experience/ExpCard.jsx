@@ -18,8 +18,7 @@ import {
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 
-// replace with your own imports, see the usage snippet for details
-import lanyard from "../../../public/git.png";
+import lanyard from "../../../public/assets/lanyard.png";
 
 import * as THREE from "three";
 
