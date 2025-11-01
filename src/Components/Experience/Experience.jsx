@@ -2,11 +2,11 @@ import "./Experience.css";
 import ExpCard from "./ExpCard";
 const experienceData = [
   {
-    id: 1,
+    id: 2,
     glb: "/assets/VaultOfCodecard.glb",
   },
   {
-    id: 2,
+    id: 1,
     glb: "/assets/ZoroCard.glb",
   },
 ];
