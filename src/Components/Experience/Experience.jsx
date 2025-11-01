@@ -20,24 +20,20 @@ const Experience = () => {
           <div className="section-divider"></div>
         </div>
 
-        <div className="experience-timeline">
-          <div className="cards-grid">
-            {experienceData.map((exp) => (
-              <ExpCard
-                key={exp.id}
-                position={[0, 0, 10]}
-                gravity={[0, -40, 0]}
-                cardScale={2}
-                bandRepeat={[-1, 1]}
-                containerHeight={420}
-                glb={exp.glb}
-              />
-            ))}
-          </div>
+        <div className="cards-grid">
+          {experienceData.map((exp) => (
+            <ExpCard
+              key={exp.id}
+              position={[0, 0, 10]}
+              gravity={[0, -40, 0]}
+              cardScale={2}
+              bandRepeat={[-1, 1]}
+              containerHeight={420}
+              glb={exp.glb}
+            />
+          ))}
         </div>
       </div>
-
-      <div className="experience-gradient-div"></div>
     </div>
   );
 };
