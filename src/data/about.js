@@ -3,11 +3,10 @@ export const about = {
   title: "Full-Stack Developer",
   location: "India",
   summary:
-    "I build engaging web experiences that balance performance, accessibility, and polish. My current focus is crafting immersive, data-driven UIs with React, Tailwind, and modern tooling.",
+    "I'm a programmer who adapts to shifting challenges. I focus on solutions, refine relentlessly, and deliver results that hit the mark — cleanly and efficiently. I thrive in uncertainty, turning obstacles into opportunities with logic and a knack for simplicity. No overcomplicating, just outcomes that work.",
   highlights: [
-    "5+ years shipping frontend-heavy products for startups and enterprise clients",
-    "Blend of design intuition and engineering discipline",
-    "Comfortable across the stack: React, Node.js, Remix, Next.js, and cloud-native workflows",
+    "2022-26 · University of Lucknow (Faculty of Engineering and Technology) — B.Tech in Computer Science and Engineering · 8 CGPA",
+    "2020-21 · Army Public School, Chandimandir Cantt. Panchkula — Class 12 (Intermediate) · 83.5%",
   ],
   contact: [
     { label: "Portfolio", value: "amansinghnishad.me", href: "https://amansinghnishad.me" },

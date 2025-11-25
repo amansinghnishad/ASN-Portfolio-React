@@ -19,6 +19,21 @@ export default {
       widest: ".25em",
     },
     extend: {
+      colors: {
+        canvas: "var(--color-app-background)",
+        surface: "var(--color-surface)",
+        surfaceStrong: "var(--color-surface-strong)",
+        foreground: "var(--color-text-primary)",
+        muted: "var(--color-text-muted)",
+        subtle: "var(--color-text-subtle)",
+        accent: {
+          DEFAULT: "var(--color-accent)",
+          soft: "var(--color-accent-soft)",
+        },
+        positive: "var(--color-positive)",
+        borderSubtle: "var(--color-border)",
+        borderStrong: "var(--color-border-strong)",
+      },
       backgroundImage: {
         "hero-pattern": "url('card-skills-background.png')",
         "footer-texture": "url('card-hello-background.png')",
@@ -26,6 +41,7 @@ export default {
       boxShadow: {
         "custom-light":
           "0 5px 10px rgba(0,0,0,0.2), 0px 0px 20px rgba(0,0,0,0.2)",
+        glass: "var(--shadow-soft)",
       },
       height: {
         "1/5": "20%",

@@ -166,7 +166,7 @@ const ResizableColumns = ({
         ...style,
       }}
       className={[
-        "grid h-full min-h-0 grid-cols-1 gap-6 md:grid-cols-2",
+        "grid h-full min-h-0 grid-cols-1 gap-1 md:grid-cols-2",
         "lg:auto-rows-[minmax(0,1fr)] lg:items-stretch",
         "lg:[grid-template-columns:var(--col-left)_var(--handle-width)_var(--col-center)_var(--handle-width)_var(--col-right)]",
         className,
@@ -186,7 +186,7 @@ const ResizableColumns = ({
         onKeyDown={handleKeyboardResize("left-center")}
         className={resolvedHandleClass}
       >
-        <span className="pointer-events-none h-12 border-l border-white/40" />
+        <span className="pointer-events-none h-12 border-l border-borderSubtle" />
       </div>
 
       <div className="min-h-0 lg:h-full">{panels.center}</div>
@@ -201,7 +201,7 @@ const ResizableColumns = ({
         onKeyDown={handleKeyboardResize("center-right")}
         className={resolvedHandleClass}
       >
-        <span className="pointer-events-none h-12 border-l border-white/40" />
+        <span className="pointer-events-none h-12 border-l border-borderSubtle" />
       </div>
 
       <div className="min-h-0 overflow-hidden lg:h-full">{panels.right}</div>

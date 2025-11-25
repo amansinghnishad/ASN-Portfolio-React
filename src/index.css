@@ -2,10 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  height: 100vh;
-  width: 100vw;
-  background-image: url("../public/img.png");
-  background-size: contain;
-  background-repeat: no-repeat;
+@layer base {
+  html {
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background: transparent;
+  }
+
+  button {
+    cursor: pointer;
+  }
 }

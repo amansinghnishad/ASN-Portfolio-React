@@ -1,0 +1,94 @@
+:root {
+  color-scheme: light;
+  --color-app-background: radial-gradient(
+    circle at 10% 20%,
+    #fdf8f3 0%,
+    #f3efe9 45%,
+    #ede7e1 100%
+  );
+  --color-surface: rgba(255, 255, 255, 0.78);
+  --color-surface-strong: rgba(255, 255, 255, 0.9);
+  --color-border: rgba(158, 144, 128, 0.22);
+  --color-border-strong: rgba(158, 144, 128, 0.32);
+  --color-text-primary: #2f2a24;
+  --color-text-muted: #5f5850;
+  --color-text-subtle: #8c837a;
+  --color-accent: #7c5dfa;
+  --color-accent-soft: rgba(124, 93, 250, 0.18);
+  --color-positive: #3cc8a5;
+  --shadow-soft: 0 26px 52px -34px rgba(57, 41, 92, 0.45);
+  --panel-backdrop: blur(28px);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-app-background: radial-gradient(
+    circle at 15% 10%,
+    #1d1f29 0%,
+    #11131c 55%,
+    #070811 100%
+  );
+  --color-surface: rgba(21, 22, 32, 0.72);
+  --color-surface-strong: rgba(25, 26, 37, 0.86);
+  --color-border: rgba(200, 188, 170, 0.18);
+  --color-border-strong: rgba(200, 188, 170, 0.28);
+  --color-text-primary: #f4efe8;
+  --color-text-muted: #c2bab0;
+  --color-text-subtle: #9f968c;
+  --color-accent: #c7abff;
+  --color-accent-soft: rgba(199, 171, 255, 0.22);
+  --color-positive: #4bd6bb;
+  --shadow-soft: 0 28px 56px -30px rgba(4, 5, 12, 0.75);
+  --panel-backdrop: blur(28px);
+}
+
+body {
+  background: var(--color-app-background);
+  color: var(--color-text-primary);
+  transition: background 0.6s ease, color 0.3s ease;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+.custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) transparent;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-accent-soft);
+  border-radius: 9999px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+.theme-toggle {
+  border-radius: 9999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.theme-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124, 93, 250, 0.25);
+}

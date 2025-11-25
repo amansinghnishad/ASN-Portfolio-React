@@ -10,7 +10,7 @@ const LeftPanel = ({
   onSelectProject,
 }) => {
   return (
-    <div className="flex h-full min-h-0 flex-col gap-6">
+    <div className="flex h-full min-h-0 flex-col gap-1">
       <NavigationPanel activeTab={activeTab} onChange={onTabChange} />
       <div className="custom-scroll flex-1 min-h-0 overflow-y-auto scroll-smooth pr-1">
         <ProjectListPanel
