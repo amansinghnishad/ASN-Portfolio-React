@@ -39,7 +39,7 @@ const HeaderSection = ({ name, title, summary, resumeUrl, logo }) => {
               <img
                 src={logo}
                 alt={`${name} logo`}
-                className="h-24 w-24 object-cover shadow-glass"
+                className="h-24 w-24 object-cover"
               />
             )}
           </div>
