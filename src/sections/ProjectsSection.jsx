@@ -32,7 +32,7 @@ export const ProjectListPanel = ({ selectedProject, onSelect }) => {
                 </p>
               </button>
               {!isLast && (
-                <span className="my-2 w-full border-t border-dashed border-borderSubtle" />
+                <span className="my-3 w-full border-t border-dashed border-borderSubtle" />
               )}
             </div>
           );
@@ -68,16 +68,14 @@ export const ProjectDetailSection = ({ project }) => {
   }
 
   return (
-    <section className="flex h-full min-h-0 flex-col gap-5">
+    <section className="flex h-full min-h-0 flex-col gap-6">
       <header className="space-y-1">
-        <p className="text-sm uppercase tracking-[0.3em] text-subtle">
-          Case Study
-        </p>
         <h2 className="text-3xl font-semibold text-foreground">
           {project.name}
         </h2>
         <p className="text-sm text-muted">{project.description}</p>
       </header>
+      <span className="block border-t border-dashed border-borderSubtle" />
 
       <div className="space-y-4 text-sm text-muted">
         {project.details && project.details.length > 0 && (
@@ -91,7 +89,9 @@ export const ProjectDetailSection = ({ project }) => {
           </ul>
         )}
 
-        <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.3em] text-subtle">
+        <span className="block border-t border-dashed border-borderSubtle" />
+
+        <div className="flex flex-wrap items-center gap-6 text-xs uppercase tracking-[0.3em] text-subtle">
           <span>Tech</span>
           <div className="flex flex-wrap gap-2 text-[11px] text-accent">
             {project.tech.map((item) => (
@@ -104,7 +104,7 @@ export const ProjectDetailSection = ({ project }) => {
             ))}
           </div>
         </div>
-
+        <span className="block border-t border-dashed border-borderSubtle" />
         <div className="flex flex-wrap gap-3 text-[11px] uppercase tracking-[0.3em] text-subtle">
           {project.repoUrl && (
             <a
@@ -127,6 +127,8 @@ export const ProjectDetailSection = ({ project }) => {
             </a>
           )}
         </div>
+
+        <span className="block border-t border-dashed border-borderSubtle" />
       </div>
     </section>
   );

@@ -18,8 +18,11 @@ function App() {
       header={
         <HeaderSection
           name={about.name}
+          title={about.title}
           summary={about.summary}
-          availabilityText="Available for collaborations"
+          resumeUrl={about.resumeUrl}
+          highlights={about.highlights.slice(0, 3)}
+          logo={about.logo}
         />
       }
       leftPanel={

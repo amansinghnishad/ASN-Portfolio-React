@@ -1,16 +1,47 @@
 export const about = {
   name: "Aman Singh Nishad",
-  title: "Full-Stack Developer",
-  location: "India",
+  title: "Full Stack Developer",
+  logo: "/logo.png",
   summary:
-    "I'm a programmer who adapts to shifting challenges. I focus on solutions, refine relentlessly, and deliver results that hit the mark — cleanly and efficiently. I thrive in uncertainty, turning obstacles into opportunities with logic and a knack for simplicity. No overcomplicating, just outcomes that work.",
+    "I craft immersive web experiences that balance elegance with performance. I enjoy translating complex ideas into intuitive interfaces and building systems that scale gracefully across devices.",
+  resumeUrl: "/AMANSINGHNISHADResume%20.pdf",
   highlights: [
-    "2022-26 · University of Lucknow (Faculty of Engineering and Technology) — B.Tech in Computer Science and Engineering · 8 CGPA",
-    "2020-21 · Army Public School, Chandimandir Cantt. Panchkula — Class 12 (Intermediate) · 83.5%",
+    "Experienced with modern frontend stacks including React, Vite, and Tailwind CSS.",
+    "Comfortable collaborating across design, product, and engineering disciplines to ship thoughtful features.",
+    "Grounded in accessibility and inclusive design principles to ensure experiences work for everyone.",
+    "Continuously exploring creative coding, motion design, and visual storytelling on the web.",
+  ],
+  techStack: [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Vite",
+    "Tailwind CSS",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "Figma",
   ],
   contact: [
-    { label: "Portfolio", value: "amansinghnishad.me", href: "https://amansinghnishad.me" },
-    { label: "GitHub", value: "github.com/amansinghnishad", href: "https://github.com/amansinghnishad" },
-    { label: "Email", value: "amansinghnishad0808@gmail.com", href: "mailto:amansinghnishad0808@gmail.com" },
+    {
+      label: "Portfolio",
+      value: "amansinghnishad.me",
+      href: "https://amansinghnishad.me",
+    },
+    {
+      label: "Email",
+      value: "amansinghnishad04@gmail.com",
+      href: "mailto:amansinghnishad04@gmail.com",
+    },
+    {
+      label: "LinkedIn",
+      value: "linkedin.com/in/amansinghnishad",
+      href: "https://www.linkedin.com/in/amansinghnishad/",
+    },
+    {
+      label: "GitHub",
+      value: "github.com/amansinghnishad",
+      href: "https://github.com/amansinghnishad",
+    },
   ],
 };

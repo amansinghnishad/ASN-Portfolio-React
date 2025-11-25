@@ -8,6 +8,7 @@ const AboutSection = () => {
         <h2 className="text-2xl font-semibold text-foreground">{about.name}</h2>
         <p className="text-sm text-muted">{about.title}</p>
       </header>
+      <span className="block border-t border-dashed border-borderSubtle" />
 
       <p className="text-sm leading-relaxed text-muted">{about.summary}</p>
 
@@ -19,25 +20,17 @@ const AboutSection = () => {
           </li>
         ))}
       </ul>
-
-      <div className="mt-auto space-y-2">
-        <p className="text-xs uppercase tracking-[0.3em] text-subtle">
-          Contact
-        </p>
-        <ul className="space-y-1 text-sm">
-          {about.contact.map((entry) => (
-            <li key={entry.label}>
-              <a
-                href={entry.href}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 text-muted transition-colors hover:text-foreground"
-              >
-                <span className="font-medium text-foreground">
-                  {entry.label}
-                </span>
-                <span className="text-xs text-subtle">{entry.value}</span>
-              </a>
+      <div className="rounded-2xl border border-borderSubtle bg-surface p-5 shadow-glass transition-colors">
+        <h3 className="text-xs uppercase tracking-[0.3em] text-subtle">
+          Tech Stack
+        </h3>
+        <ul className="mt-3 flex flex-wrap gap-2 text-sm text-muted">
+          {about.techStack.map((item) => (
+            <li
+              key={item}
+              className="rounded-full border border-borderSubtle bg-surfaceStrong px-3 py-1 text-foreground"
+            >
+              {item}
             </li>
           ))}
         </ul>
