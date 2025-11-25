@@ -5,7 +5,7 @@ import ResizableColumns from "./components/ResizableColumns";
 
 const Layout = ({ header, leftPanel, centerPanel, rightPanel, footer }) => {
   return (
-    <div className="grid min-h-screen max-h-screen grid-rows-[auto,1fr,auto] gap-6 p-6 text-foreground transition-colors duration-500">
+    <div className="grid min-h-[100vh] max-h-[120vh] grid-rows-[auto,1fr,auto] gap-6 p-6 text-foreground transition-colors duration-500">
       <GlassPanel as="header" className="overflow-hidden">
         <div className="max-h-full overflow-y-auto scroll-smooth pr-1">
           {header}
@@ -30,7 +30,7 @@ const Layout = ({ header, leftPanel, centerPanel, rightPanel, footer }) => {
             </GlassPanel>
           ),
           right: (
-            <GlassPanel className="flex h-full flex-col overflow-hidden p-0">
+            <GlassPanel className="flex h-full flex-col overflow-hidden">
               <div className="flex-1 overflow-hidden">{rightPanel}</div>
             </GlassPanel>
           ),
