@@ -1,71 +1,51 @@
-import { useEffect, useState } from "react";
-import "./App.css";
-import HeroPage from "./Components/HeroPage/HeroPage";
-import Navbar from "./Components/Navbar/Navbar";
-import About from "./Components/About/About";
-import Experience from "./Components/Experience/Experience";
-import Projects from "./Components/Projects/Projects";
-import Contact from "./Components/Contact/Contact";
-import Footer from "./Components/Footer/Footer";
-import LoadingScreen from "./Components/LoadingScreen/LoadingScreen";
-import BackgroundAnimation from "../utils/BackgroundAnimation";
+import { useState } from "react";
+
+import Layout from "./layout";
+import HeaderSection from "./sections/HeaderSection";
+import FooterSection from "./sections/FooterSection";
+import LeftPanel from "./sections/LeftPanel";
+import CenterPanel from "./sections/CenterPanel";
+import { ProjectPreviewPanel } from "./sections/ProjectsSection";
+import { about } from "./data/about";
+import { projects } from "./data/projects";
 
 function App() {
-  const [isLoaderActive, setIsLoaderActive] = useState(true);
-  const [shouldRenderLoader, setShouldRenderLoader] = useState(true);
-
-  useEffect(() => {
-    if (isLoaderActive) {
-      document.body.classList.add("no-scroll");
-
-      return () => {
-        document.body.classList.remove("no-scroll");
-      };
-    }
-
-    document.body.classList.remove("no-scroll");
-
-    const fadeTimer = setTimeout(() => {
-      setShouldRenderLoader(false);
-    }, 500);
-
-    return () => {
-      clearTimeout(fadeTimer);
-      document.body.classList.remove("no-scroll");
-    };
-  }, [isLoaderActive]);
+  const [activeTab, setActiveTab] = useState("about");
+  const [selectedProject, setSelectedProject] = useState(projects[0]);
 
   return (
-    <>
-      {shouldRenderLoader && (
-        <LoadingScreen
-          isActive={isLoaderActive}
-          onComplete={() => setIsLoaderActive(false)}
+    <Layout
+      header={
+        <HeaderSection
+          name={about.name}
+          summary={about.summary}
+          availabilityText="Available for collaborations"
         />
-      )}
-      <div className={`app-shell ${isLoaderActive ? "app-shell--masked" : ""}`}>
-        <Navbar />
-        <div className="app-container">
-          <BackgroundAnimation />
-          <div id="hero">
-            <HeroPage />
-          </div>
-          <div id="about" className="about-section">
-            <About />
-          </div>
-          <div id="experience" className="experience-section">
-            <Experience />
-          </div>
-          <div id="projects" className="projects-section">
-            <Projects />
-          </div>
-          <div id="contact" className="contact-section">
-            <Contact />
-          </div>
-          <Footer />
-        </div>
-      </div>
-    </>
+      }
+      leftPanel={
+        <LeftPanel
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          selectedProject={selectedProject}
+          onSelectProject={setSelectedProject}
+        />
+      }
+      centerPanel={
+        <CenterPanel activeTab={activeTab} selectedProject={selectedProject} />
+      }
+      rightPanel={
+        <ProjectPreviewPanel
+          project={selectedProject}
+          isActive={activeTab === "projects"}
+        />
+      }
+      footer={
+        <FooterSection
+          name={about.name}
+          technologies={["React", "Vite", "Tailwind"]}
+        />
+      }
+    />
   );
 }
 
