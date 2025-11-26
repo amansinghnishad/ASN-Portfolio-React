@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import Layout from "./layout";
 import HeaderSection from "./sections/HeaderSection";
@@ -12,6 +12,14 @@ import { projects } from "./data/projects";
 function App() {
   const [activeTab, setActiveTab] = useState("about");
   const [selectedProject, setSelectedProject] = useState(projects[0]);
+
+  const handleSelectProject = useCallback(
+    (project) => {
+      setSelectedProject(project);
+      setActiveTab("projects");
+    },
+    [setActiveTab, setSelectedProject]
+  );
 
   return (
     <Layout
@@ -30,7 +38,7 @@ function App() {
           activeTab={activeTab}
           onTabChange={setActiveTab}
           selectedProject={selectedProject}
-          onSelectProject={setSelectedProject}
+          onSelectProject={handleSelectProject}
         />
       }
       centerPanel={
@@ -42,12 +50,7 @@ function App() {
           isActive={activeTab === "projects"}
         />
       }
-      footer={
-        <FooterSection
-          name={about.name}
-          technologies={["React", "Vite", "Tailwind"]}
-        />
-      }
+      footer={<FooterSection name={about.name} />}
     />
   );
 }

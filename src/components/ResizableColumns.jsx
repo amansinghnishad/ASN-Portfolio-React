@@ -149,7 +149,7 @@ const ResizableColumns = ({
   );
 
   const resolvedHandleClass = [
-    "hidden h-full cursor-col-resize items-center justify-center lg:flex",
+    "group relative hidden h-full w-full cursor-col-resize items-center justify-center rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent lg:flex",
     handleClassName,
   ]
     .filter(Boolean)
@@ -186,7 +186,7 @@ const ResizableColumns = ({
         onKeyDown={handleKeyboardResize("left-center")}
         className={resolvedHandleClass}
       >
-        <span className="pointer-events-none h-12 border-l border-borderSubtle" />
+        <span className="pointer-events-none h-16 w-px rounded-full bg-gradient-to-b from-borderSubtle/60 via-borderStrong/80 to-borderSubtle/60 transition-all duration-300 group-hover:from-accent/70 group-hover:via-accent/80 group-hover:to-accent/70 group-focus-visible:from-accent group-focus-visible:via-accent group-focus-visible:to-accent" />
       </div>
 
       <div className="min-h-0 lg:h-full">{panels.center}</div>
@@ -201,7 +201,7 @@ const ResizableColumns = ({
         onKeyDown={handleKeyboardResize("center-right")}
         className={resolvedHandleClass}
       >
-        <span className="pointer-events-none h-12 border-l border-borderSubtle" />
+        <span className="pointer-events-none h-16 w-px rounded-full bg-gradient-to-b from-borderSubtle/60 via-borderStrong/80 to-borderSubtle/60 transition-all duration-300 group-hover:from-accent/70 group-hover:via-accent/80 group-hover:to-accent/70 group-focus-visible:from-accent group-focus-visible:via-accent group-focus-visible:to-accent" />
       </div>
 
       <div className="min-h-0 overflow-hidden lg:h-full">{panels.right}</div>

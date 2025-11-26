@@ -2,46 +2,64 @@ import PropTypes from "prop-types";
 
 import GlassPanel from "./components/GlassPanel";
 import ResizableColumns from "./components/ResizableColumns";
+import Dither from "./utils/Dither";
 
 const Layout = ({ header, leftPanel, centerPanel, rightPanel, footer }) => {
   return (
-    <div className="grid min-h-[100vh] max-h-[120vh] grid-rows-[auto,1fr,auto] gap-6 p-6 text-foreground transition-colors duration-500">
-      <GlassPanel as="header" className="overflow-hidden">
-        <div className="max-h-full overflow-y-auto scroll-smooth pr-1">
-          {header}
-        </div>
-      </GlassPanel>
+    <div className="relative min-h-screen overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <Dither
+          waveColor={[0.5, 0.5, 0.5]}
+          disableAnimation={false}
+          enableMouseInteraction
+          mouseRadius={0.3}
+          colorNum={4}
+          waveAmplitude={0.3}
+          waveFrequency={3}
+          waveSpeed={0.05}
+        />
+      </div>
 
-      <ResizableColumns
-        className="min-h-0"
-        panels={{
-          left: (
-            <GlassPanel className="flex h-full flex-col overflow-hidden">
-              <div className="flex-1 overflow-y-auto scroll-smooth pr-1">
-                {leftPanel}
-              </div>
-            </GlassPanel>
-          ),
-          center: (
-            <GlassPanel className="flex h-full flex-col overflow-hidden">
-              <div className="flex-1 overflow-y-auto scroll-smooth pr-1">
-                {centerPanel}
-              </div>
-            </GlassPanel>
-          ),
-          right: (
-            <GlassPanel className="flex h-full flex-col overflow-hidden">
-              <div className="flex-1 overflow-hidden">{rightPanel}</div>
-            </GlassPanel>
-          ),
-        }}
-      />
+      <div className="relative z-10 grid min-h-screen grid-rows-[auto,1fr,auto] gap-4 p-4 text-foreground transition-colors duration-500 sm:gap-6 sm:p-6">
+        <GlassPanel as="header" className="overflow-hidden">
+          <div className="max-h-full overflow-y-auto scroll-smooth pr-1">
+            {header}
+          </div>
+        </GlassPanel>
 
-      <GlassPanel as="footer" className="overflow-hidden">
-        <div className="max-h-full overflow-y-auto scroll-smooth pr-1">
-          {footer}
-        </div>
-      </GlassPanel>
+        <ResizableColumns
+          className="min-h-0"
+          panels={{
+            left: (
+              <GlassPanel className="flex h-full flex-col overflow-hidden">
+                <div className="flex-1 overflow-y-auto scroll-smooth pr-1">
+                  {leftPanel}
+                </div>
+              </GlassPanel>
+            ),
+            center: (
+              <GlassPanel className="flex h-full flex-col overflow-hidden">
+                <div className="flex-1 overflow-y-auto scroll-smooth pr-1">
+                  {centerPanel}
+                </div>
+              </GlassPanel>
+            ),
+            right: (
+              <GlassPanel className="flex h-full flex-col overflow-hidden">
+                <div className="flex-1 overflow-hidden sm:max-h-none max-h-[420px]">
+                  {rightPanel}
+                </div>
+              </GlassPanel>
+            ),
+          }}
+        />
+
+        <GlassPanel as="footer" className="overflow-hidden">
+          <div className="max-h-full overflow-y-auto scroll-smooth pr-1">
+            {footer}
+          </div>
+        </GlassPanel>
+      </div>
     </div>
   );
 };

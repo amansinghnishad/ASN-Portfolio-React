@@ -1,53 +1,133 @@
 :root {
   color-scheme: light;
   --color-app-background: radial-gradient(
-    circle at 10% 20%,
-    #fdf8f3 0%,
-    #f3efe9 45%,
-    #ede7e1 100%
-  );
-  --color-surface: rgba(255, 255, 255, 0.78);
-  --color-surface-strong: rgba(255, 255, 255, 0.9);
-  --color-border: rgba(158, 144, 128, 0.22);
-  --color-border-strong: rgba(158, 144, 128, 0.32);
-  --color-text-primary: #2f2a24;
-  --color-text-muted: #5f5850;
-  --color-text-subtle: #8c837a;
+      120% 120% at 15% 10%,
+      #fdf7f2 0%,
+      #f7f4ff 32%,
+      #f0f4ff 58%,
+      #f6f0ff 100%
+    )
+    fixed;
+  --color-surface: rgba(255, 255, 255, 0.64);
+  --color-surface-strong: rgba(255, 255, 255, 0.92);
+  --color-border: rgba(156, 144, 128, 0.26);
+  --color-border-strong: rgba(156, 144, 128, 0.44);
+  --color-text-primary: #25211c;
+  --color-text-muted: #5a534c;
+  --color-text-subtle: #8d847a;
   --color-accent: #7c5dfa;
   --color-accent-soft: rgba(124, 93, 250, 0.18);
-  --color-positive: #3cc8a5;
-  --shadow-soft: 0 26px 52px -34px rgba(57, 41, 92, 0.45);
-  --panel-backdrop: blur(28px);
+  --color-positive: #35c3a1;
+  --shadow-soft: 0 32px 72px -36px rgba(71, 56, 117, 0.38);
+  --panel-backdrop: blur(32px) saturate(120%);
+  --glass-highlight: rgba(255, 255, 255, 0.65);
+  --glass-glow: rgba(124, 93, 250, 0.18);
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
   --color-app-background: radial-gradient(
-    circle at 15% 10%,
-    #1d1f29 0%,
-    #11131c 55%,
-    #070811 100%
-  );
-  --color-surface: rgba(21, 22, 32, 0.72);
-  --color-surface-strong: rgba(25, 26, 37, 0.86);
-  --color-border: rgba(200, 188, 170, 0.18);
-  --color-border-strong: rgba(200, 188, 170, 0.28);
-  --color-text-primary: #f4efe8;
-  --color-text-muted: #c2bab0;
-  --color-text-subtle: #9f968c;
+      140% 140% at 15% 15%,
+      #27293a 0%,
+      #151623 42%,
+      #0a0b15 70%,
+      #060712 100%
+    )
+    fixed;
+  --color-surface: rgba(20, 21, 30, 0.6);
+  --color-surface-strong: rgba(26, 27, 38, 0.86);
+  --color-border: rgba(206, 194, 178, 0.2);
+  --color-border-strong: rgba(206, 194, 178, 0.32);
+  --color-text-primary: #f7f1ea;
+  --color-text-muted: #c8beb4;
+  --color-text-subtle: #9e968b;
   --color-accent: #c7abff;
   --color-accent-soft: rgba(199, 171, 255, 0.22);
-  --color-positive: #4bd6bb;
-  --shadow-soft: 0 28px 56px -30px rgba(4, 5, 12, 0.75);
-  --panel-backdrop: blur(28px);
+  --color-positive: #45d3b8;
+  --shadow-soft: 0 36px 82px -38px rgba(4, 5, 12, 0.72);
+  --panel-backdrop: blur(34px) saturate(130%);
+  --glass-highlight: rgba(255, 255, 255, 0.12);
+  --glass-glow: rgba(199, 171, 255, 0.22);
 }
 
 body {
   background: var(--color-app-background);
+  background-size: 220% 220%;
   color: var(--color-text-primary);
-  transition: background 0.6s ease, color 0.3s ease;
+  transition: background-position 14s ease-in-out, color 0.3s ease;
+  animation: background-pan 26s ease-in-out infinite alternate;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  body {
+    background-size: 100% 100%;
+    animation: none;
+    transition: color 0.3s ease;
+  }
+}
+
+@keyframes background-pan {
+  0% {
+    background-position: 0% 40%;
+  }
+  100% {
+    background-position: 100% 60%;
+  }
+}
+
+.glass-panel {
+  position: relative;
+  background: linear-gradient(
+    160deg,
+    var(--color-surface) 0%,
+    var(--color-surface-strong) 65%
+  );
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: var(--panel-backdrop);
+  transform: translateZ(0);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    var(--glass-highlight) 6%,
+    transparent 55%
+  );
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.glass-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    120% 120% at 50% 0%,
+    var(--glass-glow) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.glass-panel:hover,
+.glass-panel:focus-within {
+  border-color: var(--color-border-strong);
+  box-shadow: 0 16px 50px -24px rgba(124, 93, 250, 0.25);
+}
+
+.glass-panel:hover::after,
+.glass-panel:focus-within::after {
+  opacity: 0.6;
+}
 ::selection {
   background: var(--color-accent);
   color: #ffffff;
