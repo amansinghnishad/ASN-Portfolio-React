@@ -22,7 +22,7 @@ export const projects = [
       "Centralized record management to simplify audits and reporting.",
     ],
     tech: ["React", "Node.js", "Express", "MongoDB"],
-    liveUrl: "https://project-28ljxxyuw-amansinghnishads-projects.vercel.app/",
+    liveUrl: "https://project-hms-beta.vercel.app/",
     repoUrl: "https://github.com/amansinghnishad/Project-HMS",
   },
   {
