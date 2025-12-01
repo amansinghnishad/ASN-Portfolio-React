@@ -31,6 +31,8 @@ function App() {
           resumeUrl={about.resumeUrl}
           highlights={about.highlights.slice(0, 3)}
           logo={about.logo}
+          logoLight={about.logoLight}
+          logoDark={about.logoDark}
         />
       }
       leftPanel={

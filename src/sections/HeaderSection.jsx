@@ -1,14 +1,58 @@
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import ThemeToggle from "../components/ThemeToggle";
 
-const HeaderSection = ({ name, title, summary, resumeUrl, logo }) => {
+const resolveCurrentTheme = () => {
+  if (typeof document === "undefined") {
+    return "light";
+  }
+  return document.documentElement.getAttribute("data-theme") ?? "light";
+};
+
+const HeaderSection = ({
+  name,
+  title,
+  summary,
+  resumeUrl,
+  logo,
+  logoLight,
+  logoDark,
+}) => {
+  const [theme, setTheme] = useState(resolveCurrentTheme);
+
+  useEffect(() => {
+    if (typeof document === "undefined") {
+      return undefined;
+    }
+
+    const root = document.documentElement;
+    const updateTheme = () => {
+      setTheme(root.getAttribute("data-theme") ?? "light");
+    };
+
+    updateTheme();
+
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(root, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const resolvedLogo =
+    theme === "dark"
+      ? logoDark || logo || logoLight
+      : logoLight || logo || logoDark;
+
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
         <div className="space-y-4">
           {title && (
-            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-foreground">
+            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-accent">
               {title}
             </span>
           )}
@@ -16,16 +60,16 @@ const HeaderSection = ({ name, title, summary, resumeUrl, logo }) => {
             {name}
           </h1>
           {summary && (
-            <p className="max-w-2xl text-base leading-relaxed text-foreground sm:text-lg">
+            <p className="max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
               {summary}
             </p>
           )}
         </div>
 
         <div className="flex flex-col items-start gap-4 text-left sm:items-end sm:text-right">
-          {logo && (
+          {resolvedLogo && (
             <img
-              src={logo}
+              src={resolvedLogo}
               alt={`${name} logo`}
               className="h-16 w-16 rounded-2xl border border-borderSubtle bg-surface object-cover shadow-glass sm:h-20 sm:w-20"
             />
@@ -55,6 +99,8 @@ HeaderSection.propTypes = {
   summary: PropTypes.string,
   resumeUrl: PropTypes.string,
   logo: PropTypes.string,
+  logoLight: PropTypes.string,
+  logoDark: PropTypes.string,
 };
 
 HeaderSection.defaultProps = {
@@ -62,6 +108,8 @@ HeaderSection.defaultProps = {
   summary: "",
   resumeUrl: "",
   logo: "",
+  logoLight: "",
+  logoDark: "",
 };
 
 export default HeaderSection;

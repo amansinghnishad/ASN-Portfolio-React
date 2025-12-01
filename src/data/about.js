@@ -2,6 +2,8 @@ export const about = {
   name: "Aman Singh Nishad",
   title: "Full Stack Developer",
   logo: "/logo.png",
+  logoLight: "/lightModeLogo.png",
+  logoDark: "/logo.png",
   summary:
     "I craft immersive web experiences that balance elegance with performance. I enjoy translating complex ideas into intuitive interfaces and building systems that scale gracefully across devices.",
   resumeUrl: "/AMANSINGHNISHADResume%20.pdf",
