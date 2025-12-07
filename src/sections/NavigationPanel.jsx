@@ -17,7 +17,7 @@ const tabs = [
 
 const NavigationPanel = ({ activeTab, onChange }) => {
   return (
-    <section className="flex flex-col gap-5 text-foreground">
+    <section className="flex flex-col gap-5">
       <header className="space-y-2">
         <h2 className="text-2xl font-semibold">Content</h2>
       </header>
@@ -31,14 +31,11 @@ const NavigationPanel = ({ activeTab, onChange }) => {
               <button
                 type="button"
                 onClick={() => onChange(tab.id)}
-                className={[
-                  "w-full px-2 py-2 text-left text-sm font-medium uppercase tracking-[0.2em] transition-colors",
+                className={`w-full px-2 py-2 text-left text-sm font-medium uppercase tracking-[0.2em] transition-colors ${
                   isActive
                     ? "text-accent"
-                    : "text-foreground/80 hover:text-accent",
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
+                    : "text-foreground/80 hover:text-accent"
+                }`}
               >
                 <span className="text-base font-semibold text-foreground">
                   {tab.label}

@@ -21,7 +21,7 @@ const Layout = ({ header, leftPanel, centerPanel, rightPanel, footer }) => {
       </div>
 
       <div className="relative z-10 grid min-h-screen grid-rows-[auto,1fr,auto] gap-4 p-4 text-foreground transition-colors duration-500 sm:gap-6 sm:p-6">
-        <GlassPanel as="header" className="overflow-hidden">
+        <GlassPanel as="header">
           <div className="max-h-full overflow-y-auto scroll-smooth pr-1">
             {header}
           </div>
@@ -31,22 +31,22 @@ const Layout = ({ header, leftPanel, centerPanel, rightPanel, footer }) => {
           className="min-h-0"
           panels={{
             left: (
-              <GlassPanel className="flex h-full flex-col overflow-hidden">
+              <GlassPanel className="flex h-full flex-col">
                 <div className="flex-1 overflow-y-auto scroll-smooth pr-1">
                   {leftPanel}
                 </div>
               </GlassPanel>
             ),
             center: (
-              <GlassPanel className="flex h-full flex-col overflow-hidden">
+              <GlassPanel className="flex h-full flex-col">
                 <div className="flex-1 overflow-y-auto scroll-smooth pr-1">
                   {centerPanel}
                 </div>
               </GlassPanel>
             ),
             right: (
-              <GlassPanel className="flex h-full flex-col overflow-hidden">
-                <div className="flex-1 overflow-hidden sm:max-h-none max-h-[420px]">
+              <GlassPanel className="flex h-full flex-col">
+                <div className="flex-1 overflow-hidden min-h-[600px] sm:min-h-[70vh] sm:max-h-[85vh]">
                   {rightPanel}
                 </div>
               </GlassPanel>
@@ -54,7 +54,7 @@ const Layout = ({ header, leftPanel, centerPanel, rightPanel, footer }) => {
           }}
         />
 
-        <GlassPanel as="footer" className="overflow-hidden">
+        <GlassPanel as="footer">
           <div className="max-h-full overflow-y-auto scroll-smooth pr-1">
             {footer}
           </div>

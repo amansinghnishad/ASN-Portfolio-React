@@ -4,7 +4,10 @@ import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { projects } from "../data/projects";
 import WebBrowser from "../components/WebBrowser";
 
-export const ProjectListPanel = ({ selectedProject, onSelect }) => {
+export const ProjectListPanel = ({
+  selectedProject = projects[0],
+  onSelect,
+}) => {
   return (
     <section className="flex h-full min-h-0 flex-col gap-4 text-foreground">
       <div className="flex flex-1 min-h-0 flex-col text-sm">
@@ -44,10 +47,10 @@ export const ProjectListPanel = ({ selectedProject, onSelect }) => {
                   )}
 
                   <div className="relative z-10 space-y-2">
-                    <p className="text-base font-semibold tracking-tight text-foreground transition-colors">
+                    <p className="text-base font-semibold tracking-tight text-foreground">
                       {project.name}
                     </p>
-                    <p className="text-sm text-foreground/75 transition-colors">
+                    <p className="text-sm text-foreground/75">
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-1 text-[11px] font-medium uppercase tracking-[0.3em] text-foreground">
@@ -81,11 +84,7 @@ ProjectListPanel.propTypes = {
   onSelect: PropTypes.func.isRequired,
 };
 
-ProjectListPanel.defaultProps = {
-  selectedProject: projects[0],
-};
-
-export const ProjectDetailSection = ({ project }) => {
+export const ProjectDetailSection = ({ project = null }) => {
   if (!project) {
     return (
       <section className="flex h-full flex-col items-center justify-center gap-3 text-center text-muted">
@@ -179,11 +178,7 @@ ProjectDetailSection.propTypes = {
   }),
 };
 
-ProjectDetailSection.defaultProps = {
-  project: null,
-};
-
-export const ProjectPreviewPanel = ({ project, isActive }) => {
+export const ProjectPreviewPanel = ({ project = null, isActive = true }) => {
   if (!project) {
     return (
       <section className="flex h-full flex-col items-center justify-center gap-3 text-center text-muted">
@@ -206,7 +201,7 @@ export const ProjectPreviewPanel = ({ project, isActive }) => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -12, scale: 0.98 }}
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="flex h-full flex-col overflow-hidden"
+          className="flex h-full flex-col"
         >
           <div className="flex flex-col gap-3 border-b border-borderSubtle/70 bg-surfaceStrong/80 px-6 py-4 text-xs text-muted">
             <div className="flex flex-wrap items-center justify-between gap-3">
@@ -239,7 +234,7 @@ export const ProjectPreviewPanel = ({ project, isActive }) => {
                 )}
               </div>
             </div>
-            <div className="flex flex-wrap gap-2 text-[11px] uppercase tracking-[0.3em] text-subtle">
+            <div className="hidden flex-wrap gap-2 text-[11px] uppercase tracking-[0.3em] text-subtle sm:flex">
               {project.tech.map((stack) => (
                 <span
                   key={`${project.name}-${stack}`}

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import { socialLinks } from "../data/socialLinks";
 
-const FooterSection = ({ name, technologies }) => {
+const FooterSection = ({ name, technologies = [] }) => {
   const year = new Date().getFullYear();
   return (
     <footer className="flex flex-col gap-4 text-xs text-subtle">
@@ -34,10 +34,6 @@ const FooterSection = ({ name, technologies }) => {
 FooterSection.propTypes = {
   name: PropTypes.string.isRequired,
   technologies: PropTypes.arrayOf(PropTypes.string),
-};
-
-FooterSection.defaultProps = {
-  technologies: [],
 };
 
 export default FooterSection;

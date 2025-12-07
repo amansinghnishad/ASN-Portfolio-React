@@ -3,8 +3,10 @@ import { useEffect, useMemo, useState } from "react";
 const STORAGE_KEY = "portfolio-theme";
 
 const resolvePreferredTheme = () => {
+  const defaultTheme = "dark";
+
   if (typeof window === "undefined") {
-    return "light";
+    return defaultTheme;
   }
 
   try {
@@ -16,8 +18,7 @@ const resolvePreferredTheme = () => {
     /* localStorage unavailable, fall back to media query */
   }
 
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  return prefersDark ? "dark" : "light";
+  return defaultTheme;
 };
 
 const ThemeToggle = () => {
@@ -33,9 +34,7 @@ const ThemeToggle = () => {
     root.setAttribute("data-theme", theme);
     try {
       window.localStorage.setItem(STORAGE_KEY, theme);
-    } catch (error) {
-      /* ignore write failures */
-    }
+    } catch (error) {}
   }, [theme]);
 
   useEffect(() => {
@@ -49,9 +48,7 @@ const ThemeToggle = () => {
       if (stored === "light" || stored === "dark") {
         return undefined;
       }
-    } catch (error) {
-      /* ignore read failures */
-    }
+    } catch (error) {}
 
     const handleChange = (event) => {
       setTheme(event.matches ? "dark" : "light");

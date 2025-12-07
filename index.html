@@ -10,6 +10,8 @@
       (function () {
         var storageKey = "portfolio-theme";
         var root = document.documentElement;
+        var defaultTheme = "dark";
+
         try {
           var stored = window.localStorage.getItem(storageKey);
           if (stored === "light" || stored === "dark") {
@@ -20,10 +22,7 @@
           /* localStorage unavailable, ignore */
         }
 
-        var prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        ).matches;
-        root.setAttribute("data-theme", prefersDark ? "dark" : "light");
+        root.setAttribute("data-theme", defaultTheme);
       })();
     </script>
   </head>
